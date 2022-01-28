@@ -55,7 +55,9 @@ set lz
 set errorformat+=[%f:%l]\ ->\ %m,[%f:%l]:%m
 
 " 分隔符可视
-set listchars=tab:\|\ ,trail:.,extends:>,precedes:<
+set listchars=tab:\|\ ,nbsp:⣿,extends:»,precedes:«
+set listchars+=eol:¬
+set listchars+=trail:·
 
 " 设置tags
 set tags=./.tags;,.tags

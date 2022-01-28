@@ -295,14 +295,15 @@ endif
 if index(g:bundle_group, 'airline') >= 0
 	Plug 'vim-airline/vim-airline'
 	Plug 'vim-airline/vim-airline-themes'
+	let g:airline_powerline_fonts = 1
+	let g:airline#extensions#tabline#enabled = 1
 	let g:airline_exclude_preview = 1
 	let g:airline_section_b = '%n'
-	let g:airline_left_sep = "\ue0b0"
-	let g:airline_left_alt_sep = "\ue0b1"
-	let g:airline_right_sep = "\ue0b2"
-	let g:airline_right_alt_sep = "\ue0b3"
-	let g:airline_powerline_fonts = 1
 	let g:airline_theme='gruvbox'
+	let g:airline_left_sep = ''
+	let g:airline_right_sep = ''
+	let g:airline_left_alt_sep = "\ue0b1"
+	let g:airline_right_alt_sep = "\ue0b3"
 	if !exists('g:airline_symbols')
 		let g:airline_symbols = {}
 	endif
@@ -310,6 +311,7 @@ if index(g:bundle_group, 'airline') >= 0
 	let g:airline_symbols.readonly = "\ue0a2"
 	let g:airline_symbols.linenr = "\u2630"
 	let g:airline_symbols.maxlinenr = "\ue0a1"
+	let g:airline_symbols.dirty='⚡'
 	if has('win32') || has('win95') || has('win64') || has('win16')
 		if has('gui_running') && &rop =~ 'directx'
 			let g:airline_symbols.linenr = ''
@@ -321,6 +323,7 @@ if index(g:bundle_group, 'airline') >= 0
 	let g:airline#extensions#fugitiveline#enabled = 0
 	let g:airline#extensions#csv#enabled = 0
 	let g:airline#extensions#vimagit#enabled = 0
+	let g:airline#extensions#whitespace#enabled = 0
 endif
 
 
