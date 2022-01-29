@@ -49,6 +49,12 @@ Plug 'tpope/vim-unimpaired'
 " txt和log文件的高亮
 Plug 'vim-scripts/txt.vim'
 
+" vim 括号间移动
+Plug 'tpope/vim-sexp-mappings-for-regular-people'
+
+" .命令增强
+Plug 'tpope/vim-repeat'
+
 "----------------------------------------------------------------------
 " Dirvish 设置：自动排序并隐藏文件，同时定位到相关文件
 " 这个排序函数可以将目录排在前面，文件排在后面，并且按照字母顺序排序
