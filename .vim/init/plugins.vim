@@ -120,6 +120,7 @@ if index(g:bundle_group, 'basic') >= 0
 
 	" Git 支持
 	Plug 'tpope/vim-fugitive'
+	Plug 'rbong/vim-flog'
   
   " YCM
   Plug 'ycm-core/YouCompleteMe'
@@ -136,8 +137,7 @@ if index(g:bundle_group, 'basic') >= 0
 	" 使用 ALT+E 来选择窗口
 	nmap <m-e> <Plug>(choosewin)
 
-	" 默认不显示 startify
-	let g:startify_disable_at_vimenter = 1
+	" startify 会话设置
 	let g:startify_session_dir = '~/.vim/session'
 
 	" 使用 <space>ha 清除 errormarker 标注的错误
@@ -182,7 +182,13 @@ if index(g:bundle_group, 'enhanced') >= 0
 
 	" 提供 gist 接口
 	Plug 'lambdalisue/vim-gista', { 'on': 'Gista' }
-	
+
+	" vim 终端
+	Plug 'voldikss/vim-floaterm'
+
+	" floaterm
+	noremap <silent> <m-`> :FloatermToggle<cr>
+
 	" ALT_+/- 用于按分隔符扩大缩小 v 选区
 	map <m-=> <Plug>(expand_region_expand)
 	map <m--> <Plug>(expand_region_shrink)

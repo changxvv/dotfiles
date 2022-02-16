@@ -1,7 +1,7 @@
 "----------------------------------------------------------------------
 " 基础设置
 "----------------------------------------------------------------------
-set hls ic is scs ru nu ls=2 so=7 bs=2 lbr ai cin noswf aw ar et sr ts=2 sts=2 sw=2 mouse=a cb=unnamedplus nocp wak=no
+set hls ic is scs ru nu ls=2 so=7 bs=2 lbr ai cin noswf aw ar et sr ts=2 sts=2 sw=2 mouse=a nocp wak=no
 set ttimeout ttm=30
 
 
