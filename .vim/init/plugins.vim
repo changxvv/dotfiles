@@ -125,6 +125,9 @@ if index(g:bundle_group, 'basic') >= 0
   " YCM
   Plug 'ycm-core/YouCompleteMe'
 
+  " 或者 coc
+	" Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
 	" work with surrounding characters
 	Plug 'tpope/vim-surround'
 
@@ -187,11 +190,11 @@ if index(g:bundle_group, 'enhanced') >= 0
 	Plug 'voldikss/vim-floaterm'
 
 	" floaterm
-	noremap <silent> <m-`> :FloatermToggle<cr>
+	let g:floaterm_keymap_toggle='<m-`>'
 
 	" ALT_+/- 用于按分隔符扩大缩小 v 选区
-	map <m-=> <Plug>(expand_region_expand)
-	map <m--> <Plug>(expand_region_shrink)
+	map <m-+> <Plug>(expand_region_expand)
+	map <m-_> <Plug>(expand_region_shrink)
 endif
 
 

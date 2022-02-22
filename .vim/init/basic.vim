@@ -108,3 +108,18 @@ set wildignore+=*.ppt,*.pptx,*.docx,*.xlt,*.xls,*.xlsx,*.odt,*.wps
 set wildignore+=*.msi,*.crx,*.deb,*.vfd,*.apk,*.ipa,*.bin,*.msu
 set wildignore+=*.gba,*.sfc,*.078,*.nds,*.smd,*.smc
 set wildignore+=*.linux2,*.win32,*.darwin,*.freebsd,*.linux,*.android
+
+"----------------------------------------------------------------------
+" GVIM 下的设置
+"----------------------------------------------------------------------
+if has('gui_running')
+	set guifont=Iosevka\ Term:h13
+	set guioptions-=m
+	set guioptions-=T
+	set guioptions-=r
+	set guioptions-=L
+	set shell=C:\cygwin64\bin\bash.exe
+	set shellpipe=|
+	set shellredir=>
+	set shellcmdflag=
+endif

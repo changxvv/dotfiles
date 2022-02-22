@@ -64,7 +64,7 @@ ino <silent><m-0> <esc>:tabn 10<cr>
 " 其实还可以用原生的 CTRL+PageUp, CTRL+PageDown 来切换标签
 "----------------------------------------------------------------------
 
-no <silent><leader>tc :tabnew<cr>
+no <silent><leader>tc :tabnew<cr>:Startify<cr>
 no <silent><leader>tq :tabclose<cr>
 no <silent><leader>tn :tabnext<cr>
 no <silent><leader>tp :tabprev<cr>
@@ -150,8 +150,8 @@ endif
 "----------------------------------------------------------------------
 
 no <f2> :vs in.txt<cr>
-no <f9> :!make %:r<cr>
-no <f5> :!time ./%:r < in.txt<cr>
+no <f9> :FloatermSend make %:r<cr><c-\><c-n>:FloatermShow!<cr>
+no <f5> :FloatermSend time ./%:r.exe < in.txt<cr><c-\><c-n>:FloatermShow!<cr>
 
 " calculate the md5
 ca Hash w !cpp -dD -P -fpreprocessed \| tr -d '[:space:]' \| md5sum \| cut -c-8
