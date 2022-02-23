@@ -17,6 +17,8 @@ set showcmd
 set splitright
 set splitbelow
 
+" 搜索统计
+set shortmess-=S
 
 "----------------------------------------------------------------------
 " 颜色主题：色彩文件位于 colors 目录中
@@ -59,17 +61,6 @@ else
 	hi! SpellRare term=underline cterm=underline
 	hi! SpellLocal term=underline cterm=underline
 endif
-
-" 去掉 sign column 的白色背景
-" hi! SignColumn guibg=NONE ctermbg=NONE
-
-" 修改行号为浅灰色，默认主题的黄色行号很难看，换主题可以仿照修改
-" highlight LineNr term=bold cterm=NONE ctermfg=DarkGrey ctermbg=NONE 
-" 	\ gui=NONE guifg=DarkGrey guibg=NONE
-
-" 修正补全目录的色彩：默认太难看
-" hi! Pmenu guibg=gray guifg=black ctermbg=gray ctermfg=black
-" hi! PmenuSel guibg=gray guifg=brown ctermbg=brown ctermfg=gray
 
 
 "----------------------------------------------------------------------
@@ -255,6 +246,8 @@ endfunc
 "----------------------------------------------------------------------
 " 标签栏最终设置
 "----------------------------------------------------------------------
-" set tabline=%!Vim_NeatTabLine()
-" set guitablabel=%{Vim_NeatGuiTabLabel()}
-" set guitabtooltip=%{Vim_NeatGuiTabTip()}
+if index(g:bundle_group, 'airline') >= 0
+	set tabline=%!Vim_NeatTabLine()
+	set guitablabel=%{Vim_NeatGuiTabLabel()}
+	set guitabtooltip=%{Vim_NeatGuiTabTip()}
+endif
