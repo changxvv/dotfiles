@@ -66,7 +66,7 @@ endif
 "----------------------------------------------------------------------
 " 终端设置，隐藏行号和侧边栏
 "----------------------------------------------------------------------
-if has('terminal') && exists(':terminal') == 2
+if index(g:bundle_group, 'floaterm') < 0 && has('terminal') && exists(':terminal') == 2
 	if exists('##TerminalOpen')
 		augroup VimUnixTerminalGroup
 			au! 
@@ -246,7 +246,7 @@ endfunc
 "----------------------------------------------------------------------
 " 标签栏最终设置
 "----------------------------------------------------------------------
-if index(g:bundle_group, 'airline') >= 0
+if index(g:bundle_group, 'airline') < 0
 	set tabline=%!Vim_NeatTabLine()
 	set guitablabel=%{Vim_NeatGuiTabLabel()}
 	set guitabtooltip=%{Vim_NeatGuiTabTip()}

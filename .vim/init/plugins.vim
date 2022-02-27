@@ -3,7 +3,7 @@
 "----------------------------------------------------------------------
 if !exists('g:bundle_group')
 	let g:bundle_group = ['basic', 'tags', 'enhanced', 'filetypes', 'textobj']
-	let g:bundle_group += ['tags', 'airline', 'nerdtree', 'ale', 'echodoc']
+	let g:bundle_group += ['tags', 'airline', 'nerdtree', 'ale', 'echodoc', 'floaterm']
 	let g:bundle_group += ['leaderf']
 endif
 
@@ -190,7 +190,9 @@ if index(g:bundle_group, 'enhanced') >= 0
 	Plug 'voldikss/vim-floaterm'
 
 	" floaterm
-	let g:floaterm_keymap_toggle='<m-`>'
+	let g:floaterm_keymap_toggle = '<m-`>'
+	let g:floaterm_wintype = 'split'
+	let g:floaterm_height = 0.4
 
 	" ALT_+/- 用于按分隔符扩大缩小 v 选区
 	map <m-+> <Plug>(expand_region_expand)

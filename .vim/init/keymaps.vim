@@ -93,9 +93,11 @@ no <silent><leader>tr :call Tab_MoveRight()<cr>
 " ALT 键移动增强
 "----------------------------------------------------------------------
 
-" ALT+h/l 快速左右按单词移动（插入模式）
+" ALT+h/l 快速左右按单词移动
 ino <m-h> <c-left>
 ino <m-l> <c-right>
+no <m-h> ge
+no <m-l> e
 
 " ALT+j/k 逻辑跳转下一行/上一行（按 wrap 逻辑换行进行跳转） 
 no <m-j> gj
@@ -150,8 +152,8 @@ endif
 "----------------------------------------------------------------------
 
 no <f2> :vs in.txt<cr>
-no <f9> :FloatermSend make %:r<cr><c-\><c-n>:FloatermShow!<cr>
-no <f5> :FloatermSend time ./%:r.exe < in.txt<cr><c-\><c-n>:FloatermShow!<cr>
+no <f9> :wa<cr>:FloatermSend make %:r<cr>
+no <f5> :wa<cr>:FloatermSend time ./%:r.exe < in.txt<cr>
 
 " calculate the md5
 ca Hash w !cpp -dD -P -fpreprocessed \| tr -d '[:space:]' \| md5sum \| cut -c-8
