@@ -189,6 +189,9 @@ if index(g:bundle_group, 'enhanced') >= 0
 	" vim 终端
 	Plug 'voldikss/vim-floaterm'
 
+	" 括号补全enter增强
+	let g:delimitMate_expand_space = 1
+
 	" floaterm
 	let g:floaterm_keymap_toggle = '<m-`>'
 	let g:floaterm_wintype = 'split'
