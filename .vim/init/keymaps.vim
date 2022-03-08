@@ -153,7 +153,7 @@ endif
 
 no <f2> :vs in.txt<cr>
 no <f9> :wa<cr>:FloatermSend make %:r<cr>
-no <f5> :wa<cr>:FloatermSend time ./%:r.exe < in.txt<cr>
+no <f5> :wa<cr>:FloatermSend time ./%:r < in.txt<cr>
 
 " calculate the md5
 ca Hash w !cpp -dD -P -fpreprocessed \| tr -d '[:space:]' \| md5sum \| cut -c-8

@@ -110,7 +110,8 @@ set wildignore+=*.linux2,*.win32,*.darwin,*.freebsd,*.linux,*.android
 " GVIM 下的设置
 "----------------------------------------------------------------------
 if has('gui_running')
-	set guifont=Iosevka\ Term:h13
+	set gfn=Iosevka\ Term:h13
+	set gfw=Microsoft\ YaHei\ Mono:h13
 	set guioptions-=m
 	set guioptions-=T
 	set guioptions-=r

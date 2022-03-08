@@ -134,9 +134,6 @@ if index(g:bundle_group, 'basic') >= 0
 	" replace
 	Plug 'vim-scripts/ReplaceWithRegister'
 
-	" 函数参数的文本对象
-	Plug 'gaving/vim-textobj-argument'
-
 	" 使用 ALT+E 来选择窗口
 	nmap <m-e> <Plug>(choosewin)
 
@@ -189,11 +186,24 @@ if index(g:bundle_group, 'enhanced') >= 0
 	" vim 终端
 	Plug 'voldikss/vim-floaterm'
 
+	"vim 文本编辑
+	Plug 'vim-pandoc/vim-pandoc'
+	Plug 'vim-pandoc/vim-pandoc-syntax'
+	Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
+	Plug 'sirver/UltiSnips'
+	Plug 'honza/vim-snippets'
+	let g:UltiSnipsExpandTrigger="<tab>"
+	let g:UltiSnipsJumpForwardTrigger="<c-b>"
+	let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+
+	" If you want :UltiSnipsEdit to split your window.
+	let g:UltiSnipsEditSplit="vertical"
+
 	" 括号补全enter增强
-	let g:delimitMate_expand_space = 1
+	let g:delimitMate_expand_cr = 1
 
 	" floaterm
-	let g:floaterm_keymap_toggle = '<m-`>'
+	let g:floaterm_keymap_toggle='<m-`>'
 	let g:floaterm_wintype = 'split'
 	let g:floaterm_height = 0.4
 
@@ -279,6 +289,10 @@ if index(g:bundle_group, 'textobj') >= 0
 
   " ie/ae 全文操作
   Plug 'kana/vim-textobj-entire'
+
+	" 函数参数的文本对象
+	Plug 'gaving/vim-textobj-argument'
+
 endif
 
 
