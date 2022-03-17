@@ -49,7 +49,7 @@ Plug 'tpope/vim-unimpaired'
 " txt和log文件的高亮
 Plug 'vim-scripts/txt.vim'
 
-" vim 括号间移动
+" vim 移动
 Plug 'guns/vim-sexp'
 Plug 'tpope/vim-sexp-mappings-for-regular-people'
 
@@ -96,8 +96,8 @@ if index(g:bundle_group, 'basic') >= 0
 	" 展示开始画面，显示最近编辑过的文件
 	Plug 'mhinz/vim-startify'
 
-	" gruvbox colorschemes
-	Plug 'morhetz/gruvbox'
+	" colorschemes
+	Plug 'sainnhe/gruvbox-material'
 
 	" 支持库，给其他插件用的函数库
 	Plug 'xolox/vim-misc'
@@ -138,6 +138,7 @@ if index(g:bundle_group, 'basic') >= 0
 	nmap <m-e> <Plug>(choosewin)
 
 	" startify 会话设置
+	let g:startify_disable_at_vimenter = 1
 	let g:startify_session_dir = '~/.vim/session'
 
 	" 使用 <space>ha 清除 errormarker 标注的错误
@@ -192,12 +193,16 @@ if index(g:bundle_group, 'enhanced') >= 0
 	Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
 	Plug 'sirver/UltiSnips'
 	Plug 'honza/vim-snippets'
-	let g:UltiSnipsExpandTrigger="<tab>"
-	let g:UltiSnipsJumpForwardTrigger="<c-b>"
-	let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+	Plug 'lervag/vimtex'
 
-	" If you want :UltiSnipsEdit to split your window.
-	let g:UltiSnipsEditSplit="vertical"
+	" Pandoc 设置
+	let g:pandoc#spell#enabled = 0
+	let g:pandoc#compiler#arguments = "-V CJKmainfont=\"KaiTi\" -Vgeometry:\"top=2cm, bottom=1.5cm, left=2cm, right=2cm\""
+
+	" UltiSnips 设置
+	let g:UltiSnipsExpandTrigger="<tab>"
+	let g:UltiSnipsJumpForwardTrigger="<tab>"
+	let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 
 	" 括号补全enter增强
 	let g:delimitMate_expand_cr = 1
@@ -333,7 +338,7 @@ if index(g:bundle_group, 'airline') >= 0
 	let g:airline_powerline_fonts = 1
 	let g:airline_exclude_preview = 1
 	let g:airline_section_z = '%v:%l/%L%'
-	let g:airline_theme='gruvbox'
+	let g:airline_theme='gruvbox_material'
 
 	if !exists('g:airline_symbols')
 		let g:airline_symbols = {}

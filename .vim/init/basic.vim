@@ -1,7 +1,7 @@
 "----------------------------------------------------------------------
 " 基础设置
 "----------------------------------------------------------------------
-set hls ic is scs ru nu ls=2 so=7 bs=2 lbr ai cin aw ar sr mouse=a nocp wak=no
+set hls ic is scs ru nu ls=2 so=7 bs=2 ai cin aw ar sr mouse=a nocp wak=no
 set ttimeout ttm=30
 
 
@@ -116,8 +116,4 @@ if has('gui_running')
 	set guioptions-=T
 	set guioptions-=r
 	set guioptions-=L
-	set shell=C:\cygwin64\bin\bash.exe
-	set shellpipe=|
-	set shellredir=>
-	set shellcmdflag=
 endif
