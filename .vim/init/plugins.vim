@@ -2,9 +2,8 @@
 " 默认情况下的分组，可以再前面覆盖之
 "----------------------------------------------------------------------
 if !exists('g:bundle_group')
-	let g:bundle_group = ['basic', 'tags', 'enhanced', 'filetypes', 'textobj']
-	let g:bundle_group += ['tags', 'airline', 'nerdtree', 'ale', 'echodoc', 'floaterm']
-	let g:bundle_group += ['leaderf']
+	let g:bundle_group = ['basic', 'enhanced', 'filetypes', 'textobj']
+	let g:bundle_group += ['tags', 'airline', 'nerdtree', 'ale', 'leaderf']
 endif
 
 
@@ -49,12 +48,14 @@ Plug 'tpope/vim-unimpaired'
 " txt和log文件的高亮
 Plug 'vim-scripts/txt.vim'
 
-" vim 移动
-Plug 'guns/vim-sexp'
-Plug 'tpope/vim-sexp-mappings-for-regular-people'
+" vim 选择增强
+" Plug 'guns/vim-sexp'
+" Plug 'tpope/vim-sexp-mappings-for-regular-people'
 
 " .命令增强
 Plug 'tpope/vim-repeat'
+
+let g:EasyMotion_smartcase = 1
 
 "----------------------------------------------------------------------
 " Dirvish 设置：自动排序并隐藏文件，同时定位到相关文件
@@ -123,10 +124,10 @@ if index(g:bundle_group, 'basic') >= 0
 	Plug 'rbong/vim-flog'
   
   " YCM
-  Plug 'ycm-core/YouCompleteMe'
+  " Plug 'ycm-core/YouCompleteMe'
 
   " 或者 coc
-	" Plug 'neoclide/coc.nvim', {'branch': 'release'}
+	Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 	" work with surrounding characters
 	Plug 'tpope/vim-surround'
@@ -134,10 +135,14 @@ if index(g:bundle_group, 'basic') >= 0
 	" replace
 	Plug 'vim-scripts/ReplaceWithRegister'
 
+	" coc.nvim 设置
+	let g:coc_snippet_next = '<tab>'
+	let g:coc_snippet_prev = '<s-tab>'
+
 	" 使用 ALT+E 来选择窗口
 	nmap <m-e> <Plug>(choosewin)
 
-	" startify 会话设置
+	" startify 设置
 	let g:startify_disable_at_vimenter = 1
 	let g:startify_session_dir = '~/.vim/session'
 
@@ -195,6 +200,34 @@ if index(g:bundle_group, 'enhanced') >= 0
 	Plug 'honza/vim-snippets'
 	Plug 'lervag/vimtex'
 
+	" vimtex 设置
+	let g:tex_flavor='latex'
+	set conceallevel=1
+	let g:tex_conceal='abdmg'
+	let g:vimtex_compiler_latexmk_engines = {
+    \ '_'                : '-xelatex',
+    \ 'pdflatex'         : '-pdf',
+    \ 'xelatex'          : '-xelatex',
+    \}
+	let g:vimtex_compiler_latexmk = {
+    \ 'build_dir' : '',
+    \ 'callback' : 1,
+    \ 'continuous' : 1,
+    \ 'executable' : 'latexmk',
+    \ 'hooks' : [],
+    \ 'options' : [
+    \   '-verbose',
+    \   '-file-line-error',
+    \   '-shell-escape',
+    \   '-synctex=1',
+    \   '-interaction=nonstopmode',
+    \ ],
+    \}
+
+	" 阅读器相关的配置 包含正反向查找功能
+	let g:vimtex_view_general_viewer = 'D:\SumatraPDF\SumatraPDF.exe'
+	let g:vimtex_view_general_options_latexmk = '-reuse-instance'
+
 	" Pandoc 设置
 	let g:pandoc#spell#enabled = 0
 	let g:pandoc#compiler#arguments = "-V CJKmainfont=\"KaiTi\" -Vgeometry:\"top=2cm, bottom=1.5cm, left=2cm, right=2cm\""
@@ -203,6 +236,23 @@ if index(g:bundle_group, 'enhanced') >= 0
 	let g:UltiSnipsExpandTrigger="<tab>"
 	let g:UltiSnipsJumpForwardTrigger="<tab>"
 	let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+	" 解决和补全的tab冲突
+	function! g:UltiSnips_Complete()
+		call UltiSnips#ExpandSnippet()
+		if g:ulti_expand_res == 0
+			if pumvisible()
+				return coc#_select_confirm()
+			else
+				call UltiSnips#JumpForwards()
+				if g:ulti_jump_forwards_res == 0
+					return "\<TAB>"
+				endif
+			endif
+		endif
+		return ""
+	endfunction
+	au BufEnter * exec "inoremap <silent> " . g:UltiSnipsExpandTrigger . " <C-R>=g:UltiSnips_Complete()<cr>"
+
 
 	" 括号补全enter增强
 	let g:delimitMate_expand_cr = 1
@@ -297,7 +347,6 @@ if index(g:bundle_group, 'textobj') >= 0
 
 	" 函数参数的文本对象
 	Plug 'gaving/vim-textobj-argument'
-
 endif
 
 
@@ -433,7 +482,7 @@ if index(g:bundle_group, 'ale') >= 0
 				\ }
 
 
-	" 获取 pylint, flake8 的配置文件，在 vim-init/tools/conf 下面
+	" 获取 pylint, flake8 的配置文件
 	function s:lintcfg(name)
 		let conf = s:path('tools/conf/')
 		let path1 = conf . a:name
@@ -449,7 +498,7 @@ if index(g:bundle_group, 'ale') >= 0
 	let g:ale_python_pylint_options = '--rcfile='.s:lintcfg('pylint.conf')
 	let g:ale_python_pylint_options .= ' --disable=W'
 	let g:ale_c_gcc_options = '-Wall -O2 -std=c99'
-	let g:ale_cpp_gcc_options = '-Wall -O2 -std=c++14'
+	let g:ale_cpp_gcc_options = '-Wall -O2 -std=c++17'
 	let g:ale_c_cppcheck_options = ''
 	let g:ale_cpp_cppcheck_options = ''
 

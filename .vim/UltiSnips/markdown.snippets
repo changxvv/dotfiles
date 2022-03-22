@@ -162,7 +162,7 @@ endsnippet
 
 context "math()"
 priority 100
-snippet '(\\?[a-zA-Z]\w*)bf' "mathbf" A
+snippet '(\\?[a-zA-Z]\w*)bf' "mathbf" rA
 \mathbf{`!p snip.rv=match.group(1)`}
 endsnippet
 
@@ -173,7 +173,7 @@ endsnippet
 
 context "math()"
 priority 100
-snippet '(\\?[a-zA-Z]\w*)rm' "mathrm" A
+snippet '(\\?[a-zA-Z]\w*)rm' "mathrm" rA
 \mathrm{`!p snip.rv=match.group(1)`}
 endsnippet
 
@@ -291,13 +291,13 @@ endsnippet
 # symbols #
 
 context "math()"
-snippet '\s*\.\.\.' "smart cdots" A
+snippet '\s*\.\.\.' "smart cdots" rA
 \cdots 
 endsnippet
 
 context "math()"
 priority 100
-snippet '(?<=,)(\s*)\.\.\.' "smart ldots" A
+snippet '(?<=,)(\s*)\.\.\.' "smart ldots" rA
 \ldots
 endsnippet
 
@@ -335,7 +335,7 @@ snippet !> "mapsto" iA
 endsnippet
 
 context "math()"
-snippet '(?<!\\)(sin|cos|arccot|cot|csc|ln|log|exp|star|perp|arcsin|arccos|arctan|arccot|arccsc|arcsec|pi|zeta|oint|iiint|iint|int|ell|nabla|notin|mu|alpha|sigma|rho|beta|gamma|delta|zeta|eta|theta|iota|kappa|vartheta|nu|pi|rho|tau|upsilon|varphi|phi|chi|psi|omega|Gamma|Delta|Theta|Lambda|Xi|Pi|Sigma|Upsilon|Phi|Psi|Omega|aleph)' "function" wrA
+snippet '(?<!\\)(sin|cos|arccot|cot|csc|ln|log|exp|star|perp|arcsin|arccos|arctan|arccot|arccsc|arcsec|pi|zeta|oint|iiint|iint|int|ell|nabla|notin|mu|alpha|sigma|rho|beta|gamma|delta|zeta|eta|theta|iota|kappa|vartheta|nu|pi|rho|tau|upsilon|varphi|phi|chi|psi|omega|Gamma|Delta|Theta|Lambda|Xi|Pi|Sigma|Upsilon|Phi|Psi|Omega|aleph|vee)' "function" wrA
 \\`!p snip.rv = match.group(1)` 
 endsnippet
 
@@ -417,7 +417,7 @@ snippet UU "cup" iA
 endsnippet
 
 context "math()"
-snippet '<=[^>]' "leq" A
+snippet '<=[^>]' "leq" rA
 \leqslant 
 endsnippet
 
