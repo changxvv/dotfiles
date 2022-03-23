@@ -5,8 +5,6 @@ let mapleader=' '
 no ; :
 no ' `
 no Y y$
-no H ^
-no L g_
 nn U <c-r>
 no <silent> <backspace> :noh<cr>
 
@@ -96,8 +94,8 @@ no <silent><leader>tr :call Tab_MoveRight()<cr>
 " ALT+h/l 快速左右按单词移动
 ino <m-h> <c-left>
 ino <m-l> <c-right>
-no <m-h> ge
-no <m-l> e
+no <m-h> b
+no <m-l> w
 
 " ALT+j/k 逻辑跳转下一行/上一行（按 wrap 逻辑换行进行跳转） 
 no <m-j> gj

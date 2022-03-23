@@ -3,7 +3,7 @@
 "----------------------------------------------------------------------
 if !exists('g:bundle_group')
 	let g:bundle_group = ['basic', 'enhanced', 'filetypes', 'textobj']
-	let g:bundle_group += ['tags', 'airline', 'nerdtree', 'ale', 'leaderf']
+	let g:bundle_group += ['tags', 'airline', 'nerdtree', 'leaderf']
 endif
 
 
@@ -138,6 +138,7 @@ if index(g:bundle_group, 'basic') >= 0
 	" coc.nvim 设置
 	let g:coc_snippet_next = '<tab>'
 	let g:coc_snippet_prev = '<s-tab>'
+	let g:coc_config_home = '~/.vim'
 
 	" 使用 ALT+E 来选择窗口
 	nmap <m-e> <Plug>(choosewin)
