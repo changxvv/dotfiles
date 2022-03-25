@@ -49,7 +49,7 @@ set wmnu
 set lz
 
 " 错误格式
-set errorformat+=[%f:%l]\ ->\ %m,[%f:%l]:%m
+set errorformat+=[%f:%l:%c]\ ->\ %m,[%f:%l]:%m
 
 " 分隔符可视
 set listchars=tab:\|\ ,nbsp:⣿,extends:»,precedes:«
