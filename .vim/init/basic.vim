@@ -115,5 +115,6 @@ if has('gui_running')
 	set guioptions-=m
 	set guioptions-=T
 	set guioptions-=r
+	set shell=powershell.exe
 	set guioptions-=L
 endif

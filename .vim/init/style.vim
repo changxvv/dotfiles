@@ -17,6 +17,9 @@ set showcmd
 set splitright
 set splitbelow
 
+set shortmess-=S
+
+
 "----------------------------------------------------------------------
 " 颜色主题：色彩文件位于 colors 目录中
 "----------------------------------------------------------------------
@@ -63,14 +66,14 @@ endif
 "----------------------------------------------------------------------
 " 终端设置，隐藏行号和侧边栏
 "----------------------------------------------------------------------
-if index(g:bundle_group, 'floaterm') < 0 && has('terminal') && exists(':terminal') == 2
-	if exists('##TerminalOpen')
-		augroup VimUnixTerminalGroup
-			au! 
-			au TerminalOpen * setlocal nonumber signcolumn=no
-		augroup END
-	endif
-endif
+" if index(g:bundle_group, 'floaterm') < 0 && has('terminal') && exists(':terminal') == 2
+" 	if exists('##TerminalOpen')
+" 		augroup VimUnixTerminalGroup
+" 			au! 
+" 			au TerminalOpen * setlocal nonumber signcolumn=no
+" 		augroup END
+" 	endif
+" endif
 
 
 "----------------------------------------------------------------------

@@ -240,8 +240,7 @@ if index(g:bundle_group, 'enhanced') >= 0
 			else
 				call UltiSnips#JumpForwards()
 				if g:ulti_jump_forwards_res == 0
-					if delimitMate#JumpAny() == ''
-						return "\<tab>"
+					return "\<tab>"
 				endif
 			endif
 		endif
@@ -715,4 +714,3 @@ let g:ycm_filetype_whitelist = {
 			\ "zimbu":1,
 			\ "ps1":1,
 			\ }
-
