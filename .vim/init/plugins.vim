@@ -197,7 +197,8 @@ if index(g:bundle_group, 'enhanced') >= 0
 	" vimtex 设置
 	let g:tex_flavor='latex'
 	set conceallevel=1
-	let g:tex_conceal='abdmg'
+	let g:tex_conceal='abmg'
+	let g:vimtex_syntax_conceal = {'math_bounds': 0}
 	let g:vimtex_compiler_latexmk_engines = {
     \ '_'                : '-xelatex',
     \ 'pdflatex'         : '-pdf',
@@ -218,13 +219,14 @@ if index(g:bundle_group, 'enhanced') >= 0
     \ ],
     \}
 
-	" 阅读器相关的配置 包含正反向查找功能
+	" 阅读器相关的配置
 	let g:vimtex_view_general_viewer = 'D:\SumatraPDF\SumatraPDF.exe'
 	let g:vimtex_view_general_options_latexmk = '-reuse-instance'
 
 	" Pandoc 设置
 	let g:pandoc#spell#enabled = 0
-	let g:pandoc#compiler#arguments = "-V CJKmainfont=\"KaiTi\" -Vgeometry:\"top=2cm, bottom=1.5cm, left=2cm, right=2cm\""
+	let g:pandoc#compiler#arguments = "-V CJKmainfont=\"KaiTi\""
+	let g:pandoc_autoformat_enabled = 0
 
 	" UltiSnips 设置
 	let g:UltiSnipsExpandTrigger="<tab>"
@@ -233,24 +235,26 @@ if index(g:bundle_group, 'enhanced') >= 0
 
 	" 解决和补全的tab冲突
 	function! g:UltiSnips_Complete()
-		call UltiSnips#ExpandSnippet()
-		if g:ulti_expand_res == 0
-			if pumvisible()
-				return coc#_select_confirm()
-			else
-				call UltiSnips#JumpForwards()
-				if g:ulti_jump_forwards_res == 0
-					return "\<tab>"
-				endif
-			endif
+		if UltiSnips#CanExpandSnippet()
+			return UltiSnips#ExpandSnippet()
+		elseif pumvisible()
+			return coc#_select_confirm()
+		elseif delimitMate#ShouldJump()
+			return delimitMate#JumpAny()
+		elseif UltiSnips#CanJumpForwards()
+			return UltiSnips#JumpForwards()
+		" elseif coc#jumpable()
+		" 	return "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>"
+		else
+			return "\<tab>"
 		endif
-		return ""
 	endfunction
 	au BufEnter * exec "inoremap <silent> " . g:UltiSnipsExpandTrigger . " <C-R>=g:UltiSnips_Complete()<cr>"
 
 
 	" 括号补全enter增强
 	let g:delimitMate_expand_cr = 1
+	let g:delimitMate_jump_expansion = 1
 
 	" floaterm
 	let g:floaterm_keymap_toggle='<m-`>'

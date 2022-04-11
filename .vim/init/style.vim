@@ -26,6 +26,7 @@ set shortmess-=S
 set bg=dark
 set t_Co=256
 colorscheme gruvbox-material
+let g:gruvbox_material_background = 'soft'
 
 " ----------------------------------------------------------------------
 " 状态栏设置
