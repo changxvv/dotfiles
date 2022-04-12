@@ -160,6 +160,17 @@ snippet '(\\?[a-zA-Z]\w*)bf' "mathbf" rA
 endsnippet
 
 context "math()"
+snippet cal "mathcal" iA
+\mathcal{${1:${VISUAL}}}$0
+endsnippet
+
+context "math()"
+priority 1000
+snippet '(\\?[a-zA-Z]\w*)cal' "mathcal" rA
+\mathcal{`!p snip.rv=match.group(1)`}
+endsnippet
+
+context "math()"
 snippet rm "mathrm" iA
 \mathrm{${1:${VISUAL}}}$0
 endsnippet
@@ -178,11 +189,6 @@ endsnippet
 context "math()"
 snippet tit "text it" iA
 \textit{${1:${VISUAL}}}$0
-endsnippet
-
-context "math()"
-snippet mcal "mathcal" iA
-\mathcal{${1:${VISUAL}}$0
 endsnippet
 
 context "math()"

@@ -132,9 +132,8 @@ if index(g:bundle_group, 'basic') >= 0
 	Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 	" coc.nvim 设置
-	let g:coc_snippet_next = '<tab>'
-	let g:coc_snippet_prev = '<s-tab>'
 	let g:coc_config_home = '~/.vim'
+	let g:coc_global_extensions = ['coc-json', 'coc-html', 'coc-css', 'coc-sh', 'coc-pyright', 'coc-tsserver', 'coc-texlab', 'coc-vetur', 'coc-clangd', 'coc-snippets', 'coc-cmake']
 
 	" 使用 ALT+E 来选择窗口
 	nmap <m-e> <Plug>(choosewin)
@@ -190,7 +189,6 @@ if index(g:bundle_group, 'enhanced') >= 0
 	Plug 'vim-pandoc/vim-pandoc'
 	Plug 'vim-pandoc/vim-pandoc-syntax'
 	Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
-	Plug 'sirver/UltiSnips'
 	Plug 'honza/vim-snippets'
 	Plug 'lervag/vimtex'
 
@@ -228,29 +226,21 @@ if index(g:bundle_group, 'enhanced') >= 0
 	let g:pandoc#compiler#arguments = "-V CJKmainfont=\"KaiTi\""
 	let g:pandoc_autoformat_enabled = 0
 
-	" UltiSnips 设置
-	let g:UltiSnipsExpandTrigger="<tab>"
-	let g:UltiSnipsJumpForwardTrigger="<tab>"
-	let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+	"<tab> trigger
+	inoremap <silent><expr> <TAB>
+		\ pumvisible() ? coc#_select_confirm() :
+		\ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
+		\ <SID>check_back_space() ? "\<TAB>" :
+		\ delimitMate#ShouldJump() ? delimitMate#JumpAny() :
+		\ coc#refresh()
 
-	" 解决和补全的tab冲突
-	function! g:UltiSnips_Complete()
-		if UltiSnips#CanExpandSnippet()
-			return UltiSnips#ExpandSnippet()
-		elseif pumvisible()
-			return coc#_select_confirm()
-		elseif delimitMate#ShouldJump()
-			return delimitMate#JumpAny()
-		elseif UltiSnips#CanJumpForwards()
-			return UltiSnips#JumpForwards()
-		" elseif coc#jumpable()
-		" 	return "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>"
-		else
-			return "\<tab>"
-		endif
+	function! s:check_back_space() abort
+		let col = col('.') - 1
+		return !col || getline('.')[col - 1]  =~# '\s'
 	endfunction
-	au BufEnter * exec "inoremap <silent> " . g:UltiSnipsExpandTrigger . " <C-R>=g:UltiSnips_Complete()<cr>"
 
+	let g:coc_snippet_next = '<tab>'
+	let g:coc_snippet_prev = '<s-tab>'
 
 	" 括号补全enter增强
 	let g:delimitMate_expand_cr = 1
