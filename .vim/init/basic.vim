@@ -11,6 +11,7 @@ set ttimeout ttm=30
 if has('multi_byte')
 	" 内部工作编码
 	set encoding=utf-8
+	set termencoding=utf-8
 
 	" 文件默认编码
 	set fileencoding=utf-8
@@ -51,9 +52,14 @@ set lz
 " 错误格式
 set errorformat+=[%f:%l:%c]\ ->\ %m,[%f:%l]:%m
 
+" Virtual edit is useful for visual block edit
+set virtualedit=block
+
+set switchbuf+=usetab,newtab
+
 " 分隔符可视
-set listchars=tab:\|\ ,nbsp:⣿,extends:»,precedes:«
-set listchars+=eol:¬
+set listchars=tab:\|\ ,nbsp:␣,extends:❯,precedes:❮
+set listchars+=eol:↩
 set listchars+=trail:·
 
 " 设置tags
@@ -70,6 +76,41 @@ set ffs=unix,dos,mac
 
 
 "----------------------------------------------------------------------
+" Format 设置
+"----------------------------------------------------------------------
+
+set formatoptions-=croql
+set formatlistpat=^\\s*                     " Optional leading whitespace
+set formatlistpat+=[                        " Start character class
+set formatlistpat+=\\[({]\\?                " |  Optionally match opening punctuation
+set formatlistpat+=\\(                      " |  Start group
+set formatlistpat+=[0-9]\\+                 " |  |  Numbers
+set formatlistpat+=\\\|                     " |  |  or
+set formatlistpat+=[a-zA-Z]\\+              " |  |  Letters
+set formatlistpat+=\\)                      " |  End group
+set formatlistpat+=[\\]:.)}                 " |  Closing punctuation
+set formatlistpat+=]                        " End character class
+set formatlistpat+=\\s\\+                   " One or more spaces
+set formatlistpat+=\\\|                     " or
+set formatlistpat+=^\\s*[-–+o*•]\\s\\+      " Bullet points
+" This handles a broader range of lists
+" 1.  Typical item the default handles
+" a.  An item with an alphabetic character and punctuation
+" (2) An item with punctuation preceding and following it
+" •   An item consisting of leading punctuation
+
+" diff options
+set diffopt=
+set diffopt+=vertical  " show diff in vertical position
+set diffopt+=filler  " show filler for deleted lines
+if has('patch-8.1.2289')
+    set diffopt+=closeoff  " turn off diff when one file window is closed
+endif
+set diffopt+=context:3  " context for diff
+set diffopt+=internal,indent-heuristic,algorithm:histogram
+
+
+"----------------------------------------------------------------------
 " 设置代码折叠
 "----------------------------------------------------------------------
 if has('folding')
@@ -78,6 +119,8 @@ if has('folding')
 
 	" 代码折叠默认使用缩进
 	set fdm=indent
+
+	set foldopen-=hor
 
 	" 默认打开所有缩进
 	set foldlevel=99
@@ -112,9 +155,10 @@ set wildignore+=*.linux2,*.win32,*.darwin,*.freebsd,*.linux,*.android
 if has('gui_running')
 	set gfn=Iosevka\ Term:h13
 	set gfw=Microsoft\ YaHei\ Mono:h13
+	set guicursor+=a:blinkon0
 	set guioptions-=m
 	set guioptions-=T
 	set guioptions-=r
-	set shell=powershell.exe
 	set guioptions-=L
+	set shell=powershell
 endif

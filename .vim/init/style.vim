@@ -19,6 +19,13 @@ set splitbelow
 
 set shortmess-=S
 
+set noeb
+
+try
+    set matchpairs+=<:>,(:),{:},[:],【:】,《:》,〈:〉,［:］,（:）,「:」,『:』,‘:’,“:” " Set matching pairs of characters and highlight matching brackets
+catch /^Vim\%((\a\+)\)\=:E474/
+endtry
+
 
 "----------------------------------------------------------------------
 " 颜色主题：色彩文件位于 colors 目录中
@@ -45,6 +52,9 @@ set statusline+=\ %0(%{&fileformat}\ [%{(&fenc==\"\"?&enc:&fenc).(&bomb?\",BOM\"
 " 更改样式
 "----------------------------------------------------------------------
 
+set spelllang=en,cjk
+set spellsuggest+=9
+
 " 更清晰的错误标注：默认一片红色背景，语法高亮都被搞没了
 " 只显示红色或者蓝色下划线或者波浪线
 hi! clear SpellBad
@@ -67,7 +77,7 @@ endif
 "----------------------------------------------------------------------
 " 终端设置，隐藏行号和侧边栏
 "----------------------------------------------------------------------
-" if index(g:bundle_group, 'floaterm') < 0 && has('terminal') && exists(':terminal') == 2
+" if has('terminal') && exists(':terminal') == 2
 " 	if exists('##TerminalOpen')
 " 		augroup VimUnixTerminalGroup
 " 			au! 

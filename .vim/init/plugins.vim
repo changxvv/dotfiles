@@ -58,9 +58,6 @@ Plug 'tpope/vim-repeat'
 " work with surrounding characters
 Plug 'tpope/vim-surround'
 
-" replace
-Plug 'vim-scripts/ReplaceWithRegister'
-
 let g:EasyMotion_smartcase = 1
 
 "----------------------------------------------------------------------
@@ -133,7 +130,14 @@ if index(g:bundle_group, 'basic') >= 0
 
 	" coc.nvim 设置
 	let g:coc_config_home = '~/.vim'
-	let g:coc_global_extensions = ['coc-json', 'coc-html', 'coc-css', 'coc-sh', 'coc-pyright', 'coc-tsserver', 'coc-texlab', 'coc-vetur', 'coc-clangd', 'coc-snippets', 'coc-cmake']
+	let g:coc_global_extensions = ['coc-json', 'coc-html', 'coc-css', 'coc-sh', 'coc-pyright', 'coc-tsserver', 'coc-texlab', 'coc-vetur', 'coc-clangd', 'coc-cmake']
+	nmap <silent>gd <Plug>(coc-definition)
+	nmap <silent>gy <Plug>(coc-type-definition)
+	nmap <silent>gm <Plug>(coc-implementation)
+	nmap <silent>gr <Plug>(coc-references)
+	nmap <leader>en <Plug>(coc-diagnostic-next)
+	nmap <leader>ep <Plug>(coc-diagnostic-prev)
+
 
 	" 使用 ALT+E 来选择窗口
 	nmap <m-e> <Plug>(choosewin)
@@ -189,6 +193,7 @@ if index(g:bundle_group, 'enhanced') >= 0
 	Plug 'vim-pandoc/vim-pandoc'
 	Plug 'vim-pandoc/vim-pandoc-syntax'
 	Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
+	Plug 'sirver/UltiSnips'
 	Plug 'honza/vim-snippets'
 	Plug 'lervag/vimtex'
 
@@ -223,31 +228,42 @@ if index(g:bundle_group, 'enhanced') >= 0
 
 	" Pandoc 设置
 	let g:pandoc#spell#enabled = 0
-	let g:pandoc#compiler#arguments = "-V CJKmainfont=\"KaiTi\""
 	let g:pandoc_autoformat_enabled = 0
 
+	" UltiSnips 设置
+	let g:UltiSnipsExpandTrigger="<tab>"
+	let g:UltiSnipsJumpForwardTrigger="<tab>"
+	let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+
 	"<tab> trigger
-	inoremap <silent><expr> <TAB>
-		\ pumvisible() ? coc#_select_confirm() :
-		\ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
-		\ <SID>check_back_space() ? "\<TAB>" :
-		\ delimitMate#ShouldJump() ? delimitMate#JumpAny() :
-		\ coc#refresh()
+	function! g:UltiSnips_Complete()
+		if UltiSnips#CanExpandSnippet()
+			return UltiSnips#ExpandSnippet()
+		elseif pumvisible()
+			return coc#_select_confirm()
+		elseif UltiSnips#CanJumpForwards()
+			return UltiSnips#JumpForwards()
+		elseif <SID>check_back_space()
+			return "\<tab>"
+		elseif delimitMate#ShouldJump()
+			return delimitMate#JumpAny()
+		else
+			return coc#refresh()
+		endif
+	endfunction
+	au BufEnter * exec "inoremap <silent> " . g:UltiSnipsExpandTrigger . " <C-R>=g:UltiSnips_Complete()<cr>"
 
 	function! s:check_back_space() abort
 		let col = col('.') - 1
 		return !col || getline('.')[col - 1]  =~# '\s'
 	endfunction
 
-	let g:coc_snippet_next = '<tab>'
-	let g:coc_snippet_prev = '<s-tab>'
-
 	" 括号补全enter增强
 	let g:delimitMate_expand_cr = 1
 	let g:delimitMate_jump_expansion = 1
 
 	" floaterm
-	let g:floaterm_keymap_toggle='<m-`>'
+	let g:floaterm_keymap_toggle='<f10>'
 	let g:floaterm_wintype = 'split'
 	let g:floaterm_height = 0.4
 
