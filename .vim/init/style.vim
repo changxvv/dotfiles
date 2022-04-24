@@ -22,7 +22,7 @@ set shortmess-=S
 set noeb
 
 try
-    set matchpairs+=<:>,(:),{:},[:],【:】,《:》,〈:〉,［:］,（:）,「:」,『:』,‘:’,“:” " Set matching pairs of characters and highlight matching brackets
+    set matchpairs+=【:】,《:》,〈:〉,［:］,（:）,「:」,『:』,‘:’,“:” " Set matching pairs of characters and highlight matching brackets
 catch /^Vim\%((\a\+)\)\=:E474/
 endtry
 

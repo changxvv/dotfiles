@@ -65,12 +65,6 @@ set listchars+=trail:·
 " 设置tags
 set tags=./.tags;,.tags
 
-" 如遇Unicode值大于255的文本，不必等到空格再折行
-set formatoptions+=m
-
-" 合并两行中文时，不在中间加空格
-set formatoptions+=B
-
 " 文件换行符，默认使用 unix 换行符
 set ffs=unix,dos,mac
 
@@ -78,6 +72,12 @@ set ffs=unix,dos,mac
 "----------------------------------------------------------------------
 " Format 设置
 "----------------------------------------------------------------------
+
+" 如遇Unicode值大于255的文本，不必等到空格再折行
+set formatoptions+=m
+
+" 合并两行中文时，不在中间加空格
+set formatoptions+=B
 
 set formatoptions-=croql
 set formatlistpat=^\\s*                     " Optional leading whitespace
@@ -160,5 +160,4 @@ if has('gui_running')
 	set guioptions-=T
 	set guioptions-=r
 	set guioptions-=L
-	set shell=powershell
 endif

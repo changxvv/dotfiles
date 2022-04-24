@@ -243,10 +243,10 @@ if index(g:bundle_group, 'enhanced') >= 0
 			return coc#_select_confirm()
 		elseif UltiSnips#CanJumpForwards()
 			return UltiSnips#JumpForwards()
-		elseif <SID>check_back_space()
-			return "\<tab>"
 		elseif delimitMate#ShouldJump()
 			return delimitMate#JumpAny()
+		elseif <SID>check_back_space()
+			return "\<tab>"
 		else
 			return coc#refresh()
 		endif
@@ -260,7 +260,6 @@ if index(g:bundle_group, 'enhanced') >= 0
 
 	" 括号补全enter增强
 	let g:delimitMate_expand_cr = 1
-	let g:delimitMate_jump_expansion = 1
 
 	" floaterm
 	let g:floaterm_keymap_toggle='<f10>'
