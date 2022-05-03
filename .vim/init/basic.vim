@@ -55,12 +55,9 @@ set errorformat+=[%f:%l:%c]\ ->\ %m,[%f:%l]:%m
 " Virtual edit is useful for visual block edit
 set virtualedit=block
 
-set switchbuf+=usetab,newtab
-
 " 分隔符可视
-set listchars=tab:\|\ ,nbsp:␣,extends:❯,precedes:❮
-set listchars+=eol:↩
-set listchars+=trail:·
+set listchars=tab:\|\ ,nbsp:␣,extends:❯,precedes:❮,eol:↲,trail:·
+set showbreak=↪️
 
 " 设置tags
 set tags=./.tags;,.tags

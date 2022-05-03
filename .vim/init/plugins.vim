@@ -224,7 +224,6 @@ if index(g:bundle_group, 'enhanced') >= 0
 
 	" 阅读器相关的配置
 	let g:vimtex_view_general_viewer = 'D:\SumatraPDF\SumatraPDF.exe'
-	let g:vimtex_view_general_options_latexmk = '-reuse-instance'
 
 	" Pandoc 设置
 	let g:pandoc#spell#enabled = 0

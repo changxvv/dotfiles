@@ -1,10 +1,26 @@
 {
+	"coc.preferences.useQuickfixForLocations": true,
+	"coc.preferences.rootPatterns": [
+		".root",
+		".svn",
+		".git",
+		".hg",
+		".project",
+		"Makefile",
+		"CMakeLists.txt"
+		],
+	"suggest.enablePreview": true,
+	"suggest.languageSourcePriority": 98,
+	"suggest.removeDuplicateItems": true,
+	"suggest.noselect": false,
+	"suggest.maxCompleteItemCount": 20,
+	"suggest.highPrioritySourceLimit": 20,
+	"suggest.lowPrioritySourceLimit": 20,
+	"suggest.selection": "recentlyUsedByPrefix",
 	"python.analysis.diagnosticSeverityOverrides": {
 		"reportGeneralTypeIssues": "none"
 	},
 	"python.linting.enabled": true,
 	"python.linting.mypyEnabled": true,
-	"python.linting.pylintArgs": ["--disable=wildcard-import,invalid-name,missing-function-docstring,broad-except,logging-format-interpolation,missing-module-docstring,missing-class-docstring,line-too-long,too-few-public-methods,inconsistent-return-statements,too-many-branches,too-many-locals,too-many-statements,too-many-arguments,too-many-instance-attributes", "--enable=unused-import"],
-	"suggest.enablePreview": true,
-	"snippets.snipmate.enable": false
+	"python.linting.pylintArgs": ["--disable=wildcard-import,invalid-name,missing-function-docstring,broad-except,logging-format-interpolation,missing-module-docstring,missing-class-docstring,line-too-long,too-few-public-methods,inconsistent-return-statements,too-many-branches,too-many-locals,too-many-statements,too-many-arguments,too-many-instance-attributes", "--enable=unused-import"]
 }
