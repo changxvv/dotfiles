@@ -12,7 +12,6 @@
 	"suggest.enablePreview": true,
 	"suggest.languageSourcePriority": 98,
 	"suggest.removeDuplicateItems": true,
-	"suggest.noselect": false,
 	"suggest.maxCompleteItemCount": 20,
 	"suggest.highPrioritySourceLimit": 20,
 	"suggest.lowPrioritySourceLimit": 20,

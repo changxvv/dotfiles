@@ -135,9 +135,8 @@ if index(g:bundle_group, 'basic') >= 0
 	nmap <silent>gy <Plug>(coc-type-definition)
 	nmap <silent>gm <Plug>(coc-implementation)
 	nmap <silent>gr <Plug>(coc-references)
-	nmap <leader>en <Plug>(coc-diagnostic-next)
-	nmap <leader>ep <Plug>(coc-diagnostic-prev)
-
+	nmap <silent> [g <Plug>(coc-diagnostic-prev)
+	nmap <silent> ]g <Plug>(coc-diagnostic-next)
 
 	" 使用 ALT+E 来选择窗口
 	nmap <m-e> <Plug>(choosewin)
@@ -411,6 +410,7 @@ if index(g:bundle_group, 'airline') >= 0
 	let g:airline#extensions#tabline#fnamemod = ':t'
 	let g:airline#extensions#tabline#show_tab_count = 0
 	let g:airline#extensions#tabline#show_buffers = 0
+	let g:airline#extensions#tabline#show_splits = 0
 	let g:airline#extensions#tabline#show_tab_nr = 0
 	let g:airline#extensions#tabline#show_tab_type = 0
 	let g:airline#extensions#whitespace#enabled = 0
