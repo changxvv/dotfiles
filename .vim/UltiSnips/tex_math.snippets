@@ -3,8 +3,11 @@ global !p
 def math():
 	return vim.eval('vimtex#syntax#in_mathzone()') == '1'
 
+def is_punc(c):
+	from zhon.hanzi import punctuation
+	return c in punctuation + ',.?- '
+	
 endglobal
-
 
 # environment #
 
@@ -30,8 +33,8 @@ snippet case "cases" wA
 endsnippet
 
 snippet mk "inline Math" wA
-$${1}$`!p
-if t[2] and t[2][0] not in [',', '.', '?', '-', ' ']:
+$${1:${VISUAL}}$`!p
+if t[2] and not is_punc(t[2][0]):
 	snip.rv = ' '
 else:
 	snip.rv = ''
@@ -44,11 +47,12 @@ ${1:${VISUAL}}
 $$ $0
 endsnippet
 
+priority 10
 snippet sympy "sympyblock " w
 sympy $1 sympy$0
 endsnippet
 
-priority 1000
+priority 100
 snippet 'sympy(.*)sympy' "sympy" wr
 `!p
 from sympy import *
@@ -60,11 +64,12 @@ snip.rv = eval('latex(' + match.group(1).replace('\\', '').replace('^', '**').re
 `
 endsnippet
 
+priority 10
 snippet math "mathematicablock" w
 math $1 math$0
 endsnippet
 
-priority 1000
+priority 100
 snippet 'math(.*)math' "math" wr
 `!p
 import subprocess
@@ -105,12 +110,13 @@ snippet / "Fraction" i
 \\dfrac{${VISUAL}}{$1}$0
 endsnippet
 
+priority 10
 context "math()"
 snippet '((\d+)|(\d*)(\\)?([A-Za-z]+)((\^|_)(\{\d+\}|\d))*)/' "symbol frac" wrA
 \\dfrac{`!p snip.rv = match.group(1)`}{$1}$0
 endsnippet
 
-priority 1000
+priority 100
 context "math()"
 snippet '^.*\)/' "() Fraction" wrA
 `!p
@@ -126,58 +132,51 @@ snip.rv = stripped[0:i] + "\\dfrac{" + stripped[i+1:-1] + "}"
 `{$1}$0
 endsnippet
 
+priority 10
 context "math()"
-snippet "bar" "bar" riA
+snippet "bar" "bar" iA
 \overline{${1:${VISUAL}}}$0
 endsnippet
 
-priority 1000
+priority 100
 context "math()"
 snippet "(\\?[a-zA-Z]\w*)bar" "bar" riA
 \overline{`!p snip.rv=match.group(1)`}
 endsnippet
 
+priority 10
 context "math()"
-snippet "hat" "hat" riA
+snippet "hat" "hat" iA
 \hat{${1:${VISUAL}}}$0
 endsnippet
 
-priority 1000
+priority 100
 context "math()"
 snippet "(\\?[a-zA-Z]\w*)hat" "hat" riA
 \hat{`!p snip.rv=match.group(1)`}
 endsnippet
 
+priority 10
 context "math()"
 snippet bf "mathbf" iA
 \mathbf{${1:${VISUAL}}}$0
 endsnippet
 
 context "math()"
-priority 1000
-snippet '(\\?[a-zA-Z]\w*)bf' "mathbf" rA
+priority 100
+snippet '(\\?[a-zA-Z]\w*)bf' "mathbf" riA
 \mathbf{`!p snip.rv=match.group(1)`}
 endsnippet
 
-context "math()"
-snippet cal "mathcal" iA
-\mathcal{${1:${VISUAL}}}$0
-endsnippet
-
-context "math()"
-priority 1000
-snippet '(\\?[a-zA-Z]\w*)cal' "mathcal" rA
-\mathcal{`!p snip.rv=match.group(1)`}
-endsnippet
-
+priority 10
 context "math()"
 snippet rm "mathrm" iA
 \mathrm{${1:${VISUAL}}}$0
 endsnippet
 
 context "math()"
-priority 1000
-snippet '(\\?[a-zA-Z]\w*)rm' "mathrm" rA
+priority 100
+snippet '(\\?[a-zA-Z]\w*)rm' "mathrm" riA
 \mathrm{`!p snip.rv=match.group(1)`}
 endsnippet
 
@@ -189,6 +188,16 @@ endsnippet
 context "math()"
 snippet tit "text it" iA
 \textit{${1:${VISUAL}}}$0
+endsnippet
+
+context "math()"
+snippet cal "mathcal" iA
+\mathcal{${1:${VISUAL}}}$0
+endsnippet
+
+context "math()"
+snippet bb "mathbb" iA
+\mathbb{${1:${VISUAL}}}$0
 endsnippet
 
 context "math()"
@@ -242,7 +251,7 @@ snippet lim "limit" w
 endsnippet
 
 context "math()"
-snippet prod "product" 2
+snippet prod "product" w
 \\prod_{${1:n=${2:1}}}^{${3:\infty}} ${4:${VISUAL}} $0
 endsnippet
 
@@ -267,8 +276,8 @@ snippet sq "\sqrt{}" iA
 endsnippet
 
 context "math()"
-snippet op "math function" wA
-\operatorname{$1}$0
+snippet opn "math function" wA
+\operatorname{${1:${VISUAL}}}$0
 endsnippet
 
 context "math()"
@@ -289,16 +298,22 @@ endsnippet
 # symbols #
 
 context "math()"
+priority 10
 snippet '\s*\.\.\.' "smart cdots" rA
 \cdots 
 endsnippet
 
 context "math()"
-priority 1000
-snippet '(?<=,)(\s*)\.\.\.' "smart ldots" rA
+priority 100
+snippet '(?<=[,;])(\s*)\.\.\.' "smart ldots" rA
 \ldots
 endsnippet
 
+snippet == "equals" iA
+&= ${VISUAL}$0 \\\\
+endsnippet
+
+priority 10
 context "math()"
 snippet => "Right arrow" iA
 \implies
@@ -309,18 +324,19 @@ snippet =< "Left arrow" iA
 \impliedby
 endsnippet
 
+priority 10
 context "math()"
 snippet -> "right arrow" iA
 \to 
 endsnippet
 
 context "math()"
-priority 1000
+priority 100
 snippet <=> "if and only if" iA
 \iff
 endsnippet
 
-priority 1000
+priority 100
 context "math()"
 snippet <-> "left right arrow" iA
 \leftrightarrow 
@@ -332,7 +348,7 @@ snippet !> "mapsto" iA
 endsnippet
 
 context "math()"
-snippet '(?<!\\)(sin|cos|arccot|cot|csc|ln|log|exp|star|perp|arcsin|arccos|arctan|arccot|arccsc|arcsec|pi|zeta|oint|iiint|iint|int|ell|nabla|notin|mu|alpha|sigma|rho|beta|gamma|delta|zeta|eta|theta|iota|kappa|vartheta|nu|pi|rho|tau|upsilon|varphi|phi|chi|psi|omega|Gamma|Delta|Theta|Lambda|Xi|Pi|Sigma|Upsilon|Phi|Psi|Omega|aleph|vee)' "function" wrA
+snippet '(?<!\\)(sin|cos|arccot|cot|csc|ln|log|exp|star|perp|arcsin|arccos|arctan|arccot|arccsc|arcsec|pi|zeta|oint|iiint|iint|int|ell|notin|mu|alpha|sigma|rho|beta|gamma|delta|zeta|eta|theta|iota|kappa|vartheta|nu|pi|rho|tau|upsilon|varphi|phi|chi|psi|omega|Gamma|Delta|Theta|Lambda|Xi|Pi|Sigma|Upsilon|Phi|Psi|Omega|aleph|vee|equiv|quad|max|min|deg|det)' "function" wrA
 \\`!p snip.rv = match.group(1)` 
 endsnippet
 
@@ -372,7 +388,12 @@ snippet and "and" iA
 endsnippet
 
 context "math()"
-snippet sse "subseteq" iA
+snippet cc "subset" Ai
+\subset 
+endsnippet
+
+context "math()"
+snippet cC "subseteq" iA
 \subseteq 
 endsnippet
 
@@ -391,12 +412,13 @@ snippet o* "otimes" iA
 \otimes 
 endsnippet
 
+priority 10
 context "math()"
 snippet eps "epsilon" iA
 \epsilon 
 endsnippet
 
-priority 1000
+priority 100
 context "math()"
 snippet veps "varepsilon" iA
 \varepsilon 
@@ -464,9 +486,4 @@ endsnippet
 
 snippet || "mid" iA
 \mid 
-endsnippet
-
-context "math()"
-snippet cc "subset" Ai
-\subset 
 endsnippet
