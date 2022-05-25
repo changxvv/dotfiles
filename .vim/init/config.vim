@@ -160,9 +160,7 @@ augroup InitFileTypesGroup
 	" quickfix 隐藏行号
 	au FileType qf setlocal nonumber
 
-	au Filetype tex UltiSnipsAddFiletypes tex_math
-
-	au Filetype markdown UltiSnipsAddFiletype tex_math
+	au Filetype markdown UltiSnipsAddFiletype texmath
 
 	" 强制对某些扩展名的 filetype 进行纠正
 	au BufNewFile,BufRead *.as setlocal filetype=actionscript
