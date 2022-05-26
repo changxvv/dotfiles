@@ -45,6 +45,7 @@ set dy=lastline
 
 " 允许下方显示目录
 set wmnu
+set wildmode=lastused:full,full
 
 " 延迟绘制
 set lz
@@ -57,7 +58,7 @@ set virtualedit=block
 
 " 分隔符可视
 set listchars=tab:\|\ ,nbsp:␣,extends:❯,precedes:❮,eol:↲,trail:·
-set showbreak=↪️
+set showbreak=↪
 
 " 设置tags
 set tags=./.tags;,.tags
@@ -152,6 +153,8 @@ set wildignore+=*.linux2,*.win32,*.darwin,*.freebsd,*.linux,*.android
 if has('gui_running')
 	set gfn=Iosevka\ Term:h13
 	set gfw=Microsoft\ YaHei\ Mono:h13
+	" set gfn=Iosevka\ Term\ Regular\ 13
+	" set gfw=noto-fonts-cjk\ 13
 	set guicursor+=a:blinkon0
 	set guioptions-=m
 	set guioptions-=T

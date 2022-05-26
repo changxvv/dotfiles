@@ -6,8 +6,10 @@ no ; :
 no ' `
 no Y y$
 nn U <c-r>
+nn gV `[V`]
 no <silent> <backspace> :noh<cr>
-
+vnoremap < <gv
+vnoremap > >gv
 
 "----------------------------------------------------------------------
 " INSERT 模式偶尔需要移动的方便些
@@ -151,9 +153,9 @@ endif
 
 no <f2> :vs in.txt<cr>
 no <f9> :wa<cr>:FloatermSend make %:r<cr>
-tno <f9> :wa<cr>:FloatermSend make %:r<cr>
+tno <f9> <c-_>:wa<cr>:FloatermSend make %:r<cr>
 no <f5> :wa<cr>:FloatermSend time ./%:r < in.txt<cr>
-tno <f5> :wa<cr>:FloatermSend time ./%:r < in.txt<cr>
+tno <f5> <c-_>:wa<cr>:FloatermSend time ./%:r < in.txt<cr>
 
 " calculate the md5
 ca Hash w !cpp -dD -P -fpreprocessed \| tr -d '[:space:]' \| md5sum \| cut -c-8

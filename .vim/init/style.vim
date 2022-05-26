@@ -17,7 +17,7 @@ set showcmd
 set splitright
 set splitbelow
 
-set shortmess-=S
+set shortmess=aoOtTI
 
 set noeb
 

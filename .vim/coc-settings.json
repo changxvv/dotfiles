@@ -16,6 +16,9 @@
 	"suggest.highPrioritySourceLimit": 20,
 	"suggest.lowPrioritySourceLimit": 20,
 	"suggest.selection": "recentlyUsedByPrefix",
+	"diagnostic.warningSign": "»",
+  "diagnostic.errorSign": "✘",
+  "diagnostic.separateRelatedInformationAsDiagnostics": true,
 	"python.analysis.diagnosticSeverityOverrides": {
 		"reportGeneralTypeIssues": "none"
 	},
