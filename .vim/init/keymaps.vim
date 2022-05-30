@@ -19,6 +19,7 @@ ino <c-j> <down>
 ino <c-k> <up>
 ino <c-l> <right>
 ino <c-a> <home>
+ino <c-q> <c-e>
 ino <c-e> <end>
 ino <c-d> <del>
 
