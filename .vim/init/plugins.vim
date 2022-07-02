@@ -231,7 +231,6 @@ if index(g:bundle_group, 'enhanced') >= 0
 		\ . ' -v --not-a-term -T dumb -c  \"VimtexInverseSearch %l ''%f''\""'
 	" Pandoc 设置
 	let g:pandoc#spell#enabled = 0
-	let g:pandoc_autoformat_enabled = 0
 
 	" UltiSnips 设置
 	let g:UltiSnipsExpandTrigger="<tab>"

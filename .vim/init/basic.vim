@@ -45,7 +45,7 @@ set dy=lastline
 
 " 允许下方显示目录
 set wmnu
-set wildmode=lastused:full,full
+set wildmode=longest:full,full
 
 " 延迟绘制
 set lz
@@ -70,6 +70,11 @@ set ffs=unix,dos,mac
 "----------------------------------------------------------------------
 " Format 设置
 "----------------------------------------------------------------------
+set formatoptions-=c
+set formatoptions-=r
+set formatoptions-=o
+set formatoptions-=q
+set formatoptions-=l
 
 " 如遇Unicode值大于255的文本，不必等到空格再折行
 set formatoptions+=m
@@ -77,7 +82,6 @@ set formatoptions+=m
 " 合并两行中文时，不在中间加空格
 set formatoptions+=B
 
-set formatoptions-=croql
 set formatlistpat=^\\s*                     " Optional leading whitespace
 set formatlistpat+=[                        " Start character class
 set formatlistpat+=\\[({]\\?                " |  Optionally match opening punctuation

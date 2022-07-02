@@ -5,6 +5,8 @@ let mapleader=' '
 no ; :
 no ' `
 no Y y$
+no H ^
+no L g_
 nn U <c-r>
 nn gV `[V`]
 no <silent> <backspace> :noh<cr>
@@ -19,6 +21,7 @@ ino <c-j> <down>
 ino <c-k> <up>
 ino <c-l> <right>
 ino <c-a> <home>
+ino <s-tab> <c-e>
 ino <c-e> <end>
 ino <c-d> <del>
 
