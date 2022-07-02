@@ -221,6 +221,7 @@ if index(g:bundle_group, 'enhanced') >= 0
     \ ],
     \}
 	let g:vimtex_quickfix_open_on_warning = 0
+	let g:vimtex_quickfix_mode = 0
 
 	" 阅读器相关的配置
 	let g:vimtex_view_general_viewer = 'D:\SumatraPDF\SumatraPDF.exe'
