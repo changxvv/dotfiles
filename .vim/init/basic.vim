@@ -164,4 +164,8 @@ if has('gui_running')
 	set guioptions-=T
 	set guioptions-=r
 	set guioptions-=L
+	" autocmd InsertLeave * :silent !fcitx5-remote -c
+	" autocmd BufCreate *  :silent !fcitx5-remote -c
+	" autocmd BufEnter *  :silent !fcitx5-remote -c
+	" autocmd BufLeave *  :silent !fcitx5-remote -c
 endif

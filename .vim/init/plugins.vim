@@ -225,7 +225,6 @@ if index(g:bundle_group, 'enhanced') >= 0
 
 	" 阅读器相关的配置
 	let g:vimtex_view_general_viewer = 'D:\SumatraPDF\SumatraPDF.exe'
-	let g:vimtex_view_general_options_latexmk = '-reuse-instance'
 	let g:vimtex_view_general_options
 		\ = ' -reuse-instance -forward-search @tex @line @pdf'
 		\ . ' -inverse-search "' . 'cmd /c start /min \"\" '  . exepath(v:progpath)
