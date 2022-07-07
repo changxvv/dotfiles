@@ -66,6 +66,13 @@ set tags=./.tags;,.tags
 " 文件换行符，默认使用 unix 换行符
 set ffs=unix,dos,mac
 
+" 丢失焦点就保存
+au FocusLost * :wa
+
+" reveal already opened files from the quickfix window 
+" instead of opening new buffers
+set switchbuf=useopen
+
 
 "----------------------------------------------------------------------
 " Format 设置
@@ -160,8 +167,5 @@ if has('gui_running')
 	" set gfn=Iosevka\ Term\ Regular\ 13
 	" set gfw=noto-fonts-cjk\ 13
 	set guicursor+=a:blinkon0
-	set guioptions-=m
-	set guioptions-=T
-	set guioptions-=r
-	set guioptions-=L
+	set guioptions=e
 endif

@@ -21,10 +21,9 @@ ino <c-j> <down>
 ino <c-k> <up>
 ino <c-l> <right>
 ino <c-a> <home>
-ino <s-tab> <c-e>
 ino <c-e> <end>
 ino <c-d> <del>
-
+ino <s-tab> <c-e>
 
 "----------------------------------------------------------------------
 " 命令模式的快速移动
@@ -102,15 +101,15 @@ ino <m-l> <c-right>
 no <m-h> b
 no <m-l> w
 
+" 命令模式
+cno <m-h> <c-left>
+cno <m-l> <c-right>
+
 " ALT+j/k 逻辑跳转下一行/上一行（按 wrap 逻辑换行进行跳转） 
 no <m-j> gj
 no <m-k> gk
 ino <m-j> <c-\><c-o>gj
 ino <m-k> <c-\><c-o>gk
-
-" 命令模式
-cno <m-h> <c-left>
-cno <m-l> <c-right>
 
 " ALT+d 删除到行末
 ino <m-d> <c-\><c-o>d$

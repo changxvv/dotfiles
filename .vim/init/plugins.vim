@@ -3,7 +3,7 @@
 "----------------------------------------------------------------------
 if !exists('g:bundle_group')
 	let g:bundle_group = ['basic', 'enhanced', 'filetypes', 'textobj']
-	let g:bundle_group += ['tags', 'airline', 'nerdtree', 'leaderf']
+	let g:bundle_group += ['tags', 'airline', 'nerdtree']
 endif
 
 
@@ -130,7 +130,7 @@ if index(g:bundle_group, 'basic') >= 0
 
 	" coc.nvim 设置
 	let g:coc_config_home = '~/.vim'
-	let g:coc_global_extensions = ['coc-json', 'coc-html', 'coc-css', 'coc-sh', 'coc-pyright', 'coc-tsserver', 'coc-texlab', 'coc-vetur', 'coc-clangd', 'coc-cmake']
+	let g:coc_global_extensions = ['coc-json', 'coc-html', 'coc-css', 'coc-sh', 'coc-pyright', 'coc-tsserver', 'coc-texlab', 'coc-snippets', 'coc-clangd', 'coc-cmake']
 	nmap <silent>gd <Plug>(coc-definition)
 	nmap <silent>gy <Plug>(coc-type-definition)
 	nmap <silent>gm <Plug>(coc-implementation)
@@ -192,7 +192,6 @@ if index(g:bundle_group, 'enhanced') >= 0
 	Plug 'vim-pandoc/vim-pandoc'
 	Plug 'vim-pandoc/vim-pandoc-syntax'
 	Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
-	Plug 'sirver/UltiSnips'
 	Plug 'honza/vim-snippets'
 	Plug 'lervag/vimtex'
 
@@ -225,36 +224,20 @@ if index(g:bundle_group, 'enhanced') >= 0
 
 	" 阅读器相关的配置
 	let g:vimtex_view_general_viewer = 'D:\SumatraPDF\SumatraPDF.exe'
-	let g:vimtex_view_general_options_latexmk = '-reuse-instance'
 	let g:vimtex_view_general_options
 		\ = ' -reuse-instance -forward-search @tex @line @pdf'
 		\ . ' -inverse-search "' . 'cmd /c start /min \"\" '  . exepath(v:progpath)
 		\ . ' -v --not-a-term -T dumb -c  \"VimtexInverseSearch %l ''%f''\""'
+
 	" Pandoc 设置
 	let g:pandoc#spell#enabled = 0
 
-	" UltiSnips 设置
-	let g:UltiSnipsExpandTrigger="<tab>"
-	let g:UltiSnipsJumpForwardTrigger="<tab>"
-	let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
-
 	"<tab> trigger
-	function! g:UltiSnips_Complete()
-		if UltiSnips#CanExpandSnippet()
-			return UltiSnips#ExpandSnippet()
-		elseif pumvisible()
-			return coc#_select_confirm()
-		elseif UltiSnips#CanJumpForwards()
-			return UltiSnips#JumpForwards()
-		elseif delimitMate#ShouldJump()
-			return delimitMate#JumpAny()
-		elseif <SID>check_back_space()
-			return "\<tab>"
-		else
-			return coc#refresh()
-		endif
-	endfunction
-	au BufEnter * exec "inoremap <silent> " . g:UltiSnipsExpandTrigger . " <C-R>=g:UltiSnips_Complete()<cr>"
+	inoremap <silent><expr> <TAB>
+      \ pumvisible() ? coc#_select_confirm() :
+      \ delimitMate#ShouldJump() ? delimitMate#JumpAny() :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
 
 	function! s:check_back_space() abort
 		let col = col('.') - 1

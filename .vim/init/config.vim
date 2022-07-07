@@ -124,7 +124,7 @@ endif
 " 打开文件时恢复上一次光标所在位置
 autocmd BufReadPost *
 	\ if line("'\"") > 1 && line("'\"") <= line("$") |
-	\	 exe "normal! g`\"" |
+	\ exe "normal! g`\"" |
 	\ endif
 
 " 定义一个 DiffOrig 命令用于查看文件改动
@@ -159,8 +159,6 @@ augroup InitFileTypesGroup
 
 	" quickfix 隐藏行号
 	au FileType qf setlocal nonumber
-
-	au Filetype markdown UltiSnipsAddFiletype texmath
 
 	" 强制对某些扩展名的 filetype 进行纠正
 	au BufNewFile,BufRead *.as setlocal filetype=actionscript
