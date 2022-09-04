@@ -168,4 +168,8 @@ if has('gui_running')
 	" set gfw=noto-fonts-cjk\ 13
 	set guicursor+=a:blinkon0
 	set guioptions=e
+	" autocmd InsertLeave * :silent !fcitx5-remote -c
+	" autocmd BufCreate *  :silent !fcitx5-remote -c
+	" autocmd BufEnter *  :silent !fcitx5-remote -c
+	" autocmd BufLeave *  :silent !fcitx5-remote -c
 endif
