@@ -5,6 +5,8 @@ let mapleader=' '
 no ; :
 no ' `
 no Y y$
+no H ^
+no L g_
 nn U <c-r>
 nn gV `[V`]
 no <silent> <backspace> :noh<cr>
