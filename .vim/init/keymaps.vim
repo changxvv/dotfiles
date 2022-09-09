@@ -5,8 +5,6 @@ let mapleader=' '
 no ; :
 no ' `
 no Y y$
-no H ^
-no L g_
 nn U <c-r>
 nn gV `[V`]
 no <silent> <backspace> :noh<cr>
@@ -98,8 +96,6 @@ no <silent><leader>tr :call Tab_MoveRight()<cr>
 " ALT+h/l 快速左右按单词移动
 ino <m-h> <c-left>
 ino <m-l> <c-right>
-no <m-h> b
-no <m-l> w
 
 " 命令模式
 cno <m-h> <c-left>

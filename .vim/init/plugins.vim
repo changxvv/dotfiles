@@ -189,8 +189,6 @@ if index(g:bundle_group, 'enhanced') >= 0
 	Plug 'voldikss/vim-floaterm'
 
 	"vim 文本编辑
-	Plug 'vim-pandoc/vim-pandoc'
-	Plug 'vim-pandoc/vim-pandoc-syntax'
 	Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
 	Plug 'honza/vim-snippets'
 	Plug 'lervag/vimtex'
@@ -234,14 +232,14 @@ if index(g:bundle_group, 'enhanced') >= 0
 
 	"<tab> trigger
 	inoremap <silent><expr> <TAB>
-      \ pumvisible() ? coc#_select_confirm() :
+      \ coc#pum#visible() ? coc#_select_confirm() :
       \ delimitMate#ShouldJump() ? delimitMate#JumpAny() :
-      \ <SID>check_back_space() ? "\<TAB>" :
+      \ CheckBackSpace() ? "\<TAB>" :
       \ coc#refresh()
 
-	function! s:check_back_space() abort
+	function! CheckBackSpace() abort
 		let col = col('.') - 1
-		return !col || getline('.')[col - 1]  =~# '\s'
+		return !col || getline('.')[col - 1] =~# '\s'
 	endfunction
 
 	" 括号补全enter增强

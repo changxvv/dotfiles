@@ -9,7 +9,6 @@
 		"Makefile",
 		"CMakeLists.txt"
 		],
-	"suggest.enablePreview": true,
 	"suggest.languageSourcePriority": 98,
 	"suggest.removeDuplicateItems": true,
 	"suggest.maxCompleteItemCount": 20,

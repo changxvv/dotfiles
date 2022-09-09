@@ -2,10 +2,6 @@ global !p
 
 def math():
 	return vim.eval('vimtex#syntax#in_mathzone()') == '1'
-
-def is_punc(c):
-	from zhon.hanzi import punctuation
-	return c in punctuation + ',.?- '
 	
 endglobal
 
@@ -33,12 +29,7 @@ snippet case "cases" wA
 endsnippet
 
 snippet mk "inline Math" wA
-$${1:${VISUAL}}$`!p
-if t[2] and not is_punc(t[2][0]):
-	snip.rv = ' '
-else:
-	snip.rv = ''
-`$2
+$${1:${VISUAL}}$$0
 endsnippet
 
 # script #

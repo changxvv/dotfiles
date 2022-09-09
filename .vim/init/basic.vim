@@ -1,7 +1,7 @@
 "----------------------------------------------------------------------
 " 基础设置
 "----------------------------------------------------------------------
-set hls ic is scs ru nu ls=2 so=7 bs=2 ai cin aw ar sr mouse=a nocp wak=no
+set hls ic is scs ru nu ls=2 so=7 bs=2 ai cin aw ar sr mouse=a nocp wak=no cb^=unnamed,unnamedplus
 set ttimeout ttm=30
 
 
@@ -127,7 +127,7 @@ if has('folding')
 	set foldenable
 
 	" 代码折叠默认使用缩进
-	set fdm=indent
+	set fdm=manual
 
 	set foldopen-=hor
 
