@@ -189,9 +189,14 @@ if index(g:bundle_group, 'enhanced') >= 0
 	Plug 'voldikss/vim-floaterm'
 
 	"vim 文本编辑
+	Plug 'preservim/vim-markdown'
 	Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
 	Plug 'honza/vim-snippets'
 	Plug 'lervag/vimtex'
+
+	" vim-markdown 设置
+	let g:vim_markdown_folding_disabled = 1
+	let g:vim_markdown_math = 1
 
 	" vimtex 设置
 	let g:tex_flavor='latex'
