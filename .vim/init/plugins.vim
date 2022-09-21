@@ -229,8 +229,6 @@ if index(g:bundle_group, 'enhanced') >= 0
 	let g:vimtex_view_general_viewer = 'D:\SumatraPDF\SumatraPDF.exe'
 	let g:vimtex_view_general_options
 		\ = ' -reuse-instance -forward-search @tex @line @pdf'
-		\ . ' -inverse-search "' . 'cmd /c start /min \"\" '  . exepath(v:progpath)
-		\ . ' -v --not-a-term -T dumb -c  \"VimtexInverseSearch %l ''%f''\""'
 
 	" Pandoc 设置
 	let g:pandoc#spell#enabled = 0
