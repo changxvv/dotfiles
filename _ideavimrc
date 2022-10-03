@@ -1,0 +1,98 @@
+let mapleader = ' '
+
+set nu
+set hlsearch
+set incsearch
+set scrolloff=5
+set ignorecase smartcase
+set showmode
+set clipboard+=unnamed
+set clipboard+=unnamedplus
+set history=1000
+
+" Plugin
+set easymotion
+set NERDTree
+set surround " activate the vim-surround key bindings"
+set multiple-cursors
+set commentary
+set argtextobj
+set textobj-entire
+set highlightedyank
+let g:highlightedyank_highlight_duration = "1000"
+set textobj-indent
+set keep-english-in-normal
+
+noremap ; :
+noremap ' `
+noremap Y y$
+noremap H ^
+noremap L g_
+nnoremap U <c-r>
+nnoremap gV `[V`]
+noremap <slient><backspace> :noh<cr>
+vnoremap < <gv
+vnoremap > >gv
+nnoremap [<Space> O<esc>j
+nnoremap ]<Space> o<esc>k
+noremap <c-o> <ESC>:action Back<CR>
+noremap <c-i> <ESC>:action Forward<CR>
+noremap / <ESC>:action Find<CR>
+" nnoremap [m :action MethodUp<cr>
+" nnoremap ]m :action MethodDown<cr>
+nnoremap K :action GotoDeclaration<CR>
+nnoremap ]g :action GotoNextError<CR>
+nnoremap [g :action GotoPreviousError<CR>
+
+
+ino <c-h> <left>
+ino <c-j> <down>
+ino <c-k> <up>
+ino <c-l> <right>
+ino <c-a> <home>
+ino <c-e> <end>
+ino <c-d> <del>
+ino <s-tab> <c-e>
+ino <m-h> <c-left>
+ino <m-l> <c-right>
+no <m-j> gj
+no <m-k> gk
+ino <m-j> <c-\><c-o>gj
+ino <m-k> <c-\><c-o>gk
+ino <m-d> <c-\><c-o>d$
+no <m-H> <c-w>h
+no <m-L> <c-w>l
+no <m-J> <c-w>j
+no <m-K> <c-w>k
+ino <m-H> <esc><c-w>h
+ino <m-L> <esc><c-w>l
+ino <m-J> <esc><c-w>j
+ino <m-K> <esc><c-w>k
+
+no <silent><m-1> :tabn 1<cr>
+no <silent><m-2> :tabn 2<cr>
+no <silent><m-3> :tabn 3<cr>
+no <silent><m-4> :tabn 4<cr>
+no <silent><m-5> :tabn 5<cr>
+no <silent><m-6> :tabn 6<cr>
+no <silent><m-7> :tabn 7<cr>
+no <silent><m-8> :tabn 8<cr>
+no <silent><m-9> :tabn 9<cr>
+no <silent><m-0> :tabn 10<cr>
+ino <silent><m-1> <esc>:tabn 1<cr>
+ino <silent><m-2> <esc>:tabn 2<cr>
+ino <silent><m-3> <esc>:tabn 3<cr>
+ino <silent><m-4> <esc>:tabn 4<cr>
+ino <silent><m-5> <esc>:tabn 5<cr>
+ino <silent><m-6> <esc>:tabn 6<cr>
+ino <silent><m-7> <esc>:tabn 7<cr>
+ino <silent><m-8> <esc>:tabn 8<cr>
+ino <silent><m-9> <esc>:tabn 9<cr>
+ino <silent><m-0> <esc>:tabn 10<cr>
+
+
+no <silent><leader>tc :tabnew<cr>
+no <silent><leader>tq :tabclose<cr>
+no <silent><leader>tn :tabnext<cr>
+no <silent><leader>tp :tabprev<cr>
+no <silent><leader>to :tabonly<cr>

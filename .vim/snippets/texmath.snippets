@@ -18,14 +18,14 @@ context "math()"
 snippet ali "Aligned" bA
 \\begin{aligned}
 	${1:${VISUAL}}
-\\end{aligned}
+\\end{aligned}$0
 endsnippet
 
 context "math()"
 snippet case "cases" wA
 \\begin{cases}
 	${1:${VISUAL}}
-\\end{cases}
+\\end{cases}$0
 endsnippet
 
 snippet mk "inline Math" wA
@@ -144,13 +144,18 @@ snippet tit "text it" iA
 endsnippet
 
 context "math()"
-snippet cal "mathcal" iA
+snippet mcal "mathcal" iA
 \mathcal{${1:${VISUAL}}}$0
 endsnippet
 
 context "math()"
-snippet bb "mathbb" iA
+snippet mbb "mathbb" iA
 \mathbb{${1:${VISUAL}}}$0
+endsnippet
+
+context "math()"
+snippet mscr "mathscr" iA
+\mathscr{${1:${VISUAL}}}$0
 endsnippet
 
 context "math()"
@@ -209,7 +214,7 @@ snippet prod "product" w
 endsnippet
 
 context "math()"
-snippet dint "integral" i
+snippet dint "integral" w
 \\int_{${1:-\infty}}^{${2:\infty}} ${3:${VISUAL}} \\,\\mathrm{d}${4:x}$0
 endsnippet
 
@@ -341,7 +346,7 @@ snippet and "and" iA
 endsnippet
 
 context "math()"
-snippet cc "subset" Ai
+snippet cc "subset" iA
 \subset 
 endsnippet
 
@@ -428,7 +433,7 @@ snippet lmd "lambda" iA
 endsnippet
 
 context "math()"
-snippet nabl "nabla" iA
+snippet nab "nabla" iA
 \nabla 
 endsnippet
 

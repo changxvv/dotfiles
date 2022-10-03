@@ -101,7 +101,7 @@ if index(g:bundle_group, 'basic') >= 0
 	Plug 'mhinz/vim-startify'
 
 	" colorschemes
-	Plug 'sainnhe/gruvbox-material'
+	Plug 'sainnhe/edge'
 
 	" 支持库，给其他插件用的函数库
 	Plug 'xolox/vim-misc'
@@ -137,6 +137,8 @@ if index(g:bundle_group, 'basic') >= 0
 	nmap <silent>gr <Plug>(coc-references)
 	nmap <silent> [g <Plug>(coc-diagnostic-prev)
 	nmap <silent> ]g <Plug>(coc-diagnostic-next)
+	vmap <tab> <Plug>(coc-snippets-select)
+	imap <s-tab> <Plug>(coc-snippets-expand)
 
 	" 使用 ALT+E 来选择窗口
 	nmap <m-e> <Plug>(choosewin)
@@ -380,7 +382,7 @@ if index(g:bundle_group, 'airline') >= 0
 	let g:airline_powerline_fonts = 1
 	let g:airline_exclude_preview = 1
 	let g:airline_section_z = '%v:%l/%L%'
-	let g:airline_theme='gruvbox_material'
+	let g:airline_theme='edge'
 
 	if !exists('g:airline_symbols')
 		let g:airline_symbols = {}

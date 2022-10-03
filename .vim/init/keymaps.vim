@@ -6,6 +6,7 @@ no ; :
 no ' `
 no Y y$
 no H ^
+no M zz
 no L g_
 nn U <c-r>
 nn gV `[V`]
@@ -23,7 +24,6 @@ ino <c-l> <right>
 ino <c-a> <home>
 ino <c-e> <end>
 ino <c-d> <del>
-ino <s-tab> <c-e>
 
 "----------------------------------------------------------------------
 " 命令模式的快速移动
@@ -151,11 +151,10 @@ endif
 " 编译运行
 "----------------------------------------------------------------------
 
+" f10打开终端，f9编译c/c++，f5运行文件，f7编译项目，f8运行项目，f6测试项目，f4更新cmake
 no <f2> :vs in.txt<cr>
-no <f9> :wa<cr>:FloatermSend make %:r<cr>
-tno <f9> <c-_>:wa<cr>:FloatermSend make %:r<cr>
-no <f5> :wa<cr>:FloatermSend time ./%:r < in.txt<cr>
-tno <f5> <c-_>:wa<cr>:FloatermSend time ./%:r < in.txt<cr>
+no <f9> :wa \| FloatermSend make %:r<cr>
+no <f5> :wa \| FloatermSend %:r < in.txt<cr>
 
 " calculate the md5
 ca Hash w !cpp -dD -P -fpreprocessed \| tr -d '[:space:]' \| md5sum \| cut -c-8

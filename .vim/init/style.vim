@@ -19,8 +19,6 @@ set splitbelow
 
 set shortmess=aoOtTI
 
-set noeb
-
 try
     set matchpairs+=【:】,《:》,〈:〉,［:］,（:）,「:」,『:』,‘:’,“:” " Set matching pairs of characters and highlight matching brackets
 catch /^Vim\%((\a\+)\)\=:E474/
@@ -32,8 +30,8 @@ endtry
 "----------------------------------------------------------------------
 set bg=dark
 set t_Co=256
-colorscheme gruvbox-material
-let g:gruvbox_material_background = 'soft'
+let g:edge_enable_italic = 1
+colorscheme edge
 
 " ----------------------------------------------------------------------
 " 状态栏设置

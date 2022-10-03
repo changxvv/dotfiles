@@ -45,7 +45,7 @@ set dy=lastline
 
 " 允许下方显示目录
 set wmnu
-set wildmode=longest:full,full
+set wildmode=lastused,full
 
 " 延迟绘制
 set lz
@@ -77,17 +77,14 @@ set switchbuf=useopen
 "----------------------------------------------------------------------
 " Format 设置
 "----------------------------------------------------------------------
-set formatoptions-=c
-set formatoptions-=r
-set formatoptions-=o
-set formatoptions-=q
-set formatoptions-=l
 
 " 如遇Unicode值大于255的文本，不必等到空格再折行
 set formatoptions+=m
 
 " 合并两行中文时，不在中间加空格
 set formatoptions+=B
+
+au BufEnter * set fo-=c fo-=r fo-=o
 
 set formatlistpat=^\\s*                     " Optional leading whitespace
 set formatlistpat+=[                        " Start character class
@@ -108,7 +105,10 @@ set formatlistpat+=^\\s*[-–+o*•]\\s\\+      " Bullet points
 " (2) An item with punctuation preceding and following it
 " •   An item consisting of leading punctuation
 
-" diff options
+
+"----------------------------------------------------------------------
+" Diff 设置
+"----------------------------------------------------------------------
 set diffopt=
 set diffopt+=vertical  " show diff in vertical position
 set diffopt+=filler  " show filler for deleted lines
