@@ -3,7 +3,7 @@
 "----------------------------------------------------------------------
 if !exists('g:bundle_group')
 	let g:bundle_group = ['basic', 'enhanced', 'filetypes', 'textobj']
-	let g:bundle_group += ['tags', 'airline', 'nerdtree']
+	let g:bundle_group += ['tags', 'airline', 'nerdtree', 'leaderf']
 endif
 
 
@@ -131,10 +131,10 @@ if index(g:bundle_group, 'basic') >= 0
 	" coc.nvim 设置
 	let g:coc_config_home = '~/.vim'
 	let g:coc_global_extensions = ['coc-json', 'coc-html', 'coc-css', 'coc-sh', 'coc-pyright', 'coc-tsserver', 'coc-texlab', 'coc-snippets', 'coc-clangd', 'coc-cmake']
-	nmap <silent>gd <Plug>(coc-definition)
-	nmap <silent>gy <Plug>(coc-type-definition)
-	nmap <silent>gm <Plug>(coc-implementation)
-	nmap <silent>gr <Plug>(coc-references)
+	nmap <silent> gd <Plug>(coc-definition)
+	nmap <silent> gy <Plug>(coc-type-definition)
+	nmap <silent> gm <Plug>(coc-implementation)
+	nmap <silent> gr <Plug>(coc-references)
 	nmap <silent> [g <Plug>(coc-diagnostic-prev)
 	nmap <silent> ]g <Plug>(coc-diagnostic-next)
 	vmap <tab> <Plug>(coc-snippets-select)
@@ -169,14 +169,8 @@ if index(g:bundle_group, 'enhanced') >= 0
 	" 用 v 选中一个区域后，ALT_+/- 按分隔符扩大/缩小选区
 	Plug 'terryma/vim-expand-region'
 
-	" 快速文件搜索
-	Plug 'junegunn/fzf', {'do': { -> fzf#install() } }
-
 	" 给不同语言提供字典补全，插入模式下 c-x c-k 触发
 	Plug 'asins/vim-dict'
-
-	" 使用 :FlyGrep 命令进行实时 grep
-	Plug 'wsdjeg/FlyGrep.vim'
 
 	" 使用 :CtrlSF 命令进行模仿 sublime 的 grep
 	Plug 'dyng/ctrlsf.vim'

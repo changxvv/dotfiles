@@ -127,7 +127,7 @@ if has('folding')
 	set foldenable
 
 	" 代码折叠默认使用缩进
-	set fdm=manual
+	set fdm=marker
 
 	set foldopen-=hor
 
@@ -162,8 +162,8 @@ set wildignore+=*.linux2,*.win32,*.darwin,*.freebsd,*.linux,*.android
 " GVIM 下的设置
 "----------------------------------------------------------------------
 if has('gui_running')
-	set gfn=Iosevka\ Term:h13
-	set gfw=Microsoft\ YaHei\ Mono:h13
+	set gfn=Iosevka\ Term:h12
+	set gfw=Microsoft\ YaHei\ Mono:h12
 	" set gfn=Iosevka\ Term\ Regular\ 13
 	" set gfw=noto-fonts-cjk\ 13
 	set guicursor+=a:blinkon0
