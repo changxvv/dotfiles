@@ -130,15 +130,13 @@ if index(g:bundle_group, 'basic') >= 0
 
 	" coc.nvim 设置
 	let g:coc_config_home = '~/.vim'
-	let g:coc_global_extensions = ['coc-json', 'coc-html', 'coc-css', 'coc-sh', 'coc-pyright', 'coc-tsserver', 'coc-texlab', 'coc-snippets', 'coc-clangd', 'coc-cmake']
+	let g:coc_global_extensions = ['coc-json', 'coc-html', 'coc-css', 'coc-sh', 'coc-pyright', 'coc-tsserver', 'coc-texlab', 'coc-clangd', 'coc-cmake']
 	nmap <silent> gd <Plug>(coc-definition)
 	nmap <silent> gy <Plug>(coc-type-definition)
 	nmap <silent> gm <Plug>(coc-implementation)
 	nmap <silent> gr <Plug>(coc-references)
 	nmap <silent> [g <Plug>(coc-diagnostic-prev)
 	nmap <silent> ]g <Plug>(coc-diagnostic-next)
-	vmap <tab> <Plug>(coc-snippets-select)
-	imap <s-tab> <Plug>(coc-snippets-expand)
 
 	" 使用 ALT+E 来选择窗口
 	nmap <m-e> <Plug>(choosewin)
@@ -188,6 +186,7 @@ if index(g:bundle_group, 'enhanced') >= 0
 	Plug 'preservim/vim-markdown'
 	Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
 	Plug 'honza/vim-snippets'
+	Plug 'SirVer/ultisnips'
 	Plug 'lervag/vimtex'
 
 	" vim-markdown 设置
@@ -228,6 +227,10 @@ if index(g:bundle_group, 'enhanced') >= 0
 
 	" Pandoc 设置
 	let g:pandoc#spell#enabled = 0
+
+	" ultisnips 设置
+	let g:UltiSnipsExpandTrigger="<s-tab>"
+	" let g:UltiSnipsSnippetDirectories = ["snippets"]
 
 	"<tab> trigger
 	inoremap <silent><expr> <TAB>

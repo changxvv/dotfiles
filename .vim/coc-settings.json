@@ -1,6 +1,6 @@
 {
 	"coc.preferences.useQuickfixForLocations": true,
-	"coc.preferences.rootPatterns": [
+	"workspace.rootPatterns": [
 		".root",
 		".svn",
 		".git",
@@ -23,8 +23,6 @@
 	},
 	"python.linting.enabled": true,
 	"python.linting.mypyEnabled": true,
-	"python.linting.pylintArgs": ["--disable=wildcard-import,invalid-name,missing-function-docstring,broad-except,logging-format-interpolation,missing-module-docstring,missing-class-docstring,line-too-long,too-few-public-methods,inconsistent-return-statements,too-many-branches,too-many-locals,too-many-statements,too-many-arguments,too-many-instance-attributes", "--enable=unused-import"],
-	"snippets.ultisnips.enable": true,
-	"snippets.snipmate.enable": false,
-	"snippets.userSnippetsDirectory": "~/.vim/snippets"
+	"python.linting.pylintArgs": ["--disable=wildcard-import,invalid-name,missing-function-docstring,broad-except,logging-format-interpolation,missing-module-docstring,missing-class-docstring,line-too-long,too-few-public-methods,inconsistent-return-statements,too-many-branches,too-many-locals,too-many-statements,too-many-arguments,too-many-instance-attributes", "--enable=unused-import"]
 }
+
