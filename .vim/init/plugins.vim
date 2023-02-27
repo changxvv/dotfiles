@@ -192,6 +192,7 @@ if index(g:bundle_group, 'enhanced') >= 0
 	" vim-markdown 设置
 	let g:vim_markdown_folding_disabled = 1
 	let g:vim_markdown_math = 1
+  let g:vim_markdown_new_list_item_indent = 2
 
 	" vimtex 设置
 	let g:tex_flavor='latex'
