@@ -1,6 +1,9 @@
 "----------------------------------------------------------------------
 " 显示设置
 "----------------------------------------------------------------------
+"命令栏高度
+set cmdheight=1
+
 " 总是显示侧边栏
 set signcolumn=yes
 
@@ -16,6 +19,9 @@ set showcmd
 " 默认右边显示水平切割的窗口
 set splitright
 set splitbelow
+
+"命令栏历史
+set history=2000
 
 set shortmess=aoOtTI
 
@@ -37,12 +43,12 @@ colorscheme edge
 " ----------------------------------------------------------------------
 " 状态栏设置
 " ----------------------------------------------------------------------
+
 set statusline=                                 " 清空状态栏
 set statusline+=\ %F                            " 文件名
 set statusline+=\ [%1*%M%*%n%R%H]               " buffer 编号和状态
 set statusline+=%=                              " 向右对齐
 set statusline+=\ %y                            " 文件类型
-
 " 最右边显示文件编码和行号等信息，并且固定在一个 group 中，优先占位
 set statusline+=\ %0(%{&fileformat}\ [%{(&fenc==\"\"?&enc:&fenc).(&bomb?\",BOM\":\"\")}]\ %v:%l/%L%)
 "}}}

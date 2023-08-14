@@ -176,5 +176,8 @@ augroup InitFileTypesGroup
 	au BufNewFile,BufRead *.es setlocal filetype=erlang
 	au BufNewFile,BufRead *.asc setlocal filetype=asciidoc
 	au BufNewFile,BufRead *.vl setlocal filetype=verilog
+	au BufNewFile,BufRead *.bxrc setlocal filetype=bxrc
+	au BufNewFile,BufRead *.odin setlocal filetype=odin
+	au BufNewFile,BufRead *.comp setlocal filetype=comp
 
 augroup END

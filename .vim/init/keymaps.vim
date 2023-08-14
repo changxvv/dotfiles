@@ -19,6 +19,10 @@ vnoremap > >gv
 " 关闭鼠标中键粘贴
 noremap <MiddleMouse> <LeftMouse>
 
+" open list
+nn <leader>xl :lopen<cr>
+nn <leader>xq :copen<cr>
+
 "----------------------------------------------------------------------
 " INSERT 模式偶尔需要移动的方便些
 "----------------------------------------------------------------------
@@ -44,16 +48,16 @@ cno <c-d> <del>
 "----------------------------------------------------------------------
 " ALT+N 切换 tab
 "----------------------------------------------------------------------
-no <silent><m-1> :tabn 1<cr>
-no <silent><m-2> :tabn 2<cr>
-no <silent><m-3> :tabn 3<cr>
-no <silent><m-4> :tabn 4<cr>
-no <silent><m-5> :tabn 5<cr>
-no <silent><m-6> :tabn 6<cr>
-no <silent><m-7> :tabn 7<cr>
-no <silent><m-8> :tabn 8<cr>
-no <silent><m-9> :tabn 9<cr>
-no <silent><m-0> :tabn 10<cr>
+nn <silent><m-1> :tabn 1<cr>
+nn <silent><m-2> :tabn 2<cr>
+nn <silent><m-3> :tabn 3<cr>
+nn <silent><m-4> :tabn 4<cr>
+nn <silent><m-5> :tabn 5<cr>
+nn <silent><m-6> :tabn 6<cr>
+nn <silent><m-7> :tabn 7<cr>
+nn <silent><m-8> :tabn 8<cr>
+nn <silent><m-9> :tabn 9<cr>
+nn <silent><m-0> :tabn 10<cr>
 ino <silent><m-1> <esc>:tabn 1<cr>
 ino <silent><m-2> <esc>:tabn 2<cr>
 ino <silent><m-3> <esc>:tabn 3<cr>
@@ -71,30 +75,51 @@ ino <silent><m-0> <esc>:tabn 10<cr>
 " 其实还可以用原生的 CTRL+PageUp, CTRL+PageDown 来切换标签
 "----------------------------------------------------------------------
 
-no <silent><leader>tc :tabnew<cr>:Startify<cr>
-no <silent><leader>tq :tabclose<cr>
-no <silent><leader>tn :tabnext<cr>
-no <silent><leader>tp :tabprev<cr>
-no <silent><leader>to :tabonly<cr>
+nn <silent><leader>tc :tabnew<cr>:Startify<cr>
+nn <silent><leader>tq :tabclose<cr>
+nn <silent><leader>tn :tabnext<cr>
+nn <silent><leader>tp :tabprev<cr>
+nn <silent><leader>to :tabonly<cr>
+nn <silent>\th :-tabmove<cr>
+nn <silent>\tl :+tabmove<cr>
 
-" 左移 tab
-function! Tab_MoveLeft()
-	let l:tabnr = tabpagenr() - 2
-	if l:tabnr >= 0
-		exec 'tabmove '.l:tabnr
-	endif
-endfunc
 
-" 右移 tab
-function! Tab_MoveRight()
-	let l:tabnr = tabpagenr() + 1
-	if l:tabnr <= tabpagenr('$')
-		exec 'tabmove '.l:tabnr
-	endif
-endfunc
+"----------------------------------------------------------------------
+" buffer keymap
+"----------------------------------------------------------------------
+nn <silent><leader>bn :bn<cr>
+nn <silent><leader>bp :bp<cr>
+nn <silent><leader>bm :bm<cr>
+nn <silent><leader>bv :vs<cr>
+nn <silent><leader>bs :sp<cr>
+nn <silent><leader>bd :bdelete<cr>
+nn <silent><leader>bl :ls<cr>
+nn <silent><leader>bb :ls<cr>:b
 
-no <silent><leader>tl :call Tab_MoveLeft()<cr>
-no <silent><leader>tr :call Tab_MoveRight()<cr>
+
+"----------------------------------------------------------------------
+" window keymaps
+"----------------------------------------------------------------------
+nn <silent><leader>ww <c-w>w
+nn <silent><leader>wv <c-w>v
+nn <silent><leader>ws <c-w>s
+nn <silent><leader>wh <c-w>h
+nn <silent><leader>wj <c-w>j
+nn <silent><leader>wk <c-w>k
+nn <silent><leader>wl <c-w>l
+nn <silent><leader>wc <c-w>c
+nn <silent><leader>wo <c-w>o
+nn <silent><leader>wp <c-w>p
+nn <silent><leader>w1 :1wincmd w<cr>
+nn <silent><leader>w2 :2wincmd w<cr>
+nn <silent><leader>w3 :3wincmd w<cr>
+nn <silent><leader>w4 :4wincmd w<cr>
+nn <silent><leader>w5 :5wincmd w<cr>
+nn <silent><leader>w6 :6wincmd w<cr>
+nn <silent><leader>w7 :7wincmd w<cr>
+nn <silent><leader>w8 :8wincmd w<cr>
+nn <silent><leader>w9 :9wincmd w<cr>
+
 
 "----------------------------------------------------------------------
 " ALT 键移动增强

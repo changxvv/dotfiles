@@ -133,10 +133,11 @@ if index(g:bundle_group, 'basic') >= 0
 	let g:coc_global_extensions = ['coc-json', 'coc-html', 'coc-css', 'coc-sh', 'coc-pyright', 'coc-tsserver', 'coc-texlab', 'coc-clangd', 'coc-cmake']
 	nmap <silent> gd <Plug>(coc-definition)
 	nmap <silent> gy <Plug>(coc-type-definition)
-	nmap <silent> gm <Plug>(coc-implementation)
+	nmap <silent> gD <Plug>(coc-declaration)
+	nmap <silent> gI <Plug>(coc-implementation)
 	nmap <silent> gr <Plug>(coc-references)
-	nmap <silent> [g <Plug>(coc-diagnostic-prev)
-	nmap <silent> ]g <Plug>(coc-diagnostic-next)
+	nmap <silent> [d <Plug>(coc-diagnostic-prev)
+	nmap <silent> ]d <Plug>(coc-diagnostic-next)
 
 	" 使用 ALT+E 来选择窗口
 	nmap <m-e> <Plug>(choosewin)
