@@ -32,7 +32,6 @@ ino <c-k> <up>
 ino <c-l> <right>
 ino <c-a> <home>
 ino <c-e> <end>
-ino <c-d> <del>
 
 "----------------------------------------------------------------------
 " 命令模式的快速移动
@@ -43,7 +42,6 @@ cno <c-k> <up>
 cno <c-l> <right>
 cno <c-a> <home>
 cno <c-e> <end>
-cno <c-d> <del>
 
 "----------------------------------------------------------------------
 " ALT+N 切换 tab
@@ -80,8 +78,8 @@ nn <silent><leader>tq :tabclose<cr>
 nn <silent><leader>tn :tabnext<cr>
 nn <silent><leader>tp :tabprev<cr>
 nn <silent><leader>to :tabonly<cr>
-nn <silent>\th :-tabmove<cr>
-nn <silent>\tl :+tabmove<cr>
+nn <silent><leader>th :-tabmove<cr>
+nn <silent><leader>tl :+tabmove<cr>
 
 
 "----------------------------------------------------------------------
@@ -100,16 +98,6 @@ nn <silent><leader>bb :ls<cr>:b
 "----------------------------------------------------------------------
 " window keymaps
 "----------------------------------------------------------------------
-nn <silent><leader>ww <c-w>w
-nn <silent><leader>wv <c-w>v
-nn <silent><leader>ws <c-w>s
-nn <silent><leader>wh <c-w>h
-nn <silent><leader>wj <c-w>j
-nn <silent><leader>wk <c-w>k
-nn <silent><leader>wl <c-w>l
-nn <silent><leader>wc <c-w>c
-nn <silent><leader>wo <c-w>o
-nn <silent><leader>wp <c-w>p
 nn <silent><leader>w1 :1wincmd w<cr>
 nn <silent><leader>w2 :2wincmd w<cr>
 nn <silent><leader>w3 :3wincmd w<cr>
@@ -152,10 +140,22 @@ no <m-H> <c-w>h
 no <m-L> <c-w>l
 no <m-J> <c-w>j
 no <m-K> <c-w>k
+no <m-W> <c-w>w
+no <m-V> <c-w>v
+no <m-S> <c-w>s
+no <m-C> <c-w>c
+no <m-O> <c-w>o
+no <m-P> <c-w>p
 ino <m-H> <esc><c-w>h
 ino <m-L> <esc><c-w>l
 ino <m-J> <esc><c-w>j
 ino <m-K> <esc><c-w>k
+ino <m-W> <esc><c-w>w
+ino <m-V> <esc><c-w>v
+ino <m-S> <esc><c-w>s
+ino <m-C> <esc><c-w>c
+ino <m-O> <esc><c-w>o
+ino <m-P> <esc><c-w>p
 
 if has('terminal') && exists(':terminal') == 2 && has('patch-8.1.1')
 	" vim 8.1 支持 termwinkey ，不需要把 terminal 切换成 normal 模式
