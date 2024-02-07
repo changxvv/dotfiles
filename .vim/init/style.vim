@@ -23,7 +23,12 @@ set splitbelow
 "命令栏历史
 set history=2000
 
+"消息显示
 set shortmess=aoOtTI
+
+" spell
+set spelllang=en,cjk
+set spellsuggest+=9
 
 try
     set matchpairs+=【:】,《:》,〈:〉,［:］,（:）,「:」,『:』,‘:’,“:” " Set matching pairs of characters and highlight matching brackets
@@ -39,7 +44,7 @@ set t_Co=256
 let g:edge_enable_italic = 1
 colorscheme edge
 
-"{{{状态栏
+
 " ----------------------------------------------------------------------
 " 状态栏设置
 " ----------------------------------------------------------------------
@@ -51,14 +56,11 @@ set statusline+=%=                              " 向右对齐
 set statusline+=\ %y                            " 文件类型
 " 最右边显示文件编码和行号等信息，并且固定在一个 group 中，优先占位
 set statusline+=\ %0(%{&fileformat}\ [%{(&fenc==\"\"?&enc:&fenc).(&bomb?\",BOM\":\"\")}]\ %v:%l/%L%)
-"}}}
+
 
 "----------------------------------------------------------------------
 " 更改样式
 "----------------------------------------------------------------------
-
-set spelllang=en,cjk
-set spellsuggest+=9
 
 " 更清晰的错误标注：默认一片红色背景，语法高亮都被搞没了
 " 只显示红色或者蓝色下划线或者波浪线

@@ -31,9 +31,9 @@ endif
 "----------------------------------------------------------------------
 " 语法高亮设置
 "----------------------------------------------------------------------
-if has('syntax')  
-	syntax enable 
-	syntax on 
+if has('syntax')
+	syntax enable
+	syntax on
 endif
 
 "----------------------------------------------------------------------
@@ -41,17 +41,17 @@ endif
 "----------------------------------------------------------------------
 
 " 显示最后一行
-set dy=lastline
+set display=lastline
 
 " 允许下方显示目录
 set wmnu
 set wildmode=lastused,full
 
 " 延迟绘制
-set lz
+set lazyredraw
 
 " 错误格式
-set errorformat=%.\ %#-->\ %f:%l:%c,%f(%l):%m,%f:%l:%c:%m,%f:%l:%m
+set errorformat+=%.\ %#-->\ %f:%l:%c,[%f:%l]\ ->\ %m,[%f:%l]:%m
 
 " Virtual edit is useful for visual block edit
 set virtualedit=block

@@ -10,9 +10,9 @@ no Y y$
 no H ^
 no M zz
 no L g_
+no gV `[V`]
+no <silent><backspace> :noh<cr>
 nn U <c-r>
-nn gV `[V`]
-no <silent> <backspace> :noh<cr>
 vnoremap < <gv
 vnoremap > >gv
 
@@ -23,6 +23,7 @@ noremap <MiddleMouse> <LeftMouse>
 nn <leader>xl :lopen<cr>
 nn <leader>xq :copen<cr>
 
+
 "----------------------------------------------------------------------
 " INSERT 模式偶尔需要移动的方便些
 "----------------------------------------------------------------------
@@ -32,6 +33,8 @@ ino <c-k> <up>
 ino <c-l> <right>
 ino <c-a> <home>
 ino <c-e> <end>
+ino <c-d> <del>
+
 
 "----------------------------------------------------------------------
 " 命令模式的快速移动
@@ -42,20 +45,23 @@ cno <c-k> <up>
 cno <c-l> <right>
 cno <c-a> <home>
 cno <c-e> <end>
+cno <c-f> <c-d>
+cno <c-d> <del>
+
 
 "----------------------------------------------------------------------
 " ALT+N 切换 tab
 "----------------------------------------------------------------------
-nn <silent><m-1> :tabn 1<cr>
-nn <silent><m-2> :tabn 2<cr>
-nn <silent><m-3> :tabn 3<cr>
-nn <silent><m-4> :tabn 4<cr>
-nn <silent><m-5> :tabn 5<cr>
-nn <silent><m-6> :tabn 6<cr>
-nn <silent><m-7> :tabn 7<cr>
-nn <silent><m-8> :tabn 8<cr>
-nn <silent><m-9> :tabn 9<cr>
-nn <silent><m-0> :tabn 10<cr>
+no <silent><m-1> :tabn 1<cr>
+no <silent><m-2> :tabn 2<cr>
+no <silent><m-3> :tabn 3<cr>
+no <silent><m-4> :tabn 4<cr>
+no <silent><m-5> :tabn 5<cr>
+no <silent><m-6> :tabn 6<cr>
+no <silent><m-7> :tabn 7<cr>
+no <silent><m-8> :tabn 8<cr>
+no <silent><m-9> :tabn 9<cr>
+no <silent><m-0> :tabn 10<cr>
 ino <silent><m-1> <esc>:tabn 1<cr>
 ino <silent><m-2> <esc>:tabn 2<cr>
 ino <silent><m-3> <esc>:tabn 3<cr>
@@ -73,40 +79,42 @@ ino <silent><m-0> <esc>:tabn 10<cr>
 " 其实还可以用原生的 CTRL+PageUp, CTRL+PageDown 来切换标签
 "----------------------------------------------------------------------
 
-nn <silent><leader>tc :tabnew<cr>:Startify<cr>
-nn <silent><leader>tq :tabclose<cr>
-nn <silent><leader>tn :tabnext<cr>
-nn <silent><leader>tp :tabprev<cr>
-nn <silent><leader>to :tabonly<cr>
-nn <silent><leader>th :-tabmove<cr>
-nn <silent><leader>tl :+tabmove<cr>
+noremap <silent><leader>tc :tabnew<cr>:Startify<cr>
+noremap <silent><leader>tq :tabclose<cr>
+noremap <silent><leader>tn :tabnext<cr>
+noremap <silent><leader>tp :tabprev<cr>
+noremap <silent><leader>to :tabonly<cr>
+noremap <silent><leader>th :-tabmove<cr>
+noremap <silent><leader>tl :+tabmove<cr>
+noremap <silent><m-left> :-tabmove<cr>
+noremap <silent><m-right> :+tabmove<cr>
 
 
 "----------------------------------------------------------------------
 " buffer keymap
 "----------------------------------------------------------------------
-nn <silent><leader>bn :bn<cr>
-nn <silent><leader>bp :bp<cr>
-nn <silent><leader>bm :bm<cr>
-nn <silent><leader>bv :vs<cr>
-nn <silent><leader>bs :sp<cr>
-nn <silent><leader>bd :bdelete<cr>
-nn <silent><leader>bl :ls<cr>
-nn <silent><leader>bb :ls<cr>:b
+no <silent><leader>bn :bn<cr>
+no <silent><leader>bp :bp<cr>
+no <silent><leader>bm :bm<cr>
+no <silent><leader>bv :vs<cr>
+no <silent><leader>bs :sp<cr>
+no <silent><leader>bd :bdelete<cr>
+no <silent><leader>bl :ls<cr>
+no <silent><leader>bb :ls<cr>:b
 
 
 "----------------------------------------------------------------------
 " window keymaps
 "----------------------------------------------------------------------
-nn <silent><leader>w1 :1wincmd w<cr>
-nn <silent><leader>w2 :2wincmd w<cr>
-nn <silent><leader>w3 :3wincmd w<cr>
-nn <silent><leader>w4 :4wincmd w<cr>
-nn <silent><leader>w5 :5wincmd w<cr>
-nn <silent><leader>w6 :6wincmd w<cr>
-nn <silent><leader>w7 :7wincmd w<cr>
-nn <silent><leader>w8 :8wincmd w<cr>
-nn <silent><leader>w9 :9wincmd w<cr>
+no <silent><leader>w1 :1wincmd w<cr>
+no <silent><leader>w2 :2wincmd w<cr>
+no <silent><leader>w3 :3wincmd w<cr>
+no <silent><leader>w4 :4wincmd w<cr>
+no <silent><leader>w5 :5wincmd w<cr>
+no <silent><leader>w6 :6wincmd w<cr>
+no <silent><leader>w7 :7wincmd w<cr>
+no <silent><leader>w8 :8wincmd w<cr>
+no <silent><leader>w9 :9wincmd w<cr>
 
 
 "----------------------------------------------------------------------
@@ -114,6 +122,8 @@ nn <silent><leader>w9 :9wincmd w<cr>
 "----------------------------------------------------------------------
 
 " ALT+h/l 快速左右按单词移动
+noremap <m-h> b
+noremap <m-l> w
 ino <m-h> <c-left>
 ino <m-l> <c-right>
 
