@@ -12,7 +12,7 @@ no M zz
 no L g_
 no gV `[V`]
 no <silent><backspace> :noh<cr>
-nn U <c-r>
+nnoremap U <c-r>
 vnoremap < <gv
 vnoremap > >gv
 
@@ -22,6 +22,23 @@ noremap <MiddleMouse> <LeftMouse>
 " open list
 nn <leader>xl :lopen<cr>
 nn <leader>xq :copen<cr>
+
+" quit all
+nnoremap <silent>Q :<c-u>confirm qall<cr>
+
+" replace
+nnoremap <leader>y yiw
+
+" fold
+nnoremap <m-z> za
+nnoremap <m-Z> zA
+
+" text-objects
+onoremap il :<c-u>normal! v$o^oh<cr>
+vnoremap il $o^oh
+
+" last command
+nnoremap <leader>l :<c-p><cr>
 
 
 "----------------------------------------------------------------------
@@ -72,6 +89,10 @@ ino <silent><m-7> <esc>:tabn 7<cr>
 ino <silent><m-8> <esc>:tabn 8<cr>
 ino <silent><m-9> <esc>:tabn 9<cr>
 ino <silent><m-0> <esc>:tabn 10<cr>
+noremap <silent><m-up> :tabprev<cr>
+noremap <silent><m-down> :tabnext<cr>
+inoremap <silent><m-up> <ESC>:tabprev<cr>
+inoremap <silent><m-down> <ESC>:tabnext<cr>
 
 
 "----------------------------------------------------------------------
@@ -84,10 +105,20 @@ noremap <silent><leader>tq :tabclose<cr>
 noremap <silent><leader>tn :tabnext<cr>
 noremap <silent><leader>tp :tabprev<cr>
 noremap <silent><leader>to :tabonly<cr>
+noremap <silent><leader>ta g<tab>
 noremap <silent><leader>th :-tabmove<cr>
 noremap <silent><leader>tl :+tabmove<cr>
 noremap <silent><m-left> :-tabmove<cr>
 noremap <silent><m-right> :+tabmove<cr>
+noremap <silent><m-t> :tabnew<cr>
+vnoremap <silent><m-t> <ESC>:tabnew<cr>
+inoremap <silent><m-t> <ESC>:tabnew<cr>
+noremap <silent><m-w> :tabclose<cr>
+inoremap <silent><m-w> <ESC>:tabclose<cr>
+noremap <silent><m-v> :close<cr>
+inoremap <silent><m-v> <ESC>:close<cr>
+noremap <m-s> :w<cr>
+inoremap <m-s> <esc>:w<cr>
 
 
 "----------------------------------------------------------------------
@@ -101,6 +132,7 @@ no <silent><leader>bs :sp<cr>
 no <silent><leader>bd :bdelete<cr>
 no <silent><leader>bl :ls<cr>
 no <silent><leader>bb :ls<cr>:b
+nnoremap <silent><leader>bc :BufferClose<cr>
 
 
 "----------------------------------------------------------------------
@@ -115,6 +147,8 @@ no <silent><leader>w6 :6wincmd w<cr>
 no <silent><leader>w7 :7wincmd w<cr>
 no <silent><leader>w8 :8wincmd w<cr>
 no <silent><leader>w9 :9wincmd w<cr>
+nnoremap <silent><leader>0 :exe "NERDTree ".fnameescape(expand("%:p:h"))<cr>
+nnoremap <silent><leader>g <c-w>p
 
 
 "----------------------------------------------------------------------
@@ -156,6 +190,11 @@ no <m-S> <c-w>s
 no <m-C> <c-w>c
 no <m-O> <c-w>o
 no <m-P> <c-w>p
+no <m-+> <c-w>+
+no <m--> <c-w>-
+no <m-,> <c-w>< 
+no <m-.> <c-w>>
+no <m-=> <c-w>=
 ino <m-H> <esc><c-w>h
 ino <m-L> <esc><c-w>l
 ino <m-J> <esc><c-w>j
@@ -177,6 +216,20 @@ if has('terminal') && exists(':terminal') == 2 && has('patch-8.1.1')
 	tno <m-J> <c-_>j
 	tno <m-K> <c-_>k
 	tno <m-q> <c-\><c-n>
+	tnoremap <m-1> <c-_>1gt
+	tnoremap <m-2> <c-_>2gt
+	tnoremap <m-3> <c-_>3gt
+	tnoremap <m-4> <c-_>4gt
+	tnoremap <m-5> <c-_>5gt
+	tnoremap <m-6> <c-_>6gt
+	tnoremap <m-7> <c-_>7gt
+	tnoremap <m-8> <c-_>8gt
+	tnoremap <m-9> <c-_>9gt
+	tnoremap <m-0> <c-_>10gt
+	if v:version >= 802
+		tnoremap <m-left> <c-\><c-n>:-tabmove<cr>
+		tnoremap <m-right> <c-\><c-n>:+tabmove<cr>
+	endif
 elseif has('nvim')
 	" neovim 没有 termwinkey 支持，必须把 terminal 切换回 normal 模式
 	tno <m-H> <c-\><c-n><c-w>h
@@ -184,7 +237,114 @@ elseif has('nvim')
 	tno <m-J> <c-\><c-n><c-w>j
 	tno <m-K> <c-\><c-n><c-w>k
 	tno <m-q> <c-\><c-n>
+	tnoremap <m-1> <c-\><c-n>1gt
+	tnoremap <m-2> <c-\><c-n>2gt
+	tnoremap <m-3> <c-\><c-n>3gt
+	tnoremap <m-4> <c-\><c-n>4gt
+	tnoremap <m-5> <c-\><c-n>5gt
+	tnoremap <m-6> <c-\><c-n>6gt
+	tnoremap <m-7> <c-\><c-n>7gt
+	tnoremap <m-8> <c-\><c-n>8gt
+	tnoremap <m-9> <c-\><c-n>9gt
+	tnoremap <m-0> <c-\><c-n>10gt
 endif
+
+
+"----------------------------------------------------------------------
+" unimpaired
+"----------------------------------------------------------------------
+nnoremap <silent>[w :tabprevious<cr>
+nnoremap <silent>]w :tabnext<cr>
+nnoremap <silent>[W :tabfirst<cr>
+nnoremap <silent>]W :tablast<cr>
+
+
+"----------------------------------------------------------------------
+" quickerfix
+"----------------------------------------------------------------------
+if has('autocmd')
+	function! s:quickfix_keymap()
+		if &buftype != 'quickfix'
+			return
+		endif
+		nnoremap <silent><buffer> P :PreviewClose<cr>
+		nnoremap <silent><buffer> q :close<cr>
+		setlocal nonumber
+	endfunc
+endif
+
+
+"----------------------------------------------------------------------
+" GUI/Terminal
+"----------------------------------------------------------------------
+noremap <silent><M-[> :call Tools_QuickfixCursor(2)<cr>
+noremap <silent><M-]> :call Tools_QuickfixCursor(3)<cr>
+noremap <silent><M-{> :call Tools_QuickfixCursor(4)<cr>
+noremap <silent><M-}> :call Tools_QuickfixCursor(5)<cr>
+noremap <silent><M-u> :call Tools_PreviousCursor(6)<cr>
+noremap <silent><M-d> :call Tools_PreviousCursor(7)<cr>
+
+inoremap <silent><M-[> <c-\><c-o>:call Tools_QuickfixCursor(2)<cr>
+inoremap <silent><M-]> <c-\><c-o>:call Tools_QuickfixCursor(3)<cr>
+inoremap <silent><M-{> <c-\><c-o>:call Tools_QuickfixCursor(4)<cr>
+inoremap <silent><M-}> <c-\><c-o>:call Tools_QuickfixCursor(5)<cr>
+inoremap <silent><M-u> <c-\><c-o>:call Tools_PreviousCursor(6)<cr>
+inoremap <silent><M-d> <c-\><c-o>:call Tools_PreviousCursor(7)<cr>
+
+
+"----------------------------------------------------------------------
+" space + f + num: session management
+"----------------------------------------------------------------------
+set ssop-=options    " do not store global and local values in a session
+
+for s:index in range(5)
+	exec 'nnoremap <silent><leader>f'.s:index.'s :mksession! ~/.vim/session.'.s:index.'<cr>'
+	exec 'nnoremap <silent><leader>f'.s:index.'l :so ~/.vim/session.'.s:index.'<cr>'
+endfor
+
+
+"----------------------------------------------------------------------
+" visual mode
+"----------------------------------------------------------------------
+vnoremap <space>gp :!python<cr>
+vmap <space>gs y/<C-R>=escape(@", '\\/.*$^~[]')<CR>
+vmap <space>gr y:%s/<C-R>=escape(@", '\\/.*$^~[]')<CR>//gc<Left><Left><Left>
+
+
+"----------------------------------------------------------------------
+" neovim system clipboard
+"----------------------------------------------------------------------
+if (has('win32') || has('win64')) && (has('nvim') || (!has('gui_running')))
+	nnoremap <s-insert> "*P
+	vnoremap <s-insert> "-d"*P
+	inoremap <s-insert> <c-r><c-o>*
+	vnoremap <c-insert> "*y
+	cnoremap <s-insert> <c-r>*
+endif
+
+
+"----------------------------------------------------------------------
+" Transferring blocks of text between vim sessions
+" http://www.drchip.org/astronaut/vim/index.html#Maps
+"----------------------------------------------------------------------
+nmap <Leader>xr   :r $HOME/.vim/xfer<CR>
+nmap <Leader>xw   :'a,.w! $HOME/.vim/xfer<CR>
+vmap <Leader>xw   :w! $HOME/.vim/xfer<CR>
+nmap <Leader>xa   :'a,.w>> $HOME/.vim/xfer<CR>
+vmap <Leader>xa   :w>> $HOME/.vim/xfer<CR>
+nmap <Leader>xS   :so $HOME/.vim/xfer<CR>
+nmap <Leader>xy   :'a,.y *<CR>
+vmap <Leader>xy   :y *<CR>
+
+
+"----------------------------------------------------------------------
+" GUI hotkeys
+"----------------------------------------------------------------------
+if has('gui_running') || (has('nvim') && (has('win32') || has('win64')))
+	noremap <silent><m-o> :call Open_Browse(2)<cr>
+	inoremap <silent><m-o> <ESC>:call Open_Browse(2)<cr>
+endif
+nnoremap <silent><space>he :call Show_Explore()<cr>
 
 
 "----------------------------------------------------------------------

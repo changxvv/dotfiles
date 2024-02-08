@@ -9,32 +9,62 @@ endif
 let s:home = fnamemodify(resolve(expand('<sfile>:p')), ':h')
 
 " 定义一个命令用来加载文件
-command! -nargs=1 LoadScript exec 'so '.s:home.'/'.'<args>'
+command! -nargs=1 InScript exec 'so '. fnameescape(s:home."/<args>")
 
-" 将 vim-init 目录加入 runtimepath
-exec 'set rtp+='.s:home
+" 将 vim 目录加入 runtimepath
+exec 'set rtp+='. fnameescape(s:home)
 
 " 将 ~/.vim 目录加入 runtimepath (有时候 vim 不会自动帮你加入）
 set rtp+=~/.vim
+
+if exists(':packadd')
+	exec 'set packpath+=' . fnameescape(s:home . '/site')
+endif
 
 "----------------------------------------------------------------------
 " 模块加载
 "----------------------------------------------------------------------
 
 " 加载基础配置
-LoadScript init/basic.vim
+InScript init/basic.vim
 
 " 加载扩展配置
-LoadScript init/config.vim
+InScript init/config.vim
 
-" 设定 tabsize
-LoadScript init/tabsize.vim
+" 加载文件搜索和补全时忽略的扩展名
+InScript init/ignores.vim
 
-" 插件加载
-LoadScript init/plugins.vim
-
-" 界面样式
-LoadScript init/style.vim
+" 加载工具
+InScript init/tools.vim
 
 " 自定义按键
-LoadScript init/keymaps.vim
+InScript init/keymaps.vim
+
+" 插件加载
+InScript init/plugins.vim
+
+" 状态栏设置
+InScript init/status.vim
+
+"其他
+InScript init/misc.vim
+InScript init/gui.vim
+
+" 界面样式
+InScript init/style.vim
+InScript init/unix.vim
+
+" 本地设置
+if has('nvim') == 0
+	let name = expand('~/.vim/local.vim')
+else
+	if $XDG_CONFIG_HOME != ''
+		let name = $XDG_CONFIG_HOME . '/nvim/local.vim'
+	else
+		let name = expand('~/.config/nvim/local.vim')
+	endif
+endif
+
+if filereadable(name)
+	exec 'source ' . fnameescape(name)
+endif

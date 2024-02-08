@@ -99,7 +99,10 @@ set noswapfile
 set noundofile
 
 " 创建目录，并且忽略可能出现的警告
-silent! call mkdir(expand('~/.vim/tmp'), "p", 0755)
+let path = expand('~/.vim/tmp')
+	if isdirectory(path) == 0
+		silent! call mkdir(path, 'p', 0755)
+	endif
 
 " 快速连接
 set ttyfast
@@ -136,6 +139,39 @@ if !exists(":DiffOrig")
           \ | wincmd p | diffthis
 endif
 
+
+"----------------------------------------------------------------------
+" terminal turn
+"----------------------------------------------------------------------
+if has('unix')
+	" disable modifyOtherKeys
+	if exists('+t_TI') && exists('+t_TE')
+		let &t_TI = ''
+		let &t_TE = ''
+	endif
+	let s:uname = system('uname')
+	let s:xterm = 0
+	if s:uname =~ "FreeBSD"
+		let s:xterm = 1
+	endif
+	" restore screen after quitting
+	if s:xterm != 0
+		if &term =~ "xterm"
+			let &t_ti="\0337\033[r\033[?47h"
+			let &t_te="\033[?47l\0338"
+			if has("terminfo")
+				let &t_Sf="\033[3%p1%dm"
+				let &t_Sb="\033[4%p1%dm"
+			else
+				let &t_Sf="\033[3%dm"
+				let &t_Sb="\033[4%dm"
+			endif
+		endif
+		set restorescreen
+	endif
+endif
+
+
 "----------------------------------------------------------------------
 " 禁止响声
 "----------------------------------------------------------------------
@@ -143,41 +179,3 @@ set noerrorbells
 set novisualbell
 set belloff=all
 set t_vb=
-
-"----------------------------------------------------------------------
-" 文件类型微调
-"----------------------------------------------------------------------
-augroup InitFileTypesGroup
-
-	" 清除同组的历史 autocommand
-	au!
-
-	" C/C++ 文件使用 // 作为注释
-	au FileType c,cpp setlocal commentstring=//\ %s
-
-	" lisp 进行微调
-	au FileType lisp setlocal ts=8 sts=2 sw=2 et
-
-	" scala 微调
-	au FileType scala setlocal sts=4 sw=4 noet
-
-	" haskell 进行微调
-	au FileType haskell setlocal et
-
-	" Python 微调
-	au FileType python setlocal sw=4 ts=4 noet
-
-	" quickfix 隐藏行号
-	au FileType qf setlocal nonumber
-
-	" 强制对某些扩展名的 filetype 进行纠正
-	au BufNewFile,BufRead *.as setlocal filetype=actionscript
-	au BufNewFile,BufRead *.pro setlocal filetype=prolog
-	au BufNewFile,BufRead *.es setlocal filetype=erlang
-	au BufNewFile,BufRead *.asc setlocal filetype=asciidoc
-	au BufNewFile,BufRead *.vl setlocal filetype=verilog
-	au BufNewFile,BufRead *.bxrc setlocal filetype=bxrc
-	au BufNewFile,BufRead *.odin setlocal filetype=odin
-	au BufNewFile,BufRead *.comp setlocal filetype=comp
-
-augroup END

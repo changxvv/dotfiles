@@ -58,7 +58,29 @@ Plug 'tpope/vim-repeat'
 " work with surrounding characters
 Plug 'tpope/vim-surround'
 
+Plug 'tpope/vim-eunuch'
+
+Plug 'bootleq/vim-cycle'
+
 let g:EasyMotion_smartcase = 1
+let g:eunuch_no_maps = 1
+
+nnoremap gb= :Tabularize /=<CR>
+vnoremap gb= :Tabularize /=<CR>
+nnoremap gb/ :Tabularize /\/\//l4c1<CR>
+vnoremap gb/ :Tabularize /\/\//l4c1<CR>
+nnoremap gb* :Tabularize /\/\*/l4c1<cr>
+vnoremap gb* :Tabularize /\/\*/l4c1<cr>
+nnoremap gb, :Tabularize /,/r0l1<CR>
+vnoremap gb, :Tabularize /,/r0l1<CR>
+nnoremap gbl :Tabularize /\|<cr>
+vnoremap gbl :Tabularize /\|<cr>
+nnoremap gbc :Tabularize /#/l4c1<cr>
+vnoremap gbc :Tabularize /#/l4c1<cr>
+nnoremap gb<bar> :Tabularize /\|<cr>
+vnoremap gb<bar> :Tabularize /\|<cr>
+nnoremap gbr :Tabularize /\|/r0<cr>
+vnoremap gbr :Tabularize /\|/r0<cr>
 
 "----------------------------------------------------------------------
 " Dirvish 设置：自动排序并隐藏文件，同时定位到相关文件
@@ -148,16 +170,17 @@ if index(g:bundle_group, 'basic') >= 0
 
 	" signify 调优
 	let g:signify_vcs_list = ['git', 'svn']
+	let g:signify_difftool = 'diff'
 	let g:signify_sign_add               = '+'
 	let g:signify_sign_delete            = '_'
 	let g:signify_sign_delete_first_line = '‾'
 	let g:signify_sign_change            = '~'
 	let g:signify_sign_changedelete      = g:signify_sign_change
+	let g:signify_as_gitgutter           = 1
 
-	" git 仓库使用 histogram 算法进行 diff
 	let g:signify_vcs_cmds = {
-			\ 'git': 'git diff --no-color --diff-algorithm=histogram --no-ext-diff -U0 -- %f',
-			\}
+		\ 'git': 'git diff --no-color --diff-algorithm=histogram --no-ext-diff -U0 -- %f',
+		\}
 endif
 
 "----------------------------------------------------------------------
@@ -194,6 +217,13 @@ if index(g:bundle_group, 'enhanced') >= 0
 	let g:vim_markdown_folding_disabled = 1
 	let g:vim_markdown_math = 1
   let g:vim_markdown_new_list_item_indent = 2
+
+	" vim-dict
+	let g:vim_dict_config = { 
+		\ "text" : 'text',
+		\ "markdown" : 'text',
+		\ "html": 'html,javascript,css,css3',
+		\ }
 
 	" vimtex 设置
 	let g:tex_flavor='latex'
@@ -248,6 +278,7 @@ if index(g:bundle_group, 'enhanced') >= 0
 
 	" 括号补全enter增强
 	let g:delimitMate_expand_cr = 1
+	let delimitMate_expand_space = 1
 
 	" floaterm
 	let g:floaterm_keymap_toggle='<f10>'
@@ -282,10 +313,20 @@ if index(g:bundle_group, 'tags') >= 0
 	let g:gutentags_ctags_tagfile = '.tags'
 
 	" 默认生成的数据文件集中到 ~/.cache/tags 避免污染项目目录，好清理
-	let g:gutentags_cache_dir = expand('~/.cache/tags')
+	if exists('g:gutentags_cache_dir') == 0
+		let g:gutentags_cache_dir = expand('~/.cache/tags')
+	endif
+	if !isdirectory(g:gutentags_cache_dir)
+		silent call mkdir(g:gutentags_cache_dir, 'p')
+	endif
 
 	" 默认禁用自动生成
 	let g:gutentags_modules = [] 
+
+	" 设置 ctags 的参数
+	let g:gutentags_ctags_extra_args = ['--fields=+niazS', '--extra=+q']
+	let g:gutentags_ctags_extra_args += ['--c++-kinds=+px']
+	let g:gutentags_ctags_extra_args += ['--c-kinds=+px']
 
 	" 如果有 ctags 可执行就允许动态生成 ctags 文件
 	if executable('ctags')
@@ -297,16 +338,16 @@ if index(g:bundle_group, 'tags') >= 0
 		let g:gutentags_modules += ['gtags_cscope']
 	endif
 
-	" 设置 ctags 的参数
-	let g:gutentags_ctags_extra_args = ['--fields=+niazS', '--extra=+q']
-	let g:gutentags_ctags_extra_args += ['--c++-kinds=+px']
-	let g:gutentags_ctags_extra_args += ['--c-kinds=+px']
-
 	" 使用 universal-ctags 的话需要下面这行，请反注释
-	let g:gutentags_ctags_extra_args += ['--output-format=e-ctags']
+	if has('win32') || has('win16') || has('win64') || has('win95')
+		let g:gutentags_ctags_extra_args += ['--output-format=e-ctags']
+	endif
 
 	" 禁止 gutentags 自动链接 gtags 数据库
 	let g:gutentags_auto_add_gtags_cscope = 0
+	let g:gutentags_define_advanced_commands = 1
+
+	let g:gutenags_plus_switch = 0
 endif
 
 
