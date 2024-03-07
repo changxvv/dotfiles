@@ -306,9 +306,9 @@ endfor
 "----------------------------------------------------------------------
 " visual mode
 "----------------------------------------------------------------------
-vnoremap <space>gp :!python<cr>
-vmap <space>gs y/<C-R>=escape(@", '\\/.*$^~[]')<CR>
-vmap <space>gr y:%s/<C-R>=escape(@", '\\/.*$^~[]')<CR>//gc<Left><Left><Left>
+vnoremap <leader>gp :!python<cr>
+vmap <leader>gs y/<C-R>=escape(@", '\\/.*$^~[]')<CR>
+vmap <leader>gr y:%s/<C-R>=escape(@", '\\/.*$^~[]')<CR>//gc<Left><Left><Left>
 
 
 "----------------------------------------------------------------------

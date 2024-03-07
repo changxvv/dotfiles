@@ -41,7 +41,7 @@ InScript init/tools.vim
 InScript init/keymaps.vim
 
 " 插件加载
-InScript init/plugins.vim
+InScript init/bundle.vim
 
 " 状态栏设置
 InScript init/status.vim

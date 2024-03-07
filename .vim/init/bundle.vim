@@ -1,25 +1,33 @@
 "----------------------------------------------------------------------
-" 默认情况下的分组，可以再前面覆盖之
-"----------------------------------------------------------------------
-if !exists('g:bundle_group')
-	let g:bundle_group = ['basic', 'enhanced', 'filetypes', 'textobj']
-	let g:bundle_group += ['tags', 'airline', 'nerdtree', 'leaderf']
-endif
-
-
-"----------------------------------------------------------------------
 " 计算当前 vim-init 的子路径
 "----------------------------------------------------------------------
 let s:home = fnamemodify(resolve(expand('<sfile>:p')), ':h:h')
 
-function! s:path(path)
+if !exists(':IncScript')
+	command! -nargs=1 IncScript exec 'so ' . fnameescape(s:home .'/<args>')
+endif
+
+function! bundle#path(path)
 	let path = expand(s:home . '/' . a:path )
 	return substitute(path, '\\', '/', 'g')
 endfunc
 
+function! s:path(path)
+	return bundle#path(a:path)
+endfunc
+
+
 "----------------------------------------------------------------------
 " 在 ~/.vim/bundles 下安装插件
 "----------------------------------------------------------------------
+if !exists('g:bundle_group')
+	let g:bundle_group = ['basic', 'enhanced', 'filetypes', 'textobj', 'tags', 'airline', 'nerdtree', 'leaderf']
+endif
+
+let g:bundle_enabled = {}
+for key in g:bundle_group | let g:bundle_enabled[key] = 1 | endfor
+let s:enabled = g:bundle_enabled
+
 call plug#begin(get(g:, 'bundle_home', '~/.vim/bundles'))
 
 
@@ -47,10 +55,6 @@ Plug 'tpope/vim-unimpaired'
 
 " txt和log文件的高亮
 Plug 'vim-scripts/txt.vim'
-
-" vim 选择增强
-" Plug 'guns/vim-sexp'
-" Plug 'tpope/vim-sexp-mappings-for-regular-people'
 
 " .命令增强
 Plug 'tpope/vim-repeat'
@@ -117,7 +121,7 @@ augroup END
 "----------------------------------------------------------------------
 " 基础插件
 "----------------------------------------------------------------------
-if index(g:bundle_group, 'basic') >= 0
+if has_key(s:enabled, 'basic')
 
 	" 展示开始画面，显示最近编辑过的文件
 	Plug 'mhinz/vim-startify'
@@ -183,6 +187,7 @@ if index(g:bundle_group, 'basic') >= 0
 		\}
 endif
 
+
 "----------------------------------------------------------------------
 " 增强插件
 "----------------------------------------------------------------------
@@ -211,6 +216,7 @@ if index(g:bundle_group, 'enhanced') >= 0
 	Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
 	Plug 'honza/vim-snippets'
 	Plug 'SirVer/ultisnips'
+	IncScript site/bundle/ultisnips.vim
 	Plug 'lervag/vimtex'
 
 	" vim-markdown 设置
@@ -259,10 +265,6 @@ if index(g:bundle_group, 'enhanced') >= 0
 
 	" Pandoc 设置
 	let g:pandoc#spell#enabled = 0
-
-	" ultisnips 设置
-	let g:UltiSnipsExpandTrigger="<s-tab>"
-	" let g:UltiSnipsSnippetDirectories = ["snippets"]
 
 	"<tab> trigger
 	inoremap <silent><expr> <TAB>
