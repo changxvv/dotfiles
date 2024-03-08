@@ -320,7 +320,7 @@ if has('gui_running') || (has('nvim') && (has('win32') || has('win64')))
 	noremap <silent><m-o> :call Open_Browse(2)<cr>
 	inoremap <silent><m-o> <ESC>:call Open_Browse(2)<cr>
 endif
-nnoremap <silent><space>he :call Show_Explore()<cr>
+nnoremap <silent><leader>he :call Show_Explore()<cr>
 
 
 "----------------------------------------------------------------------

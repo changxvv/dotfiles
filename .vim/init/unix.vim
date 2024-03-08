@@ -71,7 +71,6 @@ augroup AscUnixGroup
 	au BufNewFile,BufRead *.comp setlocal filetype=comp
 	au BufNewFile,BufRead *.lua.rename setlocal filetype=lua
 	au BufNewFile,BufRead *.fmt setlocal filetype=protogen
-
 augroup END
 
 
