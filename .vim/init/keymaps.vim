@@ -27,7 +27,7 @@ nn <leader>xq :copen<cr>
 nnoremap <silent>Q :<c-u>confirm qall<cr>
 
 " replace
-nnoremap <leader>y yiw
+nnoremap <leader>p viw"0p
 
 " fold
 nnoremap <m-z> za
@@ -67,56 +67,29 @@ cno <c-d> <del>
 
 
 "----------------------------------------------------------------------
-" ALT+N 切换 tab
-"----------------------------------------------------------------------
-no <silent><m-1> :tabn 1<cr>
-no <silent><m-2> :tabn 2<cr>
-no <silent><m-3> :tabn 3<cr>
-no <silent><m-4> :tabn 4<cr>
-no <silent><m-5> :tabn 5<cr>
-no <silent><m-6> :tabn 6<cr>
-no <silent><m-7> :tabn 7<cr>
-no <silent><m-8> :tabn 8<cr>
-no <silent><m-9> :tabn 9<cr>
-no <silent><m-0> :tabn 10<cr>
-ino <silent><m-1> <esc>:tabn 1<cr>
-ino <silent><m-2> <esc>:tabn 2<cr>
-ino <silent><m-3> <esc>:tabn 3<cr>
-ino <silent><m-4> <esc>:tabn 4<cr>
-ino <silent><m-5> <esc>:tabn 5<cr>
-ino <silent><m-6> <esc>:tabn 6<cr>
-ino <silent><m-7> <esc>:tabn 7<cr>
-ino <silent><m-8> <esc>:tabn 8<cr>
-ino <silent><m-9> <esc>:tabn 9<cr>
-ino <silent><m-0> <esc>:tabn 10<cr>
-noremap <silent><m-up> :tabprev<cr>
-noremap <silent><m-down> :tabnext<cr>
-inoremap <silent><m-up> <ESC>:tabprev<cr>
-inoremap <silent><m-down> <ESC>:tabnext<cr>
-
-
-"----------------------------------------------------------------------
-" TAB：创建，关闭，上一个，下一个，左移，右移
+" TAB：切换，创建，关闭，上一个，下一个，左移，右移
 " 其实还可以用原生的 CTRL+PageUp, CTRL+PageDown 来切换标签
 "----------------------------------------------------------------------
-
-noremap <silent><leader>tc :tabnew<cr>:Startify<cr>
-noremap <silent><leader>tq :tabclose<cr>
-noremap <silent><leader>tn :tabnext<cr>
-noremap <silent><leader>tp :tabprev<cr>
-noremap <silent><leader>to :tabonly<cr>
-noremap <silent><leader>ta g<tab>
-noremap <silent><leader>th :-tabmove<cr>
-noremap <silent><leader>tl :+tabmove<cr>
+for i in range(10)
+	let x = (i == 0)? 10 : i
+	exec "noremap <silent><M-".i."> ".x."gt"
+	exec "inoremap <silent><M-".i."> <ESC>".x."gt"
+endfor
+noremap <silent><m-up> :tabprev<cr>
+inoremap <silent><m-up> <ESC>:tabprev<cr>
+noremap <silent><m-down> :tabnext<cr>
+inoremap <silent><m-down> <ESC>:tabnext<cr>
 noremap <silent><m-left> :-tabmove<cr>
 noremap <silent><m-right> :+tabmove<cr>
-noremap <silent><m-t> :tabnew<cr>
-vnoremap <silent><m-t> <ESC>:tabnew<cr>
-inoremap <silent><m-t> <ESC>:tabnew<cr>
+noremap <silent><m-t> :tabnew<cr>:Startify<cr>
+vnoremap <silent><m-t> <ESC>:tabnew<cr>:Startify<cr>
+inoremap <silent><m-t> <ESC>:tabnew<cr>:Startify<cr>
 noremap <silent><m-w> :tabclose<cr>
 inoremap <silent><m-w> <ESC>:tabclose<cr>
 noremap <silent><m-v> :close<cr>
 inoremap <silent><m-v> <ESC>:close<cr>
+noremap <silent><leader>to :tabonly<cr>
+noremap <silent><m-a> g<tab>
 noremap <m-s> :w<cr>
 inoremap <m-s> <esc>:w<cr>
 
@@ -160,8 +133,6 @@ noremap <m-h> b
 noremap <m-l> w
 ino <m-h> <c-left>
 ino <m-l> <c-right>
-
-" 命令模式
 cno <m-h> <c-left>
 cno <m-l> <c-right>
 
@@ -205,6 +176,11 @@ ino <m-S> <esc><c-w>s
 ino <m-C> <esc><c-w>c
 ino <m-O> <esc><c-w>o
 ino <m-P> <esc><c-w>p
+ino <m-+> <esc><c-w>+
+ino <m--> <esc><c-w>-
+ino <m-,> <esc><c-w>< 
+ino <m-.> <esc><c-w>>
+ino <m-=> <esc><c-w>=
 
 if has('terminal') && exists(':terminal') == 2 && has('patch-8.1.1')
 	" vim 8.1 支持 termwinkey ，不需要把 terminal 切换成 normal 模式
@@ -298,8 +274,8 @@ inoremap <silent><M-d> <c-\><c-o>:call Tools_PreviousCursor(7)<cr>
 set ssop-=options    " do not store global and local values in a session
 
 for s:index in range(5)
-	exec 'nnoremap <silent><leader>f'.s:index.'s :mksession! ~/.vim/session.'.s:index.'<cr>'
-	exec 'nnoremap <silent><leader>f'.s:index.'l :so ~/.vim/session.'.s:index.'<cr>'
+	exec 'nnoremap <silent><leader>f'.s:index.'s :mksession! ~/.vim/session/session.'.s:index.'<cr>'
+	exec 'nnoremap <silent><leader>f'.s:index.'l :so ~/.vim/session/session.'.s:index.'<cr>'
 endfor
 
 

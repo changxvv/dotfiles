@@ -89,6 +89,9 @@ au FocusLost * silent! wa
 " instead of opening new buffers
 set switchbuf=useopen,newtab
 
+" 禁止响铃
+set belloff=all
+
 
 "----------------------------------------------------------------------
 " Format 设置
@@ -99,8 +102,6 @@ set formatoptions+=m
 
 " 合并两行中文时，不在中间加空格
 set formatoptions+=B
-
-au BufEnter * set fo-=c fo-=r fo-=o
 
 set formatlistpat=^\\s*                     " Optional leading whitespace
 set formatlistpat+=[                        " Start character class
