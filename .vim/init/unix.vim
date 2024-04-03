@@ -2,6 +2,10 @@ set vop=folds,cursor
 set cpo-=<
 set viminfo+=!
 set viewdir=~/.vim/view
+set whichwrap=b,s,<,>,[,]
+set browsedir=buffer
+set keymodel=
+set selection=inclusive
 
 " spell
 set spelllang=en,cjk
@@ -13,6 +17,8 @@ set cpt=.,w,k
 if exists('+breakindent')
 	set breakindent
 endif
+
+set completeopt=menu,menuone,noselect
 
 " enable new-style cursorline (for numbers only)
 if exists('+cursorlineopt')

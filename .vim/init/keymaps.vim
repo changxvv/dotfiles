@@ -33,10 +33,6 @@ nnoremap <leader>p viw"0p
 nnoremap <m-z> za
 nnoremap <m-Z> zA
 
-" text-objects
-onoremap il :<c-u>normal! v$o^oh<cr>
-vnoremap il $o^oh
-
 " last command
 nnoremap <leader>l :<c-p><cr>
 
@@ -120,7 +116,7 @@ no <silent><leader>w6 :6wincmd w<cr>
 no <silent><leader>w7 :7wincmd w<cr>
 no <silent><leader>w8 :8wincmd w<cr>
 no <silent><leader>w9 :9wincmd w<cr>
-nnoremap <silent><leader>0 :exe "NERDTree ".fnameescape(expand("%:p:h"))<cr>
+nnoremap <silent><tab>0 :exe "NERDTree ".fnameescape(expand("%:p:h"))<cr>
 nnoremap <silent><leader>g <c-w>p
 
 
@@ -236,39 +232,6 @@ nnoremap <silent>]W :tablast<cr>
 
 
 "----------------------------------------------------------------------
-" quickerfix
-"----------------------------------------------------------------------
-if has('autocmd')
-	function! s:quickfix_keymap()
-		if &buftype != 'quickfix'
-			return
-		endif
-		nnoremap <silent><buffer> P :PreviewClose<cr>
-		nnoremap <silent><buffer> q :close<cr>
-		setlocal nonumber
-	endfunc
-endif
-
-
-"----------------------------------------------------------------------
-" GUI/Terminal
-"----------------------------------------------------------------------
-noremap <silent><M-[> :call Tools_QuickfixCursor(2)<cr>
-noremap <silent><M-]> :call Tools_QuickfixCursor(3)<cr>
-noremap <silent><M-{> :call Tools_QuickfixCursor(4)<cr>
-noremap <silent><M-}> :call Tools_QuickfixCursor(5)<cr>
-noremap <silent><M-u> :call Tools_PreviousCursor(6)<cr>
-noremap <silent><M-d> :call Tools_PreviousCursor(7)<cr>
-
-inoremap <silent><M-[> <c-\><c-o>:call Tools_QuickfixCursor(2)<cr>
-inoremap <silent><M-]> <c-\><c-o>:call Tools_QuickfixCursor(3)<cr>
-inoremap <silent><M-{> <c-\><c-o>:call Tools_QuickfixCursor(4)<cr>
-inoremap <silent><M-}> <c-\><c-o>:call Tools_QuickfixCursor(5)<cr>
-inoremap <silent><M-u> <c-\><c-o>:call Tools_PreviousCursor(6)<cr>
-inoremap <silent><M-d> <c-\><c-o>:call Tools_PreviousCursor(7)<cr>
-
-
-"----------------------------------------------------------------------
 " space + f + num: session management
 "----------------------------------------------------------------------
 set ssop-=options    " do not store global and local values in a session
@@ -319,6 +282,8 @@ vmap <Leader>xy   :y *<CR>
 if has('gui_running') || (has('nvim') && (has('win32') || has('win64')))
 	noremap <silent><m-o> :call Open_Browse(2)<cr>
 	inoremap <silent><m-o> <ESC>:call Open_Browse(2)<cr>
+	noremap <S-cr> o<ESC>
+	noremap <c-cr> O<esc>
 endif
 nnoremap <silent><leader>he :call Show_Explore()<cr>
 
