@@ -37,7 +37,6 @@ endtry
 "----------------------------------------------------------------------
 set bg=dark
 set t_Co=256
-let g:edge_enable_italic = 1
 colorscheme edge
 
 
