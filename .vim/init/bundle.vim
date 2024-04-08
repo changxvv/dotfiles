@@ -21,7 +21,7 @@ endfunc
 " 在 ~/.vim/bundles 下安装插件
 "----------------------------------------------------------------------
 if !exists('g:bundle_group')
-	let g:bundle_group = ['basic', 'inter', 'high', 'opt', 'ale', 'nerdtree', 'floaterm', 'tex', 'airline', 'lsp', 'copilot']
+	let g:bundle_group = ['basic', 'inter', 'high', 'opt', 'ale', 'nerdtree', 'floaterm', 'tex', 'airline', 'lsp', 'copilot', 'tagbar']
 endif
 
 let g:bundle_enabled = {}
