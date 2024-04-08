@@ -86,21 +86,9 @@ let g:ale_cpp_cppcheck_options = s:cppcheck
 
 
 "----------------------------------------------------------------------
-" 
+" keymaps
 "----------------------------------------------------------------------
 noremap [z :ALEPrevious<cr>
 noremap ]z :ALENext<cr>
 noremap [Z :ALEFirst<cr>
 noremap ]Z :ALELast<cr>
-
-
-inoremap <silent><expr> <TAB>
-	\ coc#pum#visible() ? coc#_select_confirm() :
-	\ delimitMate#ShouldJump() ? delimitMate#JumpAny() :
-	\ CheckBackSpace() ? "\<TAB>" :
-	\ coc#refresh()
-
-function! CheckBackSpace() abort
-	let col = col('.') - 1
-	return !col || getline('.')[col - 1] =~# '\s'
-endfunction

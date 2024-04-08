@@ -21,7 +21,7 @@ endfunc
 " 在 ~/.vim/bundles 下安装插件
 "----------------------------------------------------------------------
 if !exists('g:bundle_group')
-	let g:bundle_group = ['basic', 'inter', 'high', 'opt', 'ale', 'nerdtree', 'floaterm', 'colors', 'tex', 'airline']
+	let g:bundle_group = ['basic', 'inter', 'high', 'opt', 'ale', 'nerdtree', 'floaterm', 'tex', 'airline', 'lsp', 'copilot']
 endif
 
 let g:bundle_enabled = {}
@@ -43,6 +43,10 @@ Plug 'bootleq/vim-cycle'
 Plug 'tpope/vim-surround'
 Plug 'Raimondi/delimitMate'
 Plug 'tpope/vim-commentary'
+
+" color scheme
+Plug 'sainnhe/edge'
+IncScript site/bundle/colors.vim
 
 if has('nvim') == 0 && v:version >= 900
 	Plug 'monkoose/vim9-stargate'
@@ -194,8 +198,6 @@ end
 "----------------------------------------------------------------------
 if has_key(s:enabled, 'inter')
 	Plug 'vim-scripts/L9'
-	Plug 'xolox/vim-notes', { 'on': ['Note', 'SearchNotes', 'DeleteNotes', 'RecentNotes'] }
-	Plug 'skywind3000/vimoutliner', { 'for': 'votl' }
 	Plug 'mattn/webapi-vim'
 	Plug 'mattn/gist-vim'
 	Plug 'hrj/vim-DrawIt'
@@ -206,14 +208,6 @@ if has_key(s:enabled, 'inter')
 
 	Plug 'inkarkat/vim-ingo-library'
 	Plug 'inkarkat/vim-mark'
-
-	let g:notes_directories = ['~/.vim/notes']
-	
-	IncScript site/bundle/outliner.vim
-
-	if !isdirectory(expand('~/.vim/notes'))
-		silent! call mkdir(expand('~/.vim/notes'), 'p')
-	endif
 endif
 
 
@@ -225,7 +219,6 @@ if has_key(s:enabled, 'high')
 	Plug 'mhinz/vim-signify'
 	Plug 'junegunn/fzf'
 	Plug 'junegunn/fzf.vim'
-	Plug 'itchyny/calendar.vim', { 'on': 'Calendar' }
 	Plug 'francoiscabrol/ranger.vim'
 	Plug 'sbdchd/neoformat'
 	Plug 'dhruvasagar/vim-table-mode'
@@ -234,8 +227,6 @@ if has_key(s:enabled, 'high')
 		Plug 'chiel92/vim-autoformat'
 		IncScript site/bundle/autoformat.vim
 	endif
-
-	let g:calendar_navi = 'top'
 
 	let g:signify_vcs_list = ['git', 'svn']
 	let g:signify_difftool = 'diff'
@@ -294,7 +285,7 @@ if has_key(s:enabled, 'opt')
 	endif
 
 	let $GTAGSLABEL = 'native-pygments'
-	let $GTAGSCONF = 'D:\glo668wb\share\gtags\gtags.conf'
+	let $GTAGSCONF = '~/.globalrc'
 
 	let g:gutentags_project_root = ['.root', '.git', '.svn']
 	let g:gutentags_ctags_tagfile = '.tags'
@@ -360,10 +351,11 @@ if has_key(s:enabled, 'endwise')
 	Plug 'tpope/vim-endwise'
 endif
 
-" snippet
+" tex and snippet
 if has_key(s:enabled, 'tex') && (has('python3') || has('python'))
 	Plug 'lervag/vimtex'
 	Plug 'SirVer/ultisnips'
+	Plug 'honza/vim-snippets'
 	IncScript site/bundle/ultisnips.vim
 	IncScript site/bundle/vimtex.vim
 endif
@@ -552,21 +544,6 @@ if has_key(s:enabled, 'neocomplete')
 	endif
 endif
 
-if has_key(s:enabled, 'omni')
-	Plug 'vim-scripts/OmniCppComplete', {'for':['cpp']}
-	" Plug 'c9s/perlomni.vim', {'for':['perl']}
-	Plug 'shawncplus/phpcomplete.vim', {'for': ['php']}
-	" Plug 'artur-shaik/vim-javacomplete2'
-	Plug 'othree/html5.vim', {'for': ['html']}
-	" Plug 'xolox/vim-lua-ftplugin', {'for': ['lua']}
-	let g:lua_complete_omni = 0
-	let g:lua_check_globals = 0
-	let g:lua_check_syntax = 0
-	let g:lua_define_completion_mappings = 0
-	" autocmd FileType java setlocal omnifunc=javacomplete#Complete
-endif
-
-
 if has_key(s:enabled, 'lsp-lcn')
 	Plug 'autozimu/LanguageClient-neovim', { 'branch': 'next' }
 	IncScript site/bundle/lcn.vim
@@ -585,11 +562,6 @@ endif
 if has_key(s:enabled, 'tabnine')
 	Plug 'codota/tabnine-vim'
 	IncScript site/bundle/tabnine.vim
-endif
-
-if has_key(s:enabled, 'colors')
-	Plug 'sainnhe/edge'
-	IncScript site/bundle/colors.vim
 endif
 
 if has_key(s:enabled, 'games')
@@ -626,10 +598,6 @@ if has_key(s:enabled, 'notify')
 	if has('nvim')
 		Plug 'rcarriga/nvim-notify'
 	endif
-endif
-
-if has_key(s:enabled, 'snippets')
-	Plug 'honza/vim-snippets'
 endif
 
 if has_key(s:enabled, 'tagbar')

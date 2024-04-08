@@ -33,9 +33,6 @@ nnoremap <leader>p viw"0p
 nnoremap <m-z> za
 nnoremap <m-Z> zA
 
-" last command
-nnoremap <leader>l :<c-p><cr>
-
 
 "----------------------------------------------------------------------
 " INSERT 模式偶尔需要移动的方便些
@@ -117,6 +114,8 @@ no <silent><leader>w7 :7wincmd w<cr>
 no <silent><leader>w8 :8wincmd w<cr>
 no <silent><leader>w9 :9wincmd w<cr>
 nnoremap <silent><tab>0 :exe "NERDTree ".fnameescape(expand("%:p:h"))<cr>
+nnoremap <silent><tab>y :exe "NERDTree ".fnameescape(asclib#path#get_root("%"))<cr>
+nnoremap <silent><tab>t :exe "NERDTreeToggle ".fnameescape(asclib#path#get_root("%"))<cr>
 nnoremap <silent><leader>g <c-w>p
 
 

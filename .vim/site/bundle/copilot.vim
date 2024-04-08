@@ -22,13 +22,45 @@ imap <silent><c-right> <Plug>(copilot-accept-line)
 "----------------------------------------------------------------------
 " setup root
 "----------------------------------------------------------------------
+function! copilot#check_enabled() abort
+	if &bt != ''
+		return 0
+	elseif bufname('') == ''
+		return 0
+	elseif !exists(':Copilot')
+		return 0
+	elseif exists('b:copilot_enabled')
+		return (b:copilot_enabled)? 1 : 0
+	elseif exists('g:copilot_filetypes')
+		if has_key(g:copilot_filetypes, &ft)
+			return (g:copilot_filetypes[&ft])? 1 : 0
+		elseif has_key(g:copilot_filetypes, '*')
+			return (g:copilot_filetypes['*'])? 1 : 0
+		endif
+	endif
+	return 0
+endfunc
+
+function! s:get_root() abort
+	if &bt != ''
+		return asclib#path#current_root()
+	elseif bufname('') == ''
+		return asclib#path#current_root()
+	endif
+	let obj = asclib#core#object('b')
+	if !has_key(obj, 'root')
+		let obj.root = asclib#path#current_root()
+	endif
+	return obj.root
+endfunc
+
 function! s:setup_copilot() abort
 	if &bt != '' || bufname('') == ''
 		return 0
-	elseif !module#copilot#check_enabled()
+	elseif !copilot#check_enabled()
 		return 0
 	endif
-	let root = module#generic#root()
+	let root = s:get_root()
 	if !exists('b:workspace_folder')
 		if root != ''
 			let b:workspace_folder = root
