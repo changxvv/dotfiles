@@ -1,0 +1,7 @@
+# Start configuration added by Zim install {{{
+# ...
+# }}} End configuration added by Zim install
+
+zmodule romkatv/powerlevel10k
+zmodule rupa/z
+zmodule Vifon/deer

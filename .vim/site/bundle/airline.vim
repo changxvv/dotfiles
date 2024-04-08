@@ -34,6 +34,7 @@ function AirlineSetupMe(font)
 	let g:airline#extensions#tabline#tabs_label = ''
 	let g:airline#extensions#tabline#buffers_label = ''
 	let g:airline#extensions#tabline#show_buffers = 0
+  let g:airline#extensions#tabline#tab_nr_type = 1
 	let g:airline#extensions#tabline#fnamemod = ':t'
 	let g:airline#extensions#branch#enabled = 0
 	let g:airline#extensions#syntastic#enabled = 0

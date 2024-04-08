@@ -1,39 +1,3 @@
-# Antigen: https://github.com/zsh-users/antigen
-ANTIGEN="$HOME/.local/bin/antigen.zsh"
-
-# Install antigen.zsh if not exist
-if [ ! -f "$ANTIGEN" ]; then
-	echo "Installing antigen ..."
-	[ ! -d "$HOME/.local" ] && mkdir -p "$HOME/.local" 2> /dev/null
-	[ ! -d "$HOME/.local/bin" ] && mkdir -p "$HOME/.local/bin" 2> /dev/null
-	# [ ! -f "$HOME/.z" ] && touch "$HOME/.z"
-	URL="http://git.io/antigen"
-	TMPFILE="/tmp/antigen.zsh"
-	if [ -x "$(which curl)" ]; then
-		curl -L "$URL" -o "$TMPFILE" 
-	elif [ -x "$(which wget)" ]; then
-		wget "$URL" -O "$TMPFILE" 
-	else
-		echo "ERROR: please install curl or wget before installation !!"
-		exit
-	fi
-	if [ ! $? -eq 0 ]; then
-		echo ""
-		echo "ERROR: downloading antigen.zsh ($URL) failed !!"
-		exit
-	fi;
-	echo "move $TMPFILE to $ANTIGEN"
-	mv "$TMPFILE" "$ANTIGEN"
-fi
-
-
-
-# Load local bash/zsh compatible settings
-INIT_SH_NOFUN=1
-INIT_SH_NOLOG=1
-DISABLE_Z_PLUGIN=1
-[ -f "$HOME/.local/etc/init.sh" ] && source "$HOME/.local/etc/init.sh"
-
 # exit for non-interactive shell
 [[ $- != *i* ]] && return
 
@@ -42,9 +6,6 @@ DISABLE_Z_PLUGIN=1
 
 # Initialize command prompt
 export PS1="%n@%m:%~%# "
-
-# Initialize antigen
-source "$ANTIGEN"
 
 # Setup dir stack
 DIRSTACKSIZE=10
@@ -61,55 +22,10 @@ export TERM="xterm-256color"
 
 ZSH_AUTOSUGGEST_USE_ASYNC=1
 
-# Declare modules
-zstyle ':prezto:*:*' color 'yes'
-zstyle ':prezto:module:editor' key-bindings 'emacs'
-zstyle ':prezto:module:git:alias' skip 'yes'
-zstyle ':prezto:module:prompt' theme 'redhat'
-zstyle ':prezto:module:prompt' pwd-length 'short'
-zstyle ':prezto:module:terminal' auto-title 'yes'
-zstyle ':prezto:module:autosuggestions' color 'yes'
-zstyle ':prezto:module:python' autovenv 'yes'
-zstyle ':prezto:load' pmodule \
-	'environment' \
-	'editor' \
-	'history' \
-	'git' \
-	'utility' \
-	'completion' \
-	'history-substring-search' \
-	'autosuggestions' \
-	'prompt' \
-
-	# 'autosuggestions' \
-
-# Initialize prezto
-antigen use prezto
-
-
-# default bundles
-antigen bundle rupa/z z.sh
-antigen bundle Vifon/deer
-# antigen bundle zdharma/fast-syntax-highlighting
-antigen bundle zdharma-continuum/fast-syntax-highlighting
-# antigen bundle zsh-users/zsh-autosuggestions
-
-antigen bundle willghatch/zsh-cdr
-# antigen bundle zsh-users/zaw
-
-# check login shell
-if [[ -o login ]]; then
-	[ -f "$HOME/.local/etc/login.sh" ] && source "$HOME/.local/etc/login.sh"
-	[ -f "$HOME/.local/etc/login.zsh" ] && source "$HOME/.local/etc/login.zsh"
-fi
-
 # syntax color definition
 ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern)
 
 typeset -A ZSH_HIGHLIGHT_STYLES
-
-# ZSH_HIGHLIGHT_STYLES[command]=fg=white,bold
-# ZSH_HIGHLIGHT_STYLES[alias]='fg=magenta,bold'
 
 ZSH_HIGHLIGHT_STYLES[default]=none
 ZSH_HIGHLIGHT_STYLES[unknown-token]=fg=009
@@ -132,15 +48,6 @@ ZSH_HIGHLIGHT_STYLES[double-quoted-argument]=fg=063
 ZSH_HIGHLIGHT_STYLES[dollar-double-quoted-argument]=fg=009
 ZSH_HIGHLIGHT_STYLES[back-double-quoted-argument]=fg=009
 ZSH_HIGHLIGHT_STYLES[assign]=none
-
-# load local config
-[ -f "$HOME/.local/etc/config.zsh" ] && source "$HOME/.local/etc/config.zsh" 
-[ -f "$HOME/.local/etc/local.zsh" ] && source "$HOME/.local/etc/local.zsh"
-
-antigen apply
-
-# work around: fast syntax highlighting may crash zsh without this
-FAST_HIGHLIGHT[chroma-git]="chroma/-ogit.ch"
 
 # options
 unsetopt correct_all
@@ -186,9 +93,6 @@ bindkey '\ev' deer
 bindkey -s '\eu' 'ranger_cd\n'
 bindkey -s '\eOS' 'vim '
 
-# source function.sh if it exists
-[ -f "$HOME/.local/etc/function.sh" ] && . "$HOME/.local/etc/function.sh"
-
 # Disable correction
 unsetopt correct_all
 unsetopt correct
@@ -197,7 +101,3 @@ DISABLE_CORRECTION="true"
 # completion detail
 zstyle ':completion:*:complete:-command-:*:*' ignored-patterns '*.pdf|*.exe|*.dll'
 zstyle ':completion:*:*sh:*:' tag-order files
-
-# wsl2
-host_ip=$(cat /etc/resolv.conf |grep "nameserver" |cut -f 2 -d " ")
-export ALL_PROXY="http://$host_ip:7890"
