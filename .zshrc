@@ -66,10 +66,6 @@ setopt HIST_SAVE_NO_DUPS         # Don't write duplicate entries in the history 
 setopt HIST_REDUCE_BLANKS        # Remove superfluous blanks before recording entry.
 setopt HIST_VERIFY # Don't execute immediately upon history expansion.
 
-# setup for deer
-autoload -U deer
-zle -N deer
-
 # default keymap
 bindkey -s '\ee' 'vim\n'
 bindkey '\eh' backward-char
@@ -89,8 +85,6 @@ bindkey '\e[1;3C' forward-word
 bindkey '\e[1;3A' beginning-of-line
 bindkey '\e[1;3B' end-of-line
 
-bindkey '\ev' deer
-bindkey -s '\eu' 'ranger_cd\n'
 bindkey -s '\eOS' 'vim '
 
 # Disable correction
