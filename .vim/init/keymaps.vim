@@ -33,6 +33,12 @@ nnoremap <leader>p viw"0p
 nnoremap <m-z> za
 nnoremap <m-Z> zA
 
+vnoremap <c-insert> "+y
+nnoremap <s-insert> "+P
+vnoremap <s-insert> "-d"+P
+inoremap <s-insert> <c-r><c-o>+
+cnoremap <s-insert> <c-r>+
+
 
 "----------------------------------------------------------------------
 " INSERT 模式偶尔需要移动的方便些

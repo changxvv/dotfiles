@@ -3,8 +3,6 @@
 "----------------------------------------------------------------------
 set hls ic is scs ru nu ls=2 so=7 bs=2 ai cin aw ar sr mouse=a nocp wak=no ttimeout ttm=30 nopaste
 
-set cb^=unnamed,unnamedplus
-
 " 设置缩进宽度
 set sw=2
 
