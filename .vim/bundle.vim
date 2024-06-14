@@ -1,7 +1,7 @@
 "----------------------------------------------------------------------
 " 计算当前 init 的子路径
 "----------------------------------------------------------------------
-let s:home = fnamemodify(resolve(expand('<sfile>:p')), ':h:h')
+let s:home = fnamemodify(resolve(expand('<sfile>:p')), ':h')
 
 if !exists(':IncScript')
 	command! -nargs=1 IncScript exec 'so ' . fnameescape(s:home .'/<args>')
@@ -21,7 +21,7 @@ endfunc
 " 在 ~/.vim/bundles 下安装插件
 "----------------------------------------------------------------------
 if !exists('g:bundle_group')
-	let g:bundle_group = ['basic', 'inter', 'high', 'opt', 'ale', 'nerdtree', 'floaterm', 'tex', 'airline', 'lsp', 'copilot', 'tagbar']
+	let g:bundle_group = ['basic', 'inter', 'high', 'opt', 'ale', 'floaterm', 'tex', 'airline', 'copilot', 'tagbar', 'coc']
 endif
 
 let g:bundle_enabled = {}
@@ -43,6 +43,7 @@ Plug 'bootleq/vim-cycle'
 Plug 'tpope/vim-surround'
 Plug 'Raimondi/delimitMate'
 Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-vinegar'
 
 " color scheme
 Plug 'sainnhe/edge'
@@ -320,8 +321,8 @@ if has_key(s:enabled, 'opt')
 	endif
 
 	" Echo translation in the cmdline
-	nmap <silent> <Leader>ts <Plug>Translate
-	vmap <silent> <Leader>ts <Plug>TranslateV
+	nmap <silent> <Leader>tt <Plug>Translate
+	vmap <silent> <Leader>tt <Plug>TranslateV
 	" Display translation in a window
 	nmap <silent> <Leader>tw <Plug>TranslateW
 	vmap <silent> <Leader>tw <Plug>TranslateWV
@@ -336,6 +337,14 @@ endif
 " Misc
 "----------------------------------------------------------------------
 let g:vim_json_conceal = 0
+
+
+"----------------------------------------------------------------------
+" buffer hint
+"----------------------------------------------------------------------
+let g:bufferhint_CustomHighlight = 1
+hi! default link KeyHint Statement
+hi! default link AtHint Identifier
 
 
 "----------------------------------------------------------------------
@@ -377,18 +386,6 @@ endif
 if has_key(s:enabled, 'coc')
 	Plug 'neoclide/coc.nvim', {'branch': 'release'}
 	IncScript site/bundle/coc.vim
-endif
-
-" vim-lsp
-if has_key(s:enabled, 'lsp')
-	Plug 'prabirshrestha/vim-lsp'
-	Plug 'prabirshrestha/asyncomplete.vim'
-	Plug 'prabirshrestha/asyncomplete-lsp.vim'
-	Plug 'mattn/vim-lsp-settings'
-	Plug 'prabirshrestha/asyncomplete-buffer.vim'
-	Plug 'prabirshrestha/asyncomplete-tags.vim'
-	Plug 'jsit/asyncomplete-user.vim'
-	IncScript site/bundle/lsp.vim
 endif
 
 " copilot.vim
@@ -466,12 +463,6 @@ endif
 if has_key(s:enabled, 'vim-doge')
 	Plug 'kkoomen/vim-doge'
 	IncScript site/bundle/doge.vim
-endif
-
-if has_key(s:enabled, 'nerdtree')
-	Plug 'preservim/nerdtree', {'on': ['NERDTree', 'NERDTreeFocus', 'NERDTreeToggle', 'NERDTreeCWD', 'NERDTreeFind'] }
-	Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
-	IncScript site/bundle/nerdtree.vim
 endif
 
 if has_key(s:enabled, 'grammer')

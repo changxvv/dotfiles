@@ -40,9 +40,6 @@ InScript init/tools.vim
 " 自定义按键
 InScript init/keymaps.vim
 
-" 插件加载
-InScript init/bundle.vim
-
 " 状态栏设置
 InScript init/status.vim
 
@@ -68,3 +65,10 @@ endif
 if filereadable(name)
 	exec 'source ' . fnameescape(name)
 endif
+
+" 插件加载
+InScript bundle.vim
+
+set bg=dark
+set t_Co=256
+colorscheme edge

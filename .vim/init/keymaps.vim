@@ -33,12 +33,6 @@ nnoremap <leader>p viw"0p
 nnoremap <m-z> za
 nnoremap <m-Z> zA
 
-vnoremap <c-insert> "+y
-nnoremap <s-insert> "+P
-vnoremap <s-insert> "-d"+P
-inoremap <s-insert> <c-r><c-o>+
-cnoremap <s-insert> <c-r>+
-
 
 "----------------------------------------------------------------------
 " INSERT 模式偶尔需要移动的方便些
@@ -105,6 +99,7 @@ no <silent><leader>bd :bdelete<cr>
 no <silent><leader>bl :ls<cr>
 no <silent><leader>bb :ls<cr>:b
 nnoremap <silent><leader>bc :BufferClose<cr>
+nnoremap + :call bufferhint#Popup()<CR>
 
 
 "----------------------------------------------------------------------
@@ -119,9 +114,10 @@ no <silent><leader>w6 :6wincmd w<cr>
 no <silent><leader>w7 :7wincmd w<cr>
 no <silent><leader>w8 :8wincmd w<cr>
 no <silent><leader>w9 :9wincmd w<cr>
-nnoremap <silent><tab>0 :exe "NERDTree ".fnameescape(expand("%:p:h"))<cr>
-nnoremap <silent><tab>y :exe "NERDTree ".fnameescape(asclib#path#get_root("%"))<cr>
-nnoremap <silent><tab>t :exe "NERDTreeToggle ".fnameescape(asclib#path#get_root("%"))<cr>
+nnoremap <silent><tab>6 :VinegarOpen leftabove vs<cr>
+nnoremap <silent><tab>7 :VinegarOpen vs<cr>
+nnoremap <silent><tab>8 :VinegarOpen belowright sp<cr>
+nnoremap <silent><tab>9 :VinegarOpen tabedit<cr>
 nnoremap <silent><leader>g <c-w>p
 
 
