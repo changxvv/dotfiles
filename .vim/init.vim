@@ -40,6 +40,9 @@ InScript init/tools.vim
 " 自定义按键
 InScript init/keymaps.vim
 
+" 插件设置
+InScript init/plugins.vim
+
 " 状态栏设置
 InScript init/status.vim
 
@@ -67,7 +70,18 @@ if filereadable(name)
 endif
 
 " 插件加载
-InScript bundle.vim
+if !exists('g:bundle_group')
+	let g:bundle_group = []
+endif
+
+let g:bundle_group += ['basic']
+let g:bundle_group += ['inter']
+let g:bundle_group += ['high', 'opt']
+let g:bundle_group += ['ale', 'floaterm', 'tex', 'airline', 'copilot', 'coc']
+
+if len(g:bundle_group) > 0
+	InScript bundle.vim
+endif
 
 set bg=dark
 set t_Co=256

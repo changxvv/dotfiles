@@ -20,10 +20,6 @@ endfunc
 "----------------------------------------------------------------------
 " 在 ~/.vim/bundles 下安装插件
 "----------------------------------------------------------------------
-if !exists('g:bundle_group')
-	let g:bundle_group = ['basic', 'inter', 'high', 'opt', 'ale', 'floaterm', 'tex', 'airline', 'copilot', 'tagbar', 'coc']
-endif
-
 let g:bundle_enabled = {}
 for key in g:bundle_group | let g:bundle_enabled[key] = 1 | endfor
 let s:enabled = g:bundle_enabled
@@ -43,11 +39,9 @@ Plug 'bootleq/vim-cycle'
 Plug 'tpope/vim-surround'
 Plug 'Raimondi/delimitMate'
 Plug 'tpope/vim-commentary'
-Plug 'tpope/vim-vinegar'
 
 " color scheme
 Plug 'sainnhe/edge'
-IncScript site/bundle/colors.vim
 
 if has('nvim') == 0 && v:version >= 900
 	Plug 'monkoose/vim9-stargate'
@@ -81,9 +75,6 @@ vmap gZ <Plug>Sneak_S
 xmap gz <Plug>Sneak_s
 xmap gZ <Plug>Sneak_S
 
-let delimitMate_expand_cr = 1
-let delimitMate_expand_space = 1
-
 IncScript site/bundle/dirvish.vim
 IncScript site/bundle/cycle.vim
 
@@ -100,6 +91,7 @@ if has_key(s:enabled, 'basic')
 	Plug 'skywind3000/vim-dict'
 	Plug 'tommcdo/vim-exchange'
 	Plug 'tommcdo/vim-lion'
+	Plug 'embear/vim-localvimrc'
 	
 	Plug 'pprovost/vim-ps1', { 'for': 'ps1' }
 	Plug 'tbastos/vim-lua', { 'for': 'lua' }
@@ -132,19 +124,12 @@ if has_key(s:enabled, 'basic')
 		Plug 'kana/vim-textobj-indent'
 	endif
 
-	Plug 'wellle/targets.vim'
+	if has_key(s:enabled, 'targets')
+		Plug 'wellle/targets.vim'
+		IncScript site/bundle/targets.vim
+	endif
 
 	Plug 'justinmk/vim-syntax-extra', { 'for': ['c', 'bison', 'flex', 'cpp'] }
-
-	let g:vim_dict_config = { 
-		\ "text" : 'text',
-		\ "markdown" : 'text',
-		\ "html": 'html,javascript,css,css3',
-		\ }
-
-	let g:vim_markdown_folding_disabled = 1
-	let g:vim_markdown_math = 1
-  let g:vim_markdown_new_list_item_indent = 2
 	
 	if has('python3') || has('python')
 		Plug 'Yggdroot/LeaderF'
@@ -155,25 +140,15 @@ if has_key(s:enabled, 'basic')
 		Plug 'ctrlpvim/ctrlp.vim'
 		Plug 'tacahiroy/ctrlp-funky'
 		let g:ctrlp_map = ''
-		let g:ctrlp_custom_ignore = {
-			\ 'dir':  '\v[\/]\.(git|hg|svn)$',
-			\ 'file': '\v\.(exe|so|dll|mp3|wav|sdf|suo|mht)$',
-			\ 'link': 'some_bad_symbolic_links',
-			\ }
-
-		let g:ctrlp_root_markers = ['.project', '.root', '.svn', '.git']
-		let g:ctrlp_working_path = 0
-
 		noremap <c-p> :cclose<cr>:CtrlP<cr>
 		noremap <c-n> :cclose<cr>:CtrlPMRUFiles<cr>
 		noremap <m-p> :cclose<cr>:CtrlPFunky<cr>
 		noremap <m-n> :cclose<cr>:CtrlPBuffer<cr>
 	endif
 
-	let g:eunuch_no_maps = 1
-
-	let g:startify_disable_at_vimenter = 1
-	let g:startify_session_dir = '~/.vim/session'
+	let g:vim_markdown_folding_disabled = 1
+	let g:vim_markdown_math = 1
+  let g:vim_markdown_new_list_item_indent = 2
 
 	" let g:cpp_class_scope_highlight = 1
 	let g:cpp_member_variable_highlight = 1
@@ -229,19 +204,6 @@ if has_key(s:enabled, 'high')
 		IncScript site/bundle/autoformat.vim
 	endif
 
-	let g:signify_vcs_list = ['git', 'svn']
-	let g:signify_difftool = 'diff'
-	let g:signify_sign_add               = '+'
-	let g:signify_sign_delete            = '_'
-	let g:signify_sign_delete_first_line = '‾'
-	let g:signify_sign_change            = '~'
-	let g:signify_sign_changedelete      = g:signify_sign_change
-	let g:signify_as_gitgutter           = 1
-
-	let g:signify_vcs_cmds = {
-				\ 'git': 'git diff --no-color --diff-algorithm=histogram --no-ext-diff -U0 -- %f',
-				\}
-
 	let g:errormarker_disablemappings = 1
 	nnoremap <silent> <leader>cm :ErrorAtCursor<CR>
 	nnoremap <silent> <leader>cM :RemoveErrorMarkers<cr>
@@ -285,37 +247,6 @@ if has_key(s:enabled, 'opt')
 		Plug 'skywind3000/gutentags_plus'
 	endif
 
-	let $GTAGSLABEL = 'native-pygments'
-	let $GTAGSCONF = '~/.globalrc'
-
-	let g:gutentags_project_root = ['.root', '.git', '.svn']
-	let g:gutentags_ctags_tagfile = '.tags'
-
-	" let g:gutentags_modules = ['ctags', 'gtags_cscope']
-	if exists('g:gutentags_cache_dir') == 0
-		let g:gutentags_cache_dir = expand('~/.cache/tags')
-	endif
-
-	if !isdirectory(g:gutentags_cache_dir)
-		silent call mkdir(g:gutentags_cache_dir, 'p')
-	endif
-
-	let g:gutentags_ctags_extra_args = []
-	let g:gutentags_ctags_extra_args = ['--fields=+niazS', '--extra=+q']
-	let g:gutentags_ctags_extra_args += ['--c++-kinds=+px']
-	let g:gutentags_ctags_extra_args += ['--c-kinds=+px']
-
-	let g:gutentags_auto_add_gtags_cscope = 0
-	let g:gutentags_define_advanced_commands = 1
-
-	" let g:gutentags_define_advanced_commands = 1
-
-	if has('win32') || has('win16') || has('win64') || has('win95')
-		let g:gutentags_ctags_extra_args += ['--output-format=e-ctags']
-	endif
-
-	let g:gutenags_plus_switch = 0
-
 	if has('win32') || has('win64')
 		let g:python3_host_prog="python"
 	endif
@@ -331,20 +262,6 @@ if has_key(s:enabled, 'opt')
 	vmap <silent> <Leader>tr <Plug>TranslateRV
 	let g:translator_window_enable_icon = v:true
 endif
-
-
-"----------------------------------------------------------------------
-" Misc
-"----------------------------------------------------------------------
-let g:vim_json_conceal = 0
-
-
-"----------------------------------------------------------------------
-" buffer hint
-"----------------------------------------------------------------------
-let g:bufferhint_CustomHighlight = 1
-hi! default link KeyHint Statement
-hi! default link AtHint Identifier
 
 
 "----------------------------------------------------------------------
@@ -533,6 +450,20 @@ if has_key(s:enabled, 'neocomplete')
 		echom 'ERROR: neocomplete is incompatible with vim-8.2.1065+'
 		echohl None
 	endif
+endif
+
+if has_key(s:enabled, 'omni')
+	Plug 'vim-scripts/OmniCppComplete', {'for':['cpp']}
+	" Plug 'c9s/perlomni.vim', {'for':['perl']}
+	Plug 'shawncplus/phpcomplete.vim', {'for': ['php']}
+	" Plug 'artur-shaik/vim-javacomplete2'
+	Plug 'othree/html5.vim', {'for': ['html']}
+	" Plug 'xolox/vim-lua-ftplugin', {'for': ['lua']}
+	let g:lua_complete_omni = 0
+	let g:lua_check_globals = 0
+	let g:lua_check_syntax = 0
+	let g:lua_define_completion_mappings = 0
+	" autocmd FileType java setlocal omnifunc=javacomplete#Complete
 endif
 
 if has_key(s:enabled, 'lsp-lcn')

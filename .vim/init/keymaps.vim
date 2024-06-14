@@ -293,10 +293,29 @@ nnoremap <silent><leader>he :call Show_Explore()<cr>
 " 编译运行
 "----------------------------------------------------------------------
 
-" f10打开终端，f9编译c/c++，f5运行文件，f7编译项目，f8运行项目，f6测试项目，f4更新cmake
-no <f2> :vs in.txt<cr>
-no <f9> :wa \| FloatermSend make %:r<cr>
-no <f5> :wa \| FloatermSend %:r < in.txt<cr>
+" f2上一个终端，f9编译c/c++，f5运行文件，f7编译项目，f8运行项目，f6测试项目，f4更新make，f3打开/关闭终端，f1 新建终端，f10 grep
+no <f9> :FloatermSend make %:r<cr>
+no <f5> :FloatermSend %:r<cr>
+no <f7> :FloatermSend make <cr>
+no <f8> :FloatermSend make run <cr>
+no <f6> :FloatermSend make test <cr>
+no <f4> :FloatermSend cmake . <cr>
+
+if executable('rg')
+	noremap <silent><F10> :FloatermSend rg -n --no-heading 
+				\ --color never -g *.h -g *.c* -g *.py -g *.js -g *.vim 
+				\ <C-R><C-W> "<C-R>=asclib#path#current_root()<CR>" <cr>
+elseif has('win32') || has('win64')
+	noremap <silent><F10> :FloatermSend findstr /n /s /C:"<C-R><C-W>" 
+				\ "\%CD\%\*.h" "\%CD\%\*.c*" "\%CD\%\*.py" "\%CD\%\*.js"
+				\ "\%CD\%\*.vim"
+				\ <cr>
+else
+	noremap <silent><F10> :FloatermSend grep -n -s -R <C-R><C-W> 
+				\ --include='*.h' --include='*.c*' --include='*.py' 
+				\ --include='*.js' --include='*.vim'
+				\ '<C-R>=asclib#path#current_root()<CR>' <cr>
+endif
 
 " calculate the md5
 ca Hash w !cpp -dD -P -fpreprocessed \| tr -d '[:space:]' \| md5sum \| cut -c-8
