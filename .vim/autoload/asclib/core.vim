@@ -837,5 +837,3 @@ function! asclib#core#print(content, highlight, ...)
 		set showmode
 	endif
 endfunc
-
-

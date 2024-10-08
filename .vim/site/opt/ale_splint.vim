@@ -61,6 +61,3 @@ call ale#linter#Define('c', {
 \   'command': function('s:splint_GetCommand'),
 \   'callback': function('s:splint_Handler'),
 \})
-
-
-

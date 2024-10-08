@@ -83,6 +83,7 @@ if len(g:bundle_group) > 0
 	InScript bundle.vim
 endif
 
+" 主题加载
 set bg=dark
 set t_Co=256
 colorscheme edge

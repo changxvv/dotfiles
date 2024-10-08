@@ -1,6 +1,11 @@
+if &modifiable
+	set ff=unix
+endif
+
+let b:cursorword = 1
+
+
 "----------------------------------------------------------------------
-" local mapping
+" mapping
 "----------------------------------------------------------------------
-nnoremap <silent><buffer> P :PreviewClose<cr>
-nnoremap <silent><buffer> q :close<cr>
-setlocal nonumber
+noremap <buffer><F11> :<c-u>silent update<cr>:so %<cr>
