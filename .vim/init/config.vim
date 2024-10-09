@@ -92,9 +92,6 @@ let path = expand('~/.vim/tmp')
 		silent! call mkdir(path, 'p', 0755)
 	endif
 
-" 快速连接
-set ttyfast
-
 
 "----------------------------------------------------------------------
 " 配置微调

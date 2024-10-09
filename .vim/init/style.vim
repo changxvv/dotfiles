@@ -56,19 +56,6 @@ endif
 
 
 "----------------------------------------------------------------------
-" 终端设置，隐藏行号和侧边栏
-"----------------------------------------------------------------------
-" if has('terminal') && exists(':terminal') == 2
-" 	if exists('##TerminalOpen')
-" 		augroup VimUnixTerminalGroup
-" 			au! 
-" 			au TerminalOpen * setlocal nonumber signcolumn=no
-" 		augroup END
-" 	endif
-" endif
-
-
-"----------------------------------------------------------------------
 " GVim Dialogs
 "----------------------------------------------------------------------
 function! s:Filter_Push(desc, wildcard)

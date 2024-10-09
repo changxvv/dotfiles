@@ -131,3 +131,53 @@ function! Tools_SwitchSigns()
 		echo ':signcolumn=auto'
 	endif
 endfunc
+
+function! Tools_ListMeta(mapmode, upper)
+	let text = []
+	for i in range(26)
+		let ch = nr2char(char2nr(a:upper? 'A' : 'a') + i)
+		redir => x
+		exec "silent ". a:mapmode . " <M-" . ch . ">"
+		redir END
+		let x = substitute(x, '^\s*\(.\{-}\)\s*\n*$', '\1', '')
+		let h = "<M-". ch . ">     "
+		if x =~ 'No mapping found'
+			let text += [h . "                 ---<free>---"]
+		else
+			for y in split(x, '\n')
+				let z = substitute(y, '\n', '', 'g')
+				let text += [h .z]
+			endfor
+		endif
+	endfor
+	call sort(text)
+	for x in text
+		echo x
+	endfor
+endfunc
+
+
+"----------------------------------------------------------------------
+" https://github.com/lilydjwg/dotvim 
+"----------------------------------------------------------------------
+function! GetPatternAtCursor(pat)
+	let col = col('.') - 1
+	let line = getline('.')
+	let ebeg = -1
+	let cont = match(line, a:pat, 0)
+	while (ebeg >= 0 || (0 <= cont) && (cont <= col))
+		let contn = matchend(line, a:pat, cont)
+		if (cont <= col) && (col < contn)
+			let ebeg = match(line, a:pat, cont)
+			let elen = contn - ebeg
+			break
+		else
+			let cont = match(line, a:pat, contn)
+		endif
+	endwhile
+	if ebeg >= 0
+		return strpart(line, ebeg, elen)
+	else
+		return ""
+	endif
+endfunc

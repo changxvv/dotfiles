@@ -11,7 +11,7 @@ no H ^
 no M zz
 no L g_
 no gV `[V`]
-no <silent><backspace> :noh<cr>
+no <silent><backspace> :noh<cr>:redraw!<cr>
 nnoremap U <c-r>
 vnoremap < <gv
 vnoremap > >gv
@@ -75,7 +75,6 @@ inoremap <silent><m-down> <ESC>:tabnext<cr>
 noremap <silent><m-left> :-tabmove<cr>
 noremap <silent><m-right> :+tabmove<cr>
 noremap <silent><m-t> :tabnew<cr>:Startify<cr>
-vnoremap <silent><m-t> <ESC>:tabnew<cr>:Startify<cr>
 inoremap <silent><m-t> <ESC>:tabnew<cr>:Startify<cr>
 noremap <silent><m-w> :tabclose<cr>
 inoremap <silent><m-w> <ESC>:tabclose<cr>
@@ -119,6 +118,9 @@ nnoremap <silent><tab>7 :VinegarOpen vs<cr>
 nnoremap <silent><tab>8 :VinegarOpen belowright sp<cr>
 nnoremap <silent><tab>9 :VinegarOpen tabedit<cr>
 nnoremap <silent><leader>g <c-w>p
+nnoremap <silent><leader>vs :VinegarOpen leftabove vs<cr>
+nnoremap <silent><leader>vp :VinegarOpen belowright sp<cr>
+nnoremap <silent><leader>ve :VinegarOpen tabedit<cr>
 
 
 "----------------------------------------------------------------------

@@ -15,7 +15,6 @@ set noet
 " 如果后面设置了 expandtab 那么展开 tab 为多少字符
 set softtabstop=0
 
-set wcm=<C-Z>
 
 "----------------------------------------------------------------------
 " 编码设置
@@ -125,14 +124,10 @@ set formatlistpat+=^\\s*[-–+o*•]\\s\\+      " Bullet points
 "----------------------------------------------------------------------
 " Diff 设置
 "----------------------------------------------------------------------
-set diffopt=
-set diffopt+=vertical  " show diff in vertical position
-set diffopt+=filler  " show filler for deleted lines
-if has('patch-8.1.2289')
-    set diffopt+=closeoff  " turn off diff when one file window is closed
+if has('patch-8.2.0001')
+	set diffopt+=internal,algorithm:patience
+	set diffopt+=indent-heuristic
 endif
-set diffopt+=context:3  " context for diff
-set diffopt+=internal,indent-heuristic,algorithm:patience
 
 
 "----------------------------------------------------------------------
