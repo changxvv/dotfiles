@@ -525,11 +525,6 @@ endif
 
 if has_key(s:enabled, 'tagbar')
 	Plug 'preservim/tagbar'
-	let g:tagbar_left = 1
-	let g:tagbar_vertical = 0
-	let g:tagbar_width = 28
-	let g:tagbar_sort = 0
-	let g:tagbar_compact = 1
 endif
 
 if has_key(s:enabled, 'lh-cpp')

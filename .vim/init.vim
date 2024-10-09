@@ -69,6 +69,16 @@ if filereadable(name)
 	exec 'source ' . fnameescape(name)
 endif
 
+" OptImport
+InScript site/opt/angry.vim
+InScript site/opt/after_object.vim
+
+if has('gui_running')
+	InScript site/opt/hexhigh.vim
+endif
+
+call after_object#enable(['r', 'R'], '=', ':', '-', '#', ' ', '/', ';', '(', ')')
+
 " 插件加载
 if !exists('g:bundle_group')
 	let g:bundle_group = []
