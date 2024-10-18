@@ -6,7 +6,7 @@
 set updatetime=300
 set signcolumn=yes
 
-let g:coc_config_home = expand('~/.vim')
+let g:coc_config_home = expand('~/.vim/tools/conf')
 
 if !isdirectory(g:coc_config_home)
 	silent! call mkdir(g:coc_config_home)
