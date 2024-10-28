@@ -1,6 +1,12 @@
 if has('gui_running')
-	set gfn=Ligconsolata:h12
-	set gfw=Microsoft\ YaHei\ Mono:h12
+	if has('win32') || has('win64')
+		set gfn=Inconsolata\ Nerd\ Font\ Mono:h13
+		set gfw=Microsoft\ YaHei\ Mono:h13
+	endif
+	if has('unix')
+		set gfn=Inconsolata\ Nerd\ Font\ Mono\ 13
+		set gfw=Noto\ Serif\ CJK\ SC\ 13
+	endif
 	set guicursor+=a:blinkon0
 	set guioptions=eg
 endif
