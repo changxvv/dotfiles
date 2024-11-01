@@ -345,8 +345,6 @@ endif
 
 if has_key(s:enabled, 'matchup')
 	Plug 'andymass/vim-matchup'
-	" vim-matchup conflicts with matchit, should disable matchit
-	let g:loaded_matchit = 1
 	IncScript site/bundle/matchup.vim
 else
 	runtime! macros/matchit.vim

@@ -87,7 +87,7 @@ endif
 let g:bundle_group += ['basic']
 let g:bundle_group += ['inter']
 let g:bundle_group += ['high', 'opt']
-let g:bundle_group += ['ale', 'floaterm', 'tex', 'airline', 'copilot', 'coc']
+let g:bundle_group += ['ale', 'floaterm', 'matchup', 'cursorword', 'tex', 'airline', 'copilot', 'coc']
 
 if len(g:bundle_group) > 0
 	InScript bundle.vim
