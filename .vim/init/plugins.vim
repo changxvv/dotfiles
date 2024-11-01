@@ -120,6 +120,7 @@ let delimitMate_expand_space = 1
 "----------------------------------------------------------------------
 let $GTAGSLABEL = 'native-pygments'
 let $GTAGSCONF = '~/.globalrc'
+let $GTAGSFORCECPP = '1'
 
 let g:gutentags_project_root = ['.root', '.git', '.svn']
 let g:gutentags_ctags_tagfile = '.tags'
