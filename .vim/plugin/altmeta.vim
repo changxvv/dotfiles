@@ -759,4 +759,3 @@ endif
 
 " Restore saved 'cpoptions'.
 let &cpoptions = s:save_cpoptions
-

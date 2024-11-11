@@ -46,4 +46,3 @@ call textobj#user#plugin('ipmac', {
   \   'select' : ['IP'],
   \ }})
 
-

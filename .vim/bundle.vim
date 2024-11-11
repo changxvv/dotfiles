@@ -39,6 +39,8 @@ Plug 'bootleq/vim-cycle'
 Plug 'tpope/vim-surround'
 Plug 'Raimondi/delimitMate'
 Plug 'tpope/vim-commentary'
+Plug 'bsdelf/bufferhint'
+Plug 'embear/vim-localvimrc'
 
 " color scheme
 Plug 'sainnhe/edge'
@@ -91,7 +93,6 @@ if has_key(s:enabled, 'basic')
 	Plug 'skywind3000/vim-dict'
 	Plug 'tommcdo/vim-exchange'
 	Plug 'tommcdo/vim-lion'
-	Plug 'embear/vim-localvimrc'
 	
 	Plug 'pprovost/vim-ps1', { 'for': 'ps1' }
 	Plug 'tbastos/vim-lua', { 'for': 'lua' }
