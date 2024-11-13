@@ -32,14 +32,6 @@ endif
 
 
 "----------------------------------------------------------------------
-" write log
-"----------------------------------------------------------------------
-function! s:log(text)
-	call LogWrite(a:text)
-endfunc
-
-
-"----------------------------------------------------------------------
 " seek
 "----------------------------------------------------------------------
 function! s:seek(file) abort
@@ -80,7 +72,6 @@ endfunc
 function! s:open(cmd) abort
 	let filename = expand('%:p')
 	let shortname = expand('%:t')
-	call s:log('[vinegar] ' . expand('%:p'))
 	if &buftype == "nofile" || &buftype == "quickfix"
 		if (&ft != 'nerdtree') && (&ft != 'netrw') && (&ft != 'dirvish')
 			return
