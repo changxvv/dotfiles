@@ -61,19 +61,6 @@ let g:tagbar_compact = 1
 
 
 "----------------------------------------------------------------------
-"- CtrlP
-"----------------------------------------------------------------------
-let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\v[\/]\.(git|hg|svn)$',
-  \ 'file': '\v\.(exe|so|dll|mp3|wav|sdf|suo|mht)$',
-  \ 'link': 'some_bad_symbolic_links',
-  \ }
-
-let g:ctrlp_root_markers = ['.project', '.root', '.svn', '.git']
-let g:ctrlp_working_path = 0
-
-
-"----------------------------------------------------------------------
 " Signify
 "----------------------------------------------------------------------
 let g:signify_vcs_list = ['git', 'svn']

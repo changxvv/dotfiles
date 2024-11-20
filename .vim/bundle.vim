@@ -39,7 +39,6 @@ Plug 'bootleq/vim-cycle'
 Plug 'tpope/vim-surround'
 Plug 'Raimondi/delimitMate'
 Plug 'tpope/vim-commentary'
-Plug 'bsdelf/bufferhint'
 Plug 'embear/vim-localvimrc'
 
 " color scheme
@@ -138,14 +137,6 @@ if has_key(s:enabled, 'basic')
 		Plug 'tamago324/LeaderF-filer'
 		Plug 'voldikss/LeaderF-emoji'
 		IncScript site/bundle/leaderf.vim
-	else
-		Plug 'ctrlpvim/ctrlp.vim'
-		Plug 'tacahiroy/ctrlp-funky'
-		let g:ctrlp_map = ''
-		noremap <c-p> :cclose<cr>:CtrlP<cr>
-		noremap <c-n> :cclose<cr>:CtrlPMRUFiles<cr>
-		noremap <m-p> :cclose<cr>:CtrlPFunky<cr>
-		noremap <m-n> :cclose<cr>:CtrlPBuffer<cr>
 	endif
 
 	let g:vim_markdown_folding_disabled = 1
