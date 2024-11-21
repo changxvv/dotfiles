@@ -17,20 +17,8 @@ endif
 " other plugin before putting this into your config.
 inoremap <silent><expr> <TAB>
       \ coc#pum#visible() ? coc#pum#confirm() :
-      \ CheckBackspace() ? "\<Tab>" :
-      \ coc#refresh()
-
-function! CheckBackspace() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
-endfunction
-
-" Use <c-space> to trigger completion
-if has('nvim')
-  inoremap <silent><expr> <c-space> coc#refresh()
-else
-  inoremap <silent><expr> <c-@> coc#refresh()
-endif
+      \ delimitMate#ShouldJump() ? "<Plug>delimitMateS-Tab" :
+      \ "\<Tab>"
 
 " Use `[g` and `]g` to navigate diagnostics
 " Use `:CocDiagnostics` to get all diagnostics of current buffer in location list

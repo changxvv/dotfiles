@@ -199,6 +199,9 @@ let g:eunuch_no_maps = 1
 "----------------------------------------------------------------------
 " styles
 "----------------------------------------------------------------------
+if has('termguicolors')
+	set termguicolors
+endif
 let g:edge_enable_italic = 1
 let g:edge_better_performance = 1
 
