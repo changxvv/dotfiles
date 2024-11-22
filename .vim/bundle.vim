@@ -39,7 +39,6 @@ Plug 'bootleq/vim-cycle'
 Plug 'tpope/vim-surround'
 Plug 'Raimondi/delimitMate'
 Plug 'tpope/vim-commentary'
-Plug 'embear/vim-localvimrc'
 
 " color scheme
 Plug 'sainnhe/edge'
@@ -87,7 +86,6 @@ if has_key(s:enabled, 'basic')
 	Plug 't9md/vim-choosewin'
 	Plug 'tpope/vim-rhubarb'
 	Plug 'mhinz/vim-startify'
-	Plug 'xolox/vim-misc'
 	Plug 'terryma/vim-expand-region'
 	Plug 'skywind3000/vim-dict'
 	Plug 'tommcdo/vim-exchange'
