@@ -271,9 +271,7 @@ endif
 " tex and snippet
 if has_key(s:enabled, 'tex') && (has('python3') || has('python'))
 	Plug 'lervag/vimtex'
-	Plug 'SirVer/ultisnips'
 	Plug 'honza/vim-snippets'
-	IncScript site/bundle/ultisnips.vim
 	IncScript site/bundle/vimtex.vim
 endif
 

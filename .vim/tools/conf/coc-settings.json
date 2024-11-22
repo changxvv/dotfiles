@@ -26,25 +26,15 @@
 	"diagnostic.enable": false,
 	"inlayHint.enable": false,
 
-	"coc.source.coc-snippets.enable": false,
+	"snippets.snipmate.enable": false,
+	"snippets.userSnippetsDirectory": "~/.vim/site/ultisnips",
+	"snippets.extends": {
+		"markdown": ["texmath"],
+		"latex": ["tex", "texmath"]
+	},
 
-	"list.autoResize": false,
-	"list.maxHeight": 15,
 	"list.source.grep.defaultArgs": ["-smartcase", "-regex"],
 	"list.source.grep.defaultOptions": ["--interactive", "--no-sort", "--regex"],
-
-// 	"languageserver": {
-// 		"clangd": {
-// 			"command": "clangd",
-// 			"rootPatterns": [".git", ".svn", ".hg", ".root", ".project"],
-// 			"filetypes": ["c", "cc", "cpp", "c++", "objc", "objcpp"],
-// 			"initializationOptions": {
-// 				"fallbackFlags": [
-// 					"-Wall"
-// 				]
-// 			}
-// 		}
-// 	},
 
 	"suggest.completionItemKindLabels": {
 		"keyword": "\uf1de Keyword",

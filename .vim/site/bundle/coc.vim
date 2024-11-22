@@ -20,6 +20,10 @@ inoremap <silent><expr> <TAB>
       \ delimitMate#ShouldJump() ? "<Plug>delimitMateS-Tab" :
       \ "\<Tab>"
 
+let g:coc_snippet_next = '<c-n>'
+let g:coc_snippet_prev = '<c-p>'
+vmap <s-tab> <Plug>(coc-snippets-select)
+
 " Use `[g` and `]g` to navigate diagnostics
 " Use `:CocDiagnostics` to get all diagnostics of current buffer in location list
 nmap <silent> [g <Plug>(coc-diagnostic-prev)
