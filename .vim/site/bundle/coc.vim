@@ -20,6 +20,8 @@ inoremap <silent><expr> <TAB>
       \ delimitMate#ShouldJump() ? "<Plug>delimitMateS-Tab" :
       \ "\<Tab>"
 
+inoremap <silent><expr> <c-tab> coc#refresh()
+
 let g:coc_snippet_next = '<c-n>'
 let g:coc_snippet_prev = '<c-p>'
 vmap <s-tab> <Plug>(coc-snippets-select)
