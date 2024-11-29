@@ -1,3 +1,7 @@
+if has('win32') || has('win64')
+	set shell=powershell
+endif
+
 let g:floaterm_width = 0.7
 let g:floaterm_height = 0.7
 

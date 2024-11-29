@@ -90,6 +90,7 @@ if has_key(s:enabled, 'basic')
 	Plug 'skywind3000/vim-dict'
 	Plug 'tommcdo/vim-exchange'
 	Plug 'tommcdo/vim-lion'
+	Plug 'tpope/vim-eunuch'
 	
 	Plug 'pprovost/vim-ps1', { 'for': 'ps1' }
 	Plug 'tbastos/vim-lua', { 'for': 'lua' }
@@ -104,12 +105,9 @@ if has_key(s:enabled, 'basic')
 		Plug 'peterhoeg/vim-qml'
 	endif
 	Plug 'neovimhaskell/haskell-vim'
+	Plug 'jamessan/vim-gnupg'
 	Plug 'preservim/vim-markdown'
 	Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
-
-	Plug 'tpope/vim-eunuch'
-	Plug 'dag/vim-fish'
-	Plug 'jamessan/vim-gnupg'
 
 	Plug 'kana/vim-textobj-user'
 	Plug 'kana/vim-textobj-syntax'
