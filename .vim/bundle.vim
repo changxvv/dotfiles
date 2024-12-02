@@ -105,6 +105,7 @@ if has_key(s:enabled, 'basic')
 		Plug 'peterhoeg/vim-qml'
 	endif
 	Plug 'neovimhaskell/haskell-vim'
+	Plug 'justinmk/vim-syntax-extra', { 'for': ['c', 'bison', 'flex', 'cpp'] }
 	Plug 'jamessan/vim-gnupg'
 	Plug 'preservim/vim-markdown'
 	Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
@@ -126,7 +127,6 @@ if has_key(s:enabled, 'basic')
 		IncScript site/bundle/targets.vim
 	endif
 
-	Plug 'justinmk/vim-syntax-extra', { 'for': ['c', 'bison', 'flex', 'cpp'] }
 	
 	if has('python3') || has('python')
 		Plug 'Yggdroot/LeaderF'

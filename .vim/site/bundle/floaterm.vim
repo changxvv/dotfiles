@@ -1,5 +1,5 @@
 if has('win32') || has('win64')
-	set shell=powershell
+	let g:floaterm_shell = 'powershell'
 endif
 
 let g:floaterm_width = 0.7
