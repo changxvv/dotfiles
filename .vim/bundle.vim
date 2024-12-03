@@ -126,7 +126,6 @@ if has_key(s:enabled, 'basic')
 		Plug 'wellle/targets.vim'
 		IncScript site/bundle/targets.vim
 	endif
-
 	
 	if has('python3') || has('python')
 		Plug 'Yggdroot/LeaderF'

@@ -1,14 +1,9 @@
 "----------------------------------------------------------------------
 " keymap
 "----------------------------------------------------------------------
-let g:Lf_ShortcutF = '<c-p>'
-let g:Lf_ShortcutB = '<m-n>'
-let g:Lf_MruMaxFiles = 2048
-let g:Lf_StlSeparator = { 'left': '', 'right': '', 'font': '' }
 " let g:Lf_PreviewHorizontalPosition = 'center'
 let g:Lf_PopupPreviewPosition='bottom'
-let g:Lf_PreviewInPopup = 0
-let g:Lf_QuickSelect = 1
+" let g:Lf_QuickSelect = 1
 let g:Lf_QuickSelectAction = 't'
 let g:Lf_GtagsAutoUpdate = 0
 
@@ -74,7 +69,6 @@ let g:Lf_PreviewResult = {
 		\ 'Colorscheme': 0,
 		\ 'Rg': 0,
 		\ 'Gtags': 0,
-		\ 'Snippet': 0,
 		\}
 
 
@@ -87,6 +81,15 @@ let g:Lf_FilerInsertMap = { '<Tab>': 'open_current', '<CR>': 'open_current',
 let g:Lf_FilerNormalMap = {'i': 'switch_insert_mode', '<esc>': 'quit', 
 	\ '~': 'goto_root_marker_dir', 'M': 'mkdir', 'T': 'create_file' }
 " let g:Lf_FilerOnlyIconHighlight = 1
+
+
+"----------------------------------------------------------------------
+" ctags options
+"----------------------------------------------------------------------
+let g:Lf_CtagsFuncOpts = {
+			\ "dosini": "--iniconf-kinds=s --language-force=iniconf",
+			\ "taskini": "--iniconf-kinds=s --language-force=iniconf",
+			\ }
 
 
 "----------------------------------------------------------------------
@@ -108,7 +111,6 @@ if get(g:, 'lf_disable_normal_map', 0) == 0
 	nnoremap <space>fy :<c-u>Leaderf cmdHistory<cr>
 	" nnoremap <space>fh :<c-u>Leaderf help<cr>
 	nnoremap <space>fj :<c-u>Leaderf jumps<cr>
-	nnoremap <space>fp :<c-u>Leaderf snippet<cr>
 	nnoremap <space>fq :<c-u>Leaderf quickfix<cr>
 	nnoremap <space>fa :<c-u>Leaderf tasks<cr>
 	" filer
@@ -120,8 +122,4 @@ if get(g:, 'lf_disable_normal_map', 0) == 0
 	noremap <m-P> :cclose<cr>:Leaderf! --nowrap buftag<cr>
 	noremap <m-n> :cclose<cr>:Leaderf! --nowrap buffer<cr>
 	noremap <m-m> :cclose<cr>:Leaderf --nowrap tag<cr>
-endif
-
-if get(g:, 'lf_disable_snippet_map', 0) == 0
-	inoremap <c-x><c-x> <c-\><c-o>:Leaderf snippet<cr>
 endif
