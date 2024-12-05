@@ -76,10 +76,10 @@ let g:Lf_PreviewResult = {
 " filer
 "----------------------------------------------------------------------
 let g:Lf_FilerShowPromptPath = 1
-let g:Lf_FilerInsertMap = { '<Tab>': 'open_current', '<CR>': 'open_current',
+let g:Lf_FilerInsertMap = {'<CR>': 'open_current',
 	\ '<BS>': 'open_parent_or_backspace', '<up>': 'up', '<down>': 'down'}
-let g:Lf_FilerNormalMap = {'i': 'switch_insert_mode', '<esc>': 'quit', 
-	\ '~': 'goto_root_marker_dir', 'M': 'mkdir', 'T': 'create_file' }
+let g:Lf_FilerNormalMap = {'<esc>': 'quit', '~': 'goto_root_marker_dir', 
+	\ 'M': 'mkdir', 'T': 'create_file' }
 " let g:Lf_FilerOnlyIconHighlight = 1
 
 
@@ -119,7 +119,7 @@ if get(g:, 'lf_disable_normal_map', 0) == 0
 	" basic keymaps
 	noremap <c-n> :cclose<cr>:Leaderf --nowrap mru --regexMode<cr>
 	noremap <m-p> :cclose<cr>:Leaderf! --nowrap function<cr>
-	noremap <m-P> :cclose<cr>:Leaderf! --nowrap buftag<cr>
+	noremap <m-P> :cclose<cr>:Leaderf! --nowrap bufTag<cr>
 	noremap <m-n> :cclose<cr>:Leaderf! --nowrap buffer<cr>
 	noremap <m-m> :cclose<cr>:Leaderf --nowrap tag<cr>
 endif
