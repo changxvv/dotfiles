@@ -70,6 +70,7 @@ vnoremap gbr :Tabularize /\|/r0<cr>
 
 nmap gz <Plug>Sneak_s
 nmap gZ <Plug>Sneak_S
+nmap \ <Plug>Sneak_;
 vmap gz <Plug>Sneak_s
 vmap gZ <Plug>Sneak_S
 xmap gz <Plug>Sneak_s
@@ -166,12 +167,10 @@ if has_key(s:enabled, 'inter')
 	Plug 'vim-scripts/L9'
 	Plug 'mattn/webapi-vim'
 	Plug 'mattn/gist-vim'
-	Plug 'hrj/vim-DrawIt'
 	Plug 'lambdalisue/vim-gista', { 'on': 'Gista' }
 	if v:version >= 800 || has('nvim')
 		Plug 'rbong/vim-flog', { 'branch': 'v1' }
 	endif
-
 	Plug 'inkarkat/vim-ingo-library'
 	Plug 'inkarkat/vim-mark'
 endif

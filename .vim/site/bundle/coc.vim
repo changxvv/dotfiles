@@ -22,8 +22,8 @@ inoremap <silent><expr> <TAB>
 
 inoremap <silent><expr> <c-tab> coc#refresh()
 
-let g:coc_snippet_next = '<c-n>'
-let g:coc_snippet_prev = '<c-p>'
+let g:coc_snippet_next = '<c-j>'
+let g:coc_snippet_prev = '<c-k>'
 vmap <s-tab> <Plug>(coc-snippets-select)
 
 " Use `[g` and `]g` to navigate diagnostics
