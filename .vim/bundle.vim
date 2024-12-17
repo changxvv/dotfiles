@@ -184,7 +184,6 @@ if has_key(s:enabled, 'high')
 	Plug 'mhinz/vim-signify'
 	Plug 'junegunn/fzf'
 	Plug 'junegunn/fzf.vim'
-	Plug 'francoiscabrol/ranger.vim'
 	Plug 'sbdchd/neoformat'
 	Plug 'dhruvasagar/vim-table-mode'
 
@@ -192,12 +191,6 @@ if has_key(s:enabled, 'high')
 		Plug 'chiel92/vim-autoformat'
 		IncScript site/bundle/autoformat.vim
 	endif
-
-	let g:errormarker_disablemappings = 1
-	nnoremap <silent> <leader>cm :ErrorAtCursor<CR>
-	nnoremap <silent> <leader>cM :RemoveErrorMarkers<cr>
-
-	let g:ranger_map_keys = 0
 endif
 
 
@@ -290,6 +283,18 @@ endif
 if has_key(s:enabled, 'coc')
 	Plug 'neoclide/coc.nvim', {'branch': 'release'}
 	IncScript site/bundle/coc.vim
+endif
+
+" vim-lsp
+if has_key(s:enabled, 'lsp')
+	Plug 'prabirshrestha/vim-lsp'
+	Plug 'prabirshrestha/asyncomplete.vim'
+	Plug 'prabirshrestha/asyncomplete-lsp.vim'
+	Plug 'mattn/vim-lsp-settings'
+	Plug 'prabirshrestha/asyncomplete-buffer.vim'
+	Plug 'prabirshrestha/asyncomplete-tags.vim'
+	Plug 'jsit/asyncomplete-user.vim'
+	IncScript site/bundle/lsp.vim
 endif
 
 " copilot.vim
@@ -505,10 +510,6 @@ if has_key(s:enabled, 'notify')
 	if has('nvim')
 		Plug 'rcarriga/nvim-notify'
 	endif
-endif
-
-if has_key(s:enabled, 'tagbar')
-	Plug 'preservim/tagbar'
 endif
 
 if has_key(s:enabled, 'lh-cpp')
