@@ -184,13 +184,7 @@ if has_key(s:enabled, 'high')
 	Plug 'mhinz/vim-signify'
 	Plug 'junegunn/fzf'
 	Plug 'junegunn/fzf.vim'
-	Plug 'sbdchd/neoformat'
 	Plug 'dhruvasagar/vim-table-mode'
-
-	if has('python3') || has('python2')
-		Plug 'chiel92/vim-autoformat'
-		IncScript site/bundle/autoformat.vim
-	endif
 endif
 
 
