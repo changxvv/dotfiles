@@ -26,7 +26,6 @@
 	"diagnostic.enable": false,
 	"inlayHint.enable": false,
 
-	"snippets.snipmate.enable": false,
 	"snippets.userSnippetsDirectory": "~/.vim/site/ultisnips",
 	"snippets.extends": {
 		"markdown": ["texmath"],

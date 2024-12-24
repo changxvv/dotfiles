@@ -192,11 +192,8 @@ endif
 " 优化插件
 "----------------------------------------------------------------------
 if has_key(s:enabled, 'opt')
-	Plug 'dyng/ctrlsf.vim'
 	Plug 'tpope/vim-speeddating'
-	Plug 'voldikss/vim-translator'
 	Plug 'jreybert/vimagit'
-	Plug 'cohama/agit.vim'
 
 	Plug 'mhinz/vim-lookup'
 	Plug 'tweekmonster/helpful.vim'
@@ -226,17 +223,6 @@ if has_key(s:enabled, 'opt')
 	if has('win32') || has('win64')
 		let g:python3_host_prog="python"
 	endif
-
-	" Echo translation in the cmdline
-	nmap <silent> <Leader>tt <Plug>Translate
-	vmap <silent> <Leader>tt <Plug>TranslateV
-	" Display translation in a window
-	nmap <silent> <Leader>tw <Plug>TranslateW
-	vmap <silent> <Leader>tw <Plug>TranslateWV
-	" Replace the text with translation
-	nmap <silent> <Leader>tr <Plug>TranslateR
-	vmap <silent> <Leader>tr <Plug>TranslateRV
-	let g:translator_window_enable_icon = v:true
 endif
 
 
