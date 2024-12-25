@@ -195,9 +195,6 @@ if has_key(s:enabled, 'opt')
 	Plug 'tpope/vim-speeddating'
 	Plug 'jreybert/vimagit'
 
-	Plug 'mhinz/vim-lookup'
-	Plug 'tweekmonster/helpful.vim'
-
 	Plug 'AndrewRadev/switch.vim'
 	IncScript site/bundle/switch.vim
 
