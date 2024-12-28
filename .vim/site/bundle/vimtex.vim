@@ -1,7 +1,6 @@
 let g:tex_flavor='latex'
-set conceallevel=1
-let g:tex_conceal='abmg'
-let g:vimtex_syntax_conceal = {'math_bounds': 0}
+let g:vimtex_complete_enabled = 0
+let g:vimtex_syntax_conceal_disable = 1
 let g:vimtex_compiler_latexmk_engines = {
 	\ '_'                : '-xelatex',
 	\ 'pdflatex'         : '-pdf',
@@ -22,6 +21,4 @@ let g:vimtex_compiler_latexmk = {
 	\ ],
 	\}
 let g:vimtex_quickfix_open_on_warning = 0
-let g:vimtex_quickfix_mode = 0
 let g:vimtex_view_general_viewer = 'okular'
-" let g:vimtex_view_general_options = '--unique file:@pdf\#src:@line@tex'

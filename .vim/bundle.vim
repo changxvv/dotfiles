@@ -216,10 +216,6 @@ if has_key(s:enabled, 'opt')
 		Plug 'skywind3000/vim-gutentags'
 		Plug 'skywind3000/gutentags_plus'
 	endif
-
-	if has('win32') || has('win64')
-		let g:python3_host_prog="python"
-	endif
 endif
 
 
