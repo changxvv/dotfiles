@@ -47,6 +47,7 @@ if has('syntax')
 	syntax enable
 	syntax on
 endif
+set synmaxcol=300
 
 
 "----------------------------------------------------------------------
@@ -88,6 +89,7 @@ au FocusLost * silent! wa
 set switchbuf=useopen,newtab
 
 " 禁止响铃
+set novisualbell
 set belloff=all
 
 
@@ -97,9 +99,10 @@ set belloff=all
 
 " 如遇Unicode值大于255的文本，不必等到空格再折行
 set formatoptions+=m
-
 " 合并两行中文时，不在中间加空格
 set formatoptions+=B
+"合并注释的时候删除注释符
+set formatoptions+=j
 
 set formatlistpat=^\\s*                     " Optional leading whitespace
 set formatlistpat+=[                        " Start character class

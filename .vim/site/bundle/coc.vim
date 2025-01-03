@@ -24,7 +24,7 @@ inoremap <silent><expr> <c-tab> coc#refresh()
 
 let g:coc_snippet_next = '<c-j>'
 let g:coc_snippet_prev = '<c-k>'
-vmap <s-tab> <Plug>(coc-snippets-select)
+xmap <s-tab> <Plug>(coc-snippets-select)
 
 " Use `[g` and `]g` to navigate diagnostics
 " Use `:CocDiagnostics` to get all diagnostics of current buffer in location list
@@ -32,13 +32,14 @@ nmap <silent> [g <Plug>(coc-diagnostic-prev)
 nmap <silent> ]g <Plug>(coc-diagnostic-next)
 
 " GoTo code navigation
+nmap <silent> gt :call CocActionAsync('jumpDefinition', 'tabe')<CR>
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 
 " Use K to show documentation in preview window
-nnoremap <silent> zK :call ShowDocumentation()<CR>
+nnoremap <silent> K :call ShowDocumentation()<CR>
 
 function! ShowDocumentation()
   if CocAction('hasProvider', 'hover')
@@ -83,9 +84,6 @@ nmap <silent> <leader>re <Plug>(coc-codeaction-refactor)
 xmap <silent> <leader>rs  <Plug>(coc-codeaction-refactor-selected)
 nmap <silent> <leader>rs  <Plug>(coc-codeaction-refactor-selected)
 
-" Run the Code Lens action on the current line
-nmap <leader>cl  <Plug>(coc-codelens-action)
-
 " Map function and class text objects
 " NOTE: Requires 'textDocument.documentSymbol' support from the language server
 xmap if <Plug>(coc-funcobj-i)
@@ -106,6 +104,9 @@ if has('nvim-0.4.0') || has('patch-8.2.0750')
   vnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
   vnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
 endif
+
+nmap <silent> <C-c> <Plug>(coc-cursors-position)
+xmap <silent> <C-d> <Plug>(coc-cursors-range)
 
 " Use CTRL-S for selections ranges
 " Requires 'textDocument/selectionRange' support of language server

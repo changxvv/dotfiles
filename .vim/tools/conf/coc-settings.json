@@ -24,6 +24,8 @@
 	"signature.target": "echo",
 
 	"diagnostic.enable": false,
+	"diagnostic.virtualText": true,
+	"diagnostic.virtualTextCurrentLineOnly": false,
 	"inlayHint.enable": false,
 
 	"snippets.userSnippetsDirectory": "~/.vim/site/ultisnips",

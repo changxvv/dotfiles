@@ -92,6 +92,7 @@ if has_key(s:enabled, 'basic')
 	Plug 'tommcdo/vim-exchange'
 	Plug 'tommcdo/vim-lion'
 	Plug 'tpope/vim-eunuch'
+	Plug 'AndrewRadev/splitjoin.vim'
 	
 	Plug 'pprovost/vim-ps1', { 'for': 'ps1' }
 	Plug 'tbastos/vim-lua', { 'for': 'lua' }

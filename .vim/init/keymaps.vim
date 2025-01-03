@@ -6,15 +6,19 @@ let maplocalleader = " "
 no ; :
 no \ ;
 no ' `
-no Y y$
 no H ^
 no M zz
 no L g_
 no gV `[V`]
 no <silent><backspace> :noh<cr>:redraw!<cr>
 nnoremap U <c-r>
-vnoremap < <gv
-vnoremap > >gv
+xnoremap < <gv
+xnoremap > >gv
+nnoremap Y y$
+xnoremap p "_dP
+nnoremap <expr> k (v:count > 1 ? "m'" . v:count : '') . 'k'
+nnoremap <expr> j (v:count > 1 ? "m'" . v:count : '') . 'j'
+cnoremap <c-t> <C-R>=expand("%:p:h") . "/" <cr>
 
 " 关闭鼠标中键粘贴
 noremap <MiddleMouse> <LeftMouse>
@@ -44,6 +48,8 @@ ino <c-l> <right>
 ino <c-a> <home>
 ino <c-e> <end>
 ino <c-d> <del>
+ino <c-w> <c-[>diwa
+ino <c-u> <c-G>u<c-U>
 
 
 "----------------------------------------------------------------------
@@ -238,6 +244,7 @@ nnoremap <silent>]W :tablast<cr>
 " space + f + num: session management
 "----------------------------------------------------------------------
 set ssop-=options    " do not store global and local values in a session
+set ssop-=blank
 
 for s:index in range(5)
 	exec 'nnoremap <silent><leader>f'.s:index.'s :mksession! ~/.vim/session/session.'.s:index.'<cr>'
