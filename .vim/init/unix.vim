@@ -58,6 +58,12 @@ augroup AscUnixGroup
 	au BufNewFile,BufRead *.comp setlocal filetype=comp
 	au BufNewFile,BufRead *.lua.rename setlocal filetype=lua
 	au BufNewFile,BufRead *.fmt setlocal filetype=protogen
+	" jsonc纠正
+	au BufNewFile,BufRead *.cjson setlocal filetype=jsonc
+	au BufNewFile,BufRead coc-settings.json setlocal filetype=jsonc
+	au BufNewFile,BufRead .eslintrc.json setlocal filetype=jsonc
+	au BufNewFile,BufRead tsconfig*.json setlocal filetype=jsonc
+	au BufNewFile,BufRead jsconfig.json setlocal filetype=jsonc
 augroup END
 
 

@@ -1,43 +1,38 @@
 {
-	"suggest.floatConfig": {
-		"border": true,
-		"rounded": true,
-		"focusable": false
-	},
+	// preferences
+	"coc.preferences.messageLevel": "warning",
+	"coc.preferences.formatOnType": false,
+	"coc.preferences.enableMessageDialog": false,
+	"coc.preferences.currentFunctionSymbolAutoUpdate": false,
+	"coc.preferences.excludeImageLinksInMarkdownDocument": true,
+	"coc.preferences.extensionUpdateCheck": "never",
+	"coc.preferences.useQuickfixForLocations": true,
 
-	"signature.floatConfig": {
-		"border": true,
-		"rounded": true,
-		"focusable": false
-	},
+	// colors
+	"colors.enable": true,
+	"colors.highlightPriority": 1000,
 
-	"hover.floatConfig": {
-		"border": true,
-		"rounded": false,
-		"focusable": false
-	},
+	// documentHighlight
+	"documentHighlight.timeout": 300,
+	"documentHighlight.priority": -1,
 
+	"suggest.languageSourcePriority": 98,
 	"suggest.autoTrigger": "always",
+	"suggest.detailField": "preview",
+	"suggest.triggerCompletionWait": 0,
 	"suggest.noselect": false,
+	"suggest.enablePreselect": true,
+	"suggest.enableFloat": true,
+	"suggest.chineseSegments": true,
+	"suggest.reTriggerAfterIndent": true,
+	"suggest.minTriggerInputLength": 1,
+	"suggest.maxCompleteItemCount": 20,
+	"suggest.highPrioritySourceLimit": 20,
+	"suggest.lowPrioritySourceLimit": 20,
+	// "suggest.removeDuplicateItems": true,
 	"suggest.timeout": 5000,
-
-	"signature.target": "echo",
-
-	"diagnostic.enable": false,
-	"diagnostic.virtualText": true,
-	"diagnostic.virtualTextCurrentLineOnly": false,
-	"inlayHint.enable": false,
-
-	"snippets.userSnippetsDirectory": "~/.vim/site/ultisnips",
-	"snippets.extends": {
-		"markdown": ["texmath"],
-		"latex": ["tex", "texmath"]
-	},
-
-	"list.source.grep.defaultArgs": ["-smartcase", "-regex"],
-	"list.source.grep.defaultOptions": ["--interactive", "--no-sort", "--regex"],
-
 	"suggest.completionItemKindLabels": {
+		"constructor": "\uFB25 Constructor",
 		"keyword": "\uf1de Keyword",
 		"variable": "\ue79b Variable",
 		"value": "\uf4f7 Value",
@@ -63,5 +58,141 @@
 		"snippet": "\ue60b Snippet",
 		"typeParameter": "\ueaa8 Parameter",
 		"default": "\uf29c Default"
+	},
+	"suggest.preferCompleteThanJumpPlaceholder": false,
+	"suggest.selection": "recentlyUsedByPrefix",
+	"suggest.invalidInsertCharacters": [" ", ",", ":", ";", "(", "<", "{", "[", "\r", "\n"],
+
+	// signature
+	"signature.target": "float",
+	"signature.hideOnTextChange": true,
+	"signature.preferShownAbove": false,
+
+	// outline
+	"outline.switchSortKey": "<C-s>",
+
+	// notification
+	"notification.highlightGroup": "CocFloating",
+	"notification.marginRight": 1,
+
+	// workspace
+	"workspace.rootPatterns": [
+		".svn",
+		".git",
+		".root",
+		".project",
+		".hg",
+		"_darcs",
+		"build.xml",
+		".idea"
+	],
+	"workspace.ignoredFiletypes": [
+		"markdown",
+		"log",
+		"txt",
+		"help"
+	],
+
+	// dialog
+	"dialog.maxHeight": 20,
+
+	// hover
+	"hover.target": "float",
+
+	// diagnostic
+	"diagnostic.enable": false,
+	"diagnostic.signPriority": 10,
+	"diagnostic.virtualText": true,
+	"diagnostic.signLevel": "hint",
+	"diagnostic.messageLevel": "hint",
+	"diagnostic.virtualTextLevel": "hint",
+	"diagnostic.locationlistLevel": "hint",
+	"diagnostic.format": "%message\n[%source:%code]",
+
+	// inlayHint
+	"inlayHint.enable": false,
+
+	// list
+	"list.limitLines": 30000,
+	"list.nextKeymap": "<C-n>",
+	"list.previousKeymap": "<C-p>",
+
+	// coc-snippets
+	"snippets.priority": 100,
+	"snippets.userSnippetsDirectory": "~/.vim/site/ultisnips",
+	"snippets.loadVSCodeProjectSnippets": false,
+	"snippets.extends": {
+		"markdown": ["texmath"],
+		"latex": ["tex", "texmath"]
 	}
+
+	// coc-yank
+	"yank.priority": 20,
+	"yank.limit": 20,
+	"yank.list.maxsize": 100,
+
+	// source-file
+	"coc.source.file.enable": true,
+	"coc.source.file.priority": 110,
+	"coc.source.file.ignoreHidden": false,
+	"coc.source.file.shortcut": "D & F",
+	"coc.source.file.triggerCharacters": [
+		"/",
+		"\\"
+	],
+	"coc.source.file.trimSameExts": [
+		".ts",
+		".js"
+	],
+
+	// sources-10k words
+	"coc.source.word.enable": true,
+	"coc.source.word.priority":20,
+	"coc.source.word.shortcut": "10K",
+
+	// source-emoji
+	"coc.source.emoji.enable": true,
+	"coc.source.emoji.priority": 10,
+	"coc.source.emoji.shortcut": "EMOJI",
+	"coc.source.emoji.filetypes": ["markdown"],
+	"coc.source.emoji.triggerCharacters": [
+		"~"
+	],
+
+	// source-around
+	"coc.source.around.enable": true,
+	"coc.source.around.priority": 50,
+	"coc.source.around.shortcut": "AR",
+
+	// source-buffer
+	"coc.source.buffer.enable": true,
+	"coc.source.buffer.priority": 30,
+	"coc.source.buffer.shortcut": "BF",
+	"coc.source.buffer.ignoreGitignore": true,
+
+	// source-dictionary
+	"coc.source.dictionary.enable": true,
+	"coc.source.dictionary.priority": 20,
+	"coc.source.dictionary.shortcut": "DIC",
+
+	// source-tag
+	"coc.source.tag.enable": true,
+	"coc.source.tag.priority": 40,
+	"coc.source.tag.shortcut": "TAG",
+
+	// source-syntax
+	"coc.source.syntax.enable": true,
+	"coc.source.syntax.priority": 60,
+	"coc.source.syntax.shortcut": "SYN",
+	"coc.source.syntax.filetypes": null,
+	"coc.source.syntax.firstMatch": false,
+
+	// source-omni
+	"coc.source.omni.enable": false,
+	"coc.source.omni.priority": 20,
+	"coc.source.omni.shortcut": "OMNI",
+	"coc.source.omni.filetypes": [
+		"ruby"
+	]
 }
+

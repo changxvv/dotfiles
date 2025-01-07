@@ -393,10 +393,6 @@ if has_key(s:enabled, 'clap')
 	endif
 endif
 
-if has_key(s:enabled, 'splitjoin')
-	Plug 'AndrewRadev/splitjoin.vim'
-endif
-
 if has_key(s:enabled, 'neocomplete')
 	if !has('patch-8.2.1065')
 		Plug 'Shougo/neocomplete.vim'
