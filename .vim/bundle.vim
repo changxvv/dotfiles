@@ -283,12 +283,6 @@ if has_key(s:enabled, 'vimspector')
 	IncScript site/bundle/vimspector.vim
 endif
 
-" NeoDebug
-if has_key(s:enabled, 'neodebug')
-	Plug 'skywind3000/NeoDebug'
-	IncScript site/bundle/neodebug.vim
-endif
-
 " echodoc
 if has_key(s:enabled, 'echodoc')
 	Plug 'Shougo/echodoc.vim'
@@ -393,39 +387,6 @@ if has_key(s:enabled, 'clap')
 	endif
 endif
 
-if has_key(s:enabled, 'neocomplete')
-	if !has('patch-8.2.1065')
-		Plug 'Shougo/neocomplete.vim'
-		let g:neocomplete#enable_at_startup = 1
-		let g:neocomplete#sources#syntax#min_keyword_length = 2
-		inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
-		inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
-		inoremap <expr><C-g><C-g> neocomplete#undo_completion()
-		inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
-		function! s:my_cr_function()
-			return (pumvisible() ? "\<C-y>" : "" ) . "\<CR>"
-		endfunction
-	else
-		echohl ErrorMsg
-		echom 'ERROR: neocomplete is incompatible with vim-8.2.1065+'
-		echohl None
-	endif
-endif
-
-if has_key(s:enabled, 'omni')
-	Plug 'vim-scripts/OmniCppComplete', {'for':['cpp']}
-	" Plug 'c9s/perlomni.vim', {'for':['perl']}
-	Plug 'shawncplus/phpcomplete.vim', {'for': ['php']}
-	" Plug 'artur-shaik/vim-javacomplete2'
-	Plug 'othree/html5.vim', {'for': ['html']}
-	" Plug 'xolox/vim-lua-ftplugin', {'for': ['lua']}
-	let g:lua_complete_omni = 0
-	let g:lua_check_globals = 0
-	let g:lua_check_syntax = 0
-	let g:lua_define_completion_mappings = 0
-	" autocmd FileType java setlocal omnifunc=javacomplete#Complete
-endif
-
 if has_key(s:enabled, 'lsp-lcn')
 	Plug 'autozimu/LanguageClient-neovim', { 'branch': 'next' }
 	IncScript site/bundle/lcn.vim
@@ -444,12 +405,6 @@ endif
 if has_key(s:enabled, 'tabnine')
 	Plug 'codota/tabnine-vim'
 	IncScript site/bundle/tabnine.vim
-endif
-
-if has_key(s:enabled, 'games')
-	Plug 'iqxd/vim-mine-sweeping'
-	Plug 'vim-scripts/Mines'
-	Plug 'katono/rogue.vim'
 endif
 
 if has_key(s:enabled, 'whichkey')
@@ -480,19 +435,6 @@ if has_key(s:enabled, 'notify')
 	if has('nvim')
 		Plug 'rcarriga/nvim-notify'
 	endif
-endif
-
-if has_key(s:enabled, 'lh-cpp')
-	Plug 'LucHermitte/lh-vim-lib'
-	Plug 'LucHermitte/lh-style'
-	Plug 'LucHermitte/lh-tags'
-	Plug 'LucHermitte/lh-dev'
-	Plug 'LucHermitte/lh-brackets'
-	Plug 'LucHermitte/searchInRuntime'
-	Plug 'LucHermitte/mu-template'
-	Plug 'tomtom/stakeholders_vim'
-	Plug 'LucHermitte/alternate-lite'
-	Plug 'LucHermitte/lh-cpp'
 endif
 
 

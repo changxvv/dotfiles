@@ -100,7 +100,7 @@
 	"hover.target": "float",
 
 	// diagnostic
-	"diagnostic.enable": false,
+	"diagnostic.enable": true,
 	"diagnostic.signPriority": 10,
 	"diagnostic.virtualText": true,
 	"diagnostic.signLevel": "hint",
@@ -108,6 +108,7 @@
 	"diagnostic.virtualTextLevel": "hint",
 	"diagnostic.locationlistLevel": "hint",
 	"diagnostic.format": "%message\n[%source:%code]",
+	"diagnostic.displayByAle": true,
 
 	// inlayHint
 	"inlayHint.enable": false,

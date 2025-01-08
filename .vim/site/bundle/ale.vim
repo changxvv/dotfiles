@@ -2,7 +2,7 @@
 " ale
 "----------------------------------------------------------------------
 let g:ale_linters_explicit = 1
-let g:ale_completion_delay = 500
+let g:ale_disable_lsp = 1
 let g:ale_echo_delay = 100
 let g:ale_lint_delay = 1000
 let g:ale_echo_msg_format = '[%linter%] %code: %%s [%severity% (%type%)]'
@@ -32,6 +32,7 @@ let g:ale_linters = {
 			\ 'go': ['go build', 'gofmt'],
 			\ 'java': ['javac'],
 			\ 'javascript': ['eslint'], 
+			\ 'typescript': ['eslint'],
 			\ }
 
 function! s:lintcfg(name)
