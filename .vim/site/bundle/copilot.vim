@@ -9,8 +9,6 @@ let g:copilot_proxy_strict_ssl = v:false
 " mappings
 "----------------------------------------------------------------------
 imap <silent><script><expr> <c-b> copilot#Accept("\<CR>")
-imap <silent><script><expr> <m-f> copilot#Accept("\<CR>")
-imap <silent><script><expr> <m-q> copilot#Accept("\<CR>")
 
 imap <silent><m-]> <Plug>(copilot-next)
 imap <silent><m-[> <Plug>(copilot-previous)

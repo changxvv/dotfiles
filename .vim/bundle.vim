@@ -283,13 +283,6 @@ if has_key(s:enabled, 'vimspector')
 	IncScript site/bundle/vimspector.vim
 endif
 
-" echodoc
-if has_key(s:enabled, 'echodoc')
-	Plug 'Shougo/echodoc.vim'
-	set noshowmode
-	let g:echodoc#enable_at_startup = 1
-endif
-
 " lightline
 if has_key(s:enabled, 'lightline')
 	Plug 'itchyny/lightline.vim'
