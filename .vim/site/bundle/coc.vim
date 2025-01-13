@@ -111,7 +111,7 @@ xmap ac <Plug>(coc-classobj-a)
 omap ac <Plug>(coc-classobj-a)
 
 nmap <silent> <C-c> <Plug>(coc-cursors-position)
-xmap <silent> <C-d> <Plug>(coc-cursors-range)
+xmap <silent> <C-r> <Plug>(coc-cursors-range)
 
 " Use CTRL-S for selections ranges
 " Requires 'textDocument/selectionRange' support of language server

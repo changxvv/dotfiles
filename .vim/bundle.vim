@@ -298,14 +298,6 @@ endif
 if has_key(s:enabled, 'matchup')
 	Plug 'andymass/vim-matchup'
 	IncScript site/bundle/matchup.vim
-else
-	runtime! macros/matchit.vim
-endif
-
-" vimwiki
-if has_key(s:enabled, 'vimwiki')
-	Plug 'vimwiki/vimwiki'
-	IncScript site/bundle/vimwiki.vim
 endif
 
 " airline
@@ -314,13 +306,6 @@ if has_key(s:enabled, 'airline')
 	Plug 'vim-airline/vim-airline-themes'
 	let g:airline_font = 1
 	IncScript site/bundle/airline.vim
-endif
-
-if has_key(s:enabled, 'neovim')
-	if !has('nvim')
-		Plug 'roxma/nvim-yarp'
-		Plug 'roxma/vim-hug-neovim-rpc'
-	endif
 endif
 
 if has_key(s:enabled, 'floaterm')
