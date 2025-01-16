@@ -93,6 +93,5 @@ endif
 " 主题加载
 set bg=dark
 set t_Co=256
-let g:edge_better_performance = 1
 colorscheme edge
 let g:lightline.colorscheme = 'edge'
