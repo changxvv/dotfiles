@@ -43,9 +43,6 @@ InScript init/keymaps.vim
 " 插件设置
 InScript init/plugins.vim
 
-" 状态栏设置
-InScript init/status.vim
-
 "其他
 InScript init/misc.vim
 InScript init/gui.vim
@@ -96,5 +93,6 @@ endif
 " 主题加载
 set bg=dark
 set t_Co=256
+let g:edge_better_performance = 1
 colorscheme edge
 let g:lightline.colorscheme = 'edge'

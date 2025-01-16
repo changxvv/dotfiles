@@ -125,9 +125,10 @@
 	"snippets.extends": {
 		"markdown": ["texmath"],
 		"latex": ["tex", "texmath"]
-	}
+	},
 
 	// coc-yank
+	"yank.highlight.enable": false,
 	"yank.priority": 20,
 	"yank.limit": 20,
 	"yank.list.maxsize": 100,

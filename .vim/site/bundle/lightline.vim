@@ -2,7 +2,7 @@ let g:lightline = {}
 
 let g:lightline.active = {
 			\ 'left': [['mode', 'paste'],
-			\          ['git_branch', 'readonly', 'absolutepath', 'modified'],
+			\          ['git_branch', 'readonly', 'absolutepath'],
 			\          ['buffers_count', 'coc_status', 'gutentags']],
 			\ 'right': [['lineinfo'],
 			\           ['fileformat', 'fileencoding', 'filetype']]
@@ -13,20 +13,30 @@ let g:lightline.inactive = {
 			\ 'right': [['lineinfo']]
 			\ }
 
-
 let g:lightline.tabline = {
 			\ 'left': [['tabs']],
 			\ 'right': []
 			\ }
 let g:lightline.tab = {
-			\ 'active': ['tab_number', 'filename', 'modified'],
-			\ 'inactive': ['tab_number', 'filename', 'modified']
+			\ 'active': ['tabnum', 'filename', 'modified'],
+			\ 'inactive': ['tabnum', 'filename', 'modified']
+			\ }
+
+let g:lightline.component = {
+			\ 'absolutepath': '%F',
+			\ 'paste': '%{&paste?"PASTE":""}',
+			\ 'readonly': '%{&readonly?"":""}',
+			\ 'modified': '%M',
+			\ 'lineinfo': '%3l/%L:%-2c',
+			\ 'fileformat': '%{&ff}',
+			\ 'filetype': '%{&ft!=#""?&ft:"no ft"}',
+			\ 'fileencoding': '%{(&fenc!=#""?&fenc:&enc).(&bomb?",BOM":"")}',
+			\ 'filename': '%t',
 			\ }
 
 let g:lightline.component_function = {
 			\ 'mode': 'LightlineMode',
 			\ 'git_branch': 'LightlineFugitive',
-			\ 'readonly': 'LightlineReadonly',
 			\ 'buffers_count': 'BuffersCount',
 			\ 'gutentags': 'gutentags#statusline',
 			\ 'coc_status': 'coc#status'
@@ -54,13 +64,9 @@ function! LightlineFugitive()
 	return ''
 endfunction
 
-function! LightlineReadonly()
-	return &readonly ? '' : ''
-endfunction
-
 function! BuffersCount()
 	let term_count = has('nvim') ? 0 : len(filter(range(1, bufnr('$')), 'getbufvar(v:val, "&buftype") == "terminal"'))
-	let changed_buffer = len(filter(getbufinfo(), 'v:val.changed == 1')) - term_count
+	let current_buffer = bufnr('%')
 	let all_buffer = len(getbufinfo({'buflisted':1}))
-	return changed_buffer . '/' . all_buffer
+	return current_buffer . '(' . all_buffer . ')'
 endfunc
