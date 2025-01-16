@@ -16,7 +16,7 @@ if has('gui_running')
 		endtry
 	endif
 	set guicursor+=a:blinkon0
-	set guioptions=eg
+	set guioptions=g
 endif
 
 

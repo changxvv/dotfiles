@@ -286,7 +286,8 @@ endif
 " lightline
 if has_key(s:enabled, 'lightline')
 	Plug 'itchyny/lightline.vim'
-	IncScript site/bundle/lightline.vim
+	" let g:lightline_unicode = 1
+	" IncScript site/bundle/lightline.vim
 endif
 
 " ale
