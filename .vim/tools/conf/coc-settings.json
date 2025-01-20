@@ -6,7 +6,6 @@
 	"coc.preferences.currentFunctionSymbolAutoUpdate": false,
 	"coc.preferences.excludeImageLinksInMarkdownDocument": true,
 	"coc.preferences.extensionUpdateCheck": "never",
-	"coc.preferences.useQuickfixForLocations": true,
 
 	// colors
 	"colors.enable": true,
@@ -17,6 +16,7 @@
 	"documentHighlight.priority": -1,
 
 	"suggest.languageSourcePriority": 98,
+	"suggest.acceptSuggestionOnCommitCharacter": true,
 	"suggest.autoTrigger": "always",
 	"suggest.detailField": "preview",
 	"suggest.triggerCompletionWait": 0,
@@ -68,6 +68,9 @@
 	"signature.hideOnTextChange": true,
 	"signature.preferShownAbove": false,
 
+	// semanticToken
+	"semanticTokens.enable": true,
+
 	// outline
 	"outline.switchSortKey": "<C-s>",
 
@@ -102,7 +105,7 @@
 	// diagnostic
 	"diagnostic.enable": true,
 	"diagnostic.signPriority": 10,
-	"diagnostic.virtualText": true,
+	"diagnostic.virtualText": false,
 	"diagnostic.signLevel": "hint",
 	"diagnostic.messageLevel": "hint",
 	"diagnostic.virtualTextLevel": "hint",

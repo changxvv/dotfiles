@@ -9,6 +9,8 @@ let g:ale_echo_msg_format = '[%linter%] %code: %%s [%severity% (%type%)]'
 let g:ale_lint_on_text_changed = 'normal'
 let g:ale_lint_on_insert_leave = 1
 let g:ale_virtualtext_cursor = 0
+let g:ale_set_loclist = 0
+let g:airline#extensions#ale#enabled = 1
 
 
 "----------------------------------------------------------------------
@@ -17,8 +19,6 @@ let g:ale_virtualtext_cursor = 0
 if has('win32') == 0 && has('win64') == 0 && has('win32unix') == 0
 	let g:ale_command_wrapper = 'nice -n5'
 endif
-
-let g:airline#extensions#ale#enabled = 1
 
 
 "----------------------------------------------------------------------

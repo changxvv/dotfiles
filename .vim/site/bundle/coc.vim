@@ -25,6 +25,7 @@ let g:coc_global_extensions = [
 	\ 'coc-tsserver',
 	\ 'coc-word',
 	\ 'coc-yank',
+	\ 'coc-vimlsp'
 	\ ]
 
 " Use tab for trigger completion with characters ahead and navigate.
@@ -41,17 +42,16 @@ let g:coc_snippet_next = '<c-j>'
 let g:coc_snippet_prev = '<c-k>'
 xmap <s-tab> <Plug>(coc-snippets-select)
 
-" Use `[g` and `]g` to navigate diagnostics
-" Use `:CocDiagnostics` to get all diagnostics of current buffer in location list
-nmap <silent> [g <Plug>(coc-diagnostic-prev)
-nmap <silent> ]g <Plug>(coc-diagnostic-next)
-
 " GoTo code navigation
 nmap <silent> gt :call CocActionAsync('jumpDefinition', 'tabe')<CR>
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
+nnoremap <silent>gj :call CocAction('showIncomingCalls')<Cr>
+nnoremap <silent>gk :call CocAction('showOutgoingCalls')<Cr>
+nnoremap <silent>gu :call CocAction('showSubTypes')<Cr>
+nnoremap <silent>gs :call CocAction('showSuperTypes')<Cr>
 
 " Use K to show documentation in preview window
 nnoremap <silent> K :call ShowDocumentation()<CR>
@@ -68,7 +68,7 @@ endfunction
 autocmd CursorHold * silent call CocActionAsync('highlight')
 
 " Symbol renaming
-nmap <leader>rn <Plug>(coc-rename)
+nmap <f2> <Plug>(coc-rename)
 
 " Formatting selected code
 xmap <leader>f  <Plug>(coc-format-selected)
@@ -92,10 +92,11 @@ nmap <leader>ac  <Plug>(coc-codeaction-cursor)
 " Remap keys for apply code actions affect whole buffer
 nmap <leader>as  <Plug>(coc-codeaction-source)
 " Apply the most preferred quickfix action to fix diagnostic on the current line
+xmap <leader>qf  <Plug>(coc-fix-current)
 nmap <leader>qf  <Plug>(coc-fix-current)
 
 " Remap keys for applying refactor code actions
-nmap <silent> <leader>re <Plug>(coc-codeaction-refactor)
+nmap <silent> <leader>ar <Plug>(coc-codeaction-refactor)
 xmap <silent> <leader>rs  <Plug>(coc-codeaction-refactor-selected)
 nmap <silent> <leader>rs  <Plug>(coc-codeaction-refactor-selected)
 

@@ -3,9 +3,9 @@ let g:lightline = {}
 let g:lightline.active = {
 			\ 'left': [['mode', 'paste'],
 			\          ['git_branch', 'readonly', 'absolutepath'],
-			\          ['buffers_count', 'coc_status', 'gutentags']],
+			\          ['buffers_count', 'gutentags']],
 			\ 'right': [['lineinfo'],
-			\           ['fileformat', 'fileencoding', 'filetype']]
+			\           ['fileformat', 'fileencoding', 'filetype'], ['coc_status', 'ale_status']]
 			\ }
 
 let g:lightline.inactive = {
@@ -37,9 +37,10 @@ let g:lightline.component = {
 let g:lightline.component_function = {
 			\ 'mode': 'LightlineMode',
 			\ 'git_branch': 'LightlineFugitive',
-			\ 'buffers_count': 'BuffersCount',
+			\ 'buffers_count': 'LightlineBuffersCount',
 			\ 'gutentags': 'gutentags#statusline',
-			\ 'coc_status': 'coc#status'
+			\ 'coc_status': 'coc#status',
+			\ 'ale_status': 'LightlineAleStatus'
 			\ }
 
 function! LightlineMode()
@@ -64,9 +65,25 @@ function! LightlineFugitive()
 	return ''
 endfunction
 
-function! BuffersCount()
+function! LightlineBuffersCount()
 	let term_count = has('nvim') ? 0 : len(filter(range(1, bufnr('$')), 'getbufvar(v:val, "&buftype") == "terminal"'))
 	let current_buffer = bufnr('%')
 	let all_buffer = len(getbufinfo({'buflisted':1}))
 	return current_buffer . '(' . all_buffer . ')'
 endfunc
+
+function! LightlineAleStatus()
+	if getbufvar(bufnr(''), 'ale_linted', 0) == 0
+		return ''
+	endif
+
+	let l:counts = ale#statusline#Count(bufnr(''))
+	let l:all_errors = l:counts.error + l:counts.style_error
+	let l:all_non_errors = l:counts.total - l:all_errors
+
+	return l:counts.total == 0 ? '✓' : printf(
+				\ 'E:%d W:%d',
+				\ all_errors,
+				\ all_non_errors,
+				\ )
+endfunction
