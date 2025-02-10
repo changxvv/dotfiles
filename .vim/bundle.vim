@@ -223,12 +223,10 @@ endif
 "----------------------------------------------------------------------
 " modules
 "----------------------------------------------------------------------
-" gdb
 if has_key(s:enabled, 'gdb')
 	IncScript site/bundle/gdb.vim
 endif
 
-" endwise
 if has_key(s:enabled, 'endwise')
 	Plug 'tpope/vim-endwise'
 endif
@@ -240,7 +238,6 @@ if has_key(s:enabled, 'tex') && (has('python3') || has('python'))
 	IncScript site/bundle/vimtex.vim
 endif
 
-" vim-go
 if has_key(s:enabled, 'vim-go')
 	Plug 'fatih/vim-go'
 	IncScript site/bundle/go.vim
@@ -253,7 +250,6 @@ if has_key(s:enabled, 'devdocs')
 	endif
 endif
 
-" CoC
 if has_key(s:enabled, 'coc')
 	Plug 'neoclide/coc.nvim', {'branch': 'release'}
 	IncScript site/bundle/coc.vim
@@ -271,25 +267,21 @@ if has_key(s:enabled, 'lsp')
 	IncScript site/bundle/lsp.vim
 endif
 
-" copilot.vim
 if has_key(s:enabled, 'copilot')
 	Plug 'github/copilot.vim'
 	IncScript site/bundle/copilot.vim
 endif
 
-" vimspector
 if has_key(s:enabled, 'vimspector')
 	Plug 'puremourning/vimspector'
 	IncScript site/bundle/vimspector.vim
 endif
 
-" lightline
 if has_key(s:enabled, 'lightline')
 	Plug 'itchyny/lightline.vim'
 	IncScript site/bundle/lightline.vim
 endif
 
-" ale
 if has_key(s:enabled, 'ale')
 	Plug 'w0rp/ale'
 	IncScript site/bundle/ale.vim
@@ -300,7 +292,6 @@ if has_key(s:enabled, 'matchup')
 	IncScript site/bundle/matchup.vim
 endif
 
-" airline
 if has_key(s:enabled, 'airline')
 	Plug 'vim-airline/vim-airline'
 	Plug 'vim-airline/vim-airline-themes'
@@ -341,10 +332,6 @@ endif
 
 if has_key(s:enabled, 'editorconfig')
 	Plug 'editorconfig/editorconfig-vim'
-endif
-
-if has_key(s:enabled, 'neoterm')
-	Plug 'kassio/neoterm'
 endif
 
 if has_key(s:enabled, 'clap')
