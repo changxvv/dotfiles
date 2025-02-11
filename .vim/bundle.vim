@@ -322,43 +322,13 @@ if has_key(s:enabled, 'grammer')
 	nmap <space>rp <Plug>(grammarous-move-to-previous-error)
 endif
 
-if has_key(s:enabled, 'neomake')
-	Plug 'neomake/neomake'
-endif
-
 if has_key(s:enabled, 'vista')
 	Plug 'liuchengxu/vista.vim'
+	let g:vista_default_executive = 'coc'
 endif
 
 if has_key(s:enabled, 'editorconfig')
 	Plug 'editorconfig/editorconfig-vim'
-endif
-
-if has_key(s:enabled, 'clap')
-	if !has('nvim')
-		Plug 'liuchengxu/vim-clap'
-		IncScript site/bundle/clap.vim
-	endif
-endif
-
-if has_key(s:enabled, 'lsp-lcn')
-	Plug 'autozimu/LanguageClient-neovim', { 'branch': 'next' }
-	IncScript site/bundle/lcn.vim
-endif
-
-if has_key(s:enabled, 'keysound')
-	Plug 'skywind3000/vim-keysound'
-	let g:keysound_theme = 'default'
-	let g:keysound_enable = 1
-endif
-
-if has_key(s:enabled, 'icons')
-	Plug 'istepura/vim-toolbar-icons-silk'
-endif
-
-if has_key(s:enabled, 'tabnine')
-	Plug 'codota/tabnine-vim'
-	IncScript site/bundle/tabnine.vim
 endif
 
 if has_key(s:enabled, 'whichkey')
@@ -383,12 +353,6 @@ endif
 
 if has_key(s:enabled, 'anyjump')
 	Plug 'pechorin/any-jump.vim'
-endif
-
-if has_key(s:enabled, 'notify')
-	if has('nvim')
-		Plug 'rcarriga/nvim-notify'
-	endif
 endif
 
 
