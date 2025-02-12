@@ -142,14 +142,6 @@ if has_key(s:enabled, 'basic')
   let g:vim_markdown_new_list_item_indent = 2
 	let g:vim_markdown_frontmatter = 1
 
-	" let g:cpp_class_scope_highlight = 1
-	let g:cpp_member_variable_highlight = 1
-	let g:cpp_class_decl_highlight = 1
-	" let g:cpp_experimental_simple_template_highlight = 1
-	let g:cpp_concepts_highlight = 1
-	" let g:cpp_no_function_highlight = 1
-	let g:cpp_posix_standard = 1
-
 	let g:python_highlight_builtins = 1
 	let g:python_highlight_builtin_objs = 1
 	let g:python_highlight_builtin_types = 1
@@ -329,16 +321,6 @@ endif
 
 if has_key(s:enabled, 'editorconfig')
 	Plug 'editorconfig/editorconfig-vim'
-endif
-
-if has_key(s:enabled, 'whichkey')
-	Plug 'liuchengxu/vim-which-key'
-	IncScript site/bundle/which_key.vim
-endif
-
-if has_key(s:enabled, 'supertab')
-	Plug 'ervandew/supertab'
-	IncScript site/bundle/supertab.vim
 endif
 
 if has_key(s:enabled, 'blamer')

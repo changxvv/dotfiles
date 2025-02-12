@@ -193,11 +193,11 @@
 	"coc.source.syntax.firstMatch": false,
 
 	// source-omni
-	"coc.source.omni.enable": false,
-	"coc.source.omni.priority": 20,
+	"coc.source.omni.enable": true,
+	"coc.source.omni.priority": 60,
 	"coc.source.omni.shortcut": "OMNI",
 	"coc.source.omni.filetypes": [
-		"ruby"
+		"beancount"
 	]
 }
 
