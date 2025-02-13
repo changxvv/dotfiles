@@ -61,7 +61,7 @@
 	},
 	"suggest.preferCompleteThanJumpPlaceholder": false,
 	"suggest.selection": "recentlyUsedByPrefix",
-	"suggest.invalidInsertCharacters": [" ", ",", ":", ";", "(", "<", "{", "[", "\r", "\n"],
+	"suggest.invalidInsertCharacters": [" ", ",", ";", "(", "<", "{", "[", "\r", "\n"],
 
 	// signature
 	"signature.target": "float",
