@@ -102,7 +102,6 @@ if has_key(s:enabled, 'basic')
 	Plug 'lark-parser/vim-lark-syntax'
 	Plug 'nathangrigg/vim-beancount', { 'for': 'bean' }
 	Plug 'dylon/vim-antlr'
-	Plug 'beyondmarc/hlsl.vim'
 	if has('patch-9.0.1767') == 0
 		Plug 'peterhoeg/vim-qml'
 	endif
@@ -136,17 +135,6 @@ if has_key(s:enabled, 'basic')
 		IncScript site/bundle/leaderf.vim
 	endif
 
-	let g:tex_conceal = ""
-	let g:vim_markdown_math = 1
-	let g:vim_markdown_conceal_code_blocks = 0
-  let g:vim_markdown_new_list_item_indent = 2
-	let g:vim_markdown_frontmatter = 1
-
-	let g:python_highlight_builtins = 1
-	let g:python_highlight_builtin_objs = 1
-	let g:python_highlight_builtin_types = 1
-	let g:python_highlight_builtin_funcs = 1
-
 	nmap <m-e> <Plug>(choosewin)
 	map <m-+> <Plug>(expand_region_expand)
 	map <m-_> <Plug>(expand_region_shrink)
@@ -157,7 +145,6 @@ end
 " 进阶插件
 "----------------------------------------------------------------------
 if has_key(s:enabled, 'inter')
-	Plug 'vim-scripts/L9'
 	Plug 'mattn/webapi-vim'
 	Plug 'mattn/gist-vim'
 	Plug 'lambdalisue/vim-gista', { 'on': 'Gista' }

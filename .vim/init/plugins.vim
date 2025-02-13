@@ -194,3 +194,22 @@ let g:edge_better_performance = 1
 let g:bufferhint_CustomHighlight = 1
 hi! default link KeyHint Statement
 hi! default link AtHint Identifier
+
+
+"----------------------------------------------------------------------
+" vim-markdown
+"----------------------------------------------------------------------
+let g:tex_conceal = ""
+let g:vim_markdown_math = 1
+let g:vim_markdown_conceal_code_blocks = 0
+let g:vim_markdown_new_list_item_indent = 2
+let g:vim_markdown_frontmatter = 1
+
+
+"----------------------------------------------------------------------
+" python-syntax
+"----------------------------------------------------------------------
+let g:python_highlight_builtins = 1
+let g:python_highlight_builtin_objs = 1
+let g:python_highlight_builtin_types = 1
+let g:python_highlight_builtin_funcs = 1
