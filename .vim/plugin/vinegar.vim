@@ -173,7 +173,6 @@ function! s:setup_vinegar()
 		endif
 	elseif &ft == 'dirvish'
         exec 'nmap <buffer><silent> ' . key. ' <Plug>(dirvish_up)'
-		nnoremap <silent><buffer> r :Dirvish %<cr>
     elseif &ft == 'markdown' || &ft == 'vimwiki'
         exec 'nnoremap <buffer><silent> ' . key. ' :VinegarOpen edit<cr>'
 	endif
@@ -190,15 +189,6 @@ augroup VinegarGroup
 	autocmd FileType dirvish call s:setup_vinegar()
 	autocmd FileType markdown,vimwiki call s:setup_vinegar()
 augroup END
-
-
-"----------------------------------------------------------------------
-" initialize NERDTree
-"----------------------------------------------------------------------
-if g:vinegar_nerdtree_as_netrw
-    " let NERDTreeCascadeSingleChildDir = 0
-    " let NERDTreeCascadeOpenSingleChildDir = 0
-endif
 
 
 "----------------------------------------------------------------------
