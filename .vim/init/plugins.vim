@@ -213,3 +213,18 @@ let g:python_highlight_builtins = 1
 let g:python_highlight_builtin_objs = 1
 let g:python_highlight_builtin_types = 1
 let g:python_highlight_builtin_funcs = 1
+
+"----------------------------------------------------------------------
+" asyncrun
+"----------------------------------------------------------------------
+let g:asyncrun_timer = 200
+
+if s:windows != 0
+	let g:asyncrun_encs = 'gbk'
+endif
+
+let g:asyncrun_open = 6
+
+if executable('rg')
+	let g:vimmake_grep_mode = 'rg'
+endif

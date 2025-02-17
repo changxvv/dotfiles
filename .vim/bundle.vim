@@ -92,7 +92,6 @@ if has_key(s:enabled, 'basic')
 	Plug 'tommcdo/vim-exchange'
 	Plug 'tommcdo/vim-lion'
 	Plug 'tpope/vim-eunuch'
-	Plug 'AndrewRadev/splitjoin.vim'
 	
 	Plug 'pprovost/vim-ps1', { 'for': 'ps1' }
 	Plug 'tbastos/vim-lua', { 'for': 'lua' }
@@ -165,6 +164,8 @@ if has_key(s:enabled, 'high')
 	Plug 'junegunn/fzf'
 	Plug 'junegunn/fzf.vim'
 	Plug 'dhruvasagar/vim-table-mode'
+	Plug 'skywind3000/asynctasks.vim'
+	Plug 'skywind3000/asyncrun.vim'
 endif
 
 
@@ -174,6 +175,7 @@ endif
 if has_key(s:enabled, 'opt')
 	Plug 'tpope/vim-speeddating'
 	Plug 'jreybert/vimagit'
+	Plug 'AndrewRadev/splitjoin.vim'
 
 	Plug 'AndrewRadev/switch.vim'
 	IncScript site/bundle/switch.vim
