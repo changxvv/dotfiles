@@ -181,3 +181,7 @@ function! GetPatternAtCursor(pat)
 		return ""
 	endif
 endfunc
+
+
+" calculate the md5
+ca Hash w !cpp -dD -P -fpreprocessed \| tr -d '[:space:]' \| md5sum \| cut -c-8

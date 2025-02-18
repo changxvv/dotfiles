@@ -1,3 +1,7 @@
+let s:home = fnamemodify(resolve(expand('<sfile>:p')), ':h:h')
+let s:windows = has('win32') || has('win64') || has('win95') || has('win16')
+let s:gui = has('gui_running')
+
 "----------------------------------------------------------------------
 " netrw
 "----------------------------------------------------------------------
@@ -32,7 +36,7 @@ for s:extname in s:ignore
 endfor
 
 let s:pattern = '#.\{-\}#\($\|\t\),'
-if has('win32') || has('win16') || has('win95') || has('win64')
+if s:windows != 0
 	let s:pattern .= '\$.\{-\}\($\|\t\),'
 endif
 
@@ -165,7 +169,7 @@ let g:gutentags_define_advanced_commands = 1
 
 " let g:gutentags_define_advanced_commands = 1
 
-if has('win32') || has('win16') || has('win64') || has('win95')
+if s:windows != 0
 	let g:gutentags_ctags_extra_args += ['--output-format=e-ctags']
 endif
 
@@ -228,3 +232,12 @@ let g:asyncrun_open = 6
 if executable('rg')
 	let g:vimmake_grep_mode = 'rg'
 endif
+
+"----------------------------------------------------------------------
+" asynctasks
+"----------------------------------------------------------------------
+let g:asynctasks_term_pos = (s:windows && s:gui)? 'external' : 'TAB'
+let g:asynctasks_confirm = 0
+let g:asynctasks_template = s:home . '/tools/conf/template.ini'
+let g:asynctasks_environ = get(g:, 'asynctasks_environ', {})
+let g:asynctasks_config_name = '.vim/tasks.ini'

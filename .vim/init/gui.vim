@@ -1,20 +1,5 @@
 if has('gui_running')
-	if has('win32') || has('win64')
-		try
-			set gfn=Maple\ Mono\ NF\ CN:h12
-		catch
-			set gfn=Inconsolata\ Nerd\ Font\ Mono:h13
-			set gfw=Microsoft\ YaHei\ Mono:h13
-		endtry
-	endif
-	if has('unix')
-		try
-			set gfn=Maple\ Mono\ NF\ CN\ 12
-		catch
-			set gfn=Inconsolata\ Nerd\ Font\ Mono\ 13
-			set gfw=Noto\ Serif\ CJK\ SC\ 13
-		endtry
-	endif
+	set gfn=Maple\ Mono\ NF\ CN:h11
 	set guicursor+=a:blinkon0
 	set guioptions=g
 endif

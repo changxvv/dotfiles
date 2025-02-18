@@ -299,32 +299,37 @@ nnoremap <silent><leader>he :call Show_Explore()<cr>
 
 
 "----------------------------------------------------------------------
-" 编译运行
+" tasks
 "----------------------------------------------------------------------
+noremap <silent><s-f12> :AsyncTaskEdit<cr>
+inoremap <silent><s-f12> <ESC>:AsyncTaskEdit<cr>
+noremap <silent><f12> :TaskFinder<cr>
+inoremap <silent><f12> <ESC>:TaskFinder<cr>
+noremap <silent><c-f12> :AsyncTaskEnviron profile debug release static<cr>
+inoremap <silent><c-f12> <ESC>:AsyncTaskEnviron profile debug release static<cr>
 
-" f2上一个终端，f9编译c/c++，f5运行文件，f7编译项目，f8运行项目，f6测试项目，f4更新make，f3打开/关闭终端，f1 新建终端，f10 grep
-no <f9> :FloatermSend make %:r<cr>
-no <f5> :FloatermSend %:r<cr>
-no <f7> :FloatermSend make <cr>
-no <f8> :FloatermSend make run <cr>
-no <f6> :FloatermSend make test <cr>
-no <f4> :FloatermSend cmake . <cr>
+noremap <silent><F5> :AsyncTask file-run<cr>
+noremap <silent><F6> :AsyncTask make<cr>
+noremap <silent><F7> :AsyncTask emake<cr>
+noremap <silent><F8> :AsyncTask emake-exe<cr>
+noremap <silent><F9> :AsyncTask file-build<cr>
+noremap <silent><F10> :call asyncrun#quickfix_toggle(6)<cr>
+noremap <silent><F11> :AsyncTask file-debug<cr>
+noremap <silent><s-f5> :AsyncTask project-run<cr>
+noremap <silent><s-f6> :AsyncTask project-test<cr>
+noremap <silent><s-f7> :AsyncTask project-init<cr>
+noremap <silent><s-f8> :AsyncTask project-install<cr>
+noremap <silent><s-f9> :AsyncTask project-build<cr>
+noremap <silent><s-f11> :AsyncTask project-debug<cr>
 
-if executable('rg')
-	noremap <silent><F10> :FloatermSend rg -n --no-heading 
-				\ --color never -g *.h -g *.c* -g *.py -g *.js -g *.vim 
-				\ <C-R><C-W> "<C-R>=asclib#path#current_root()<CR>" <cr>
-elseif has('win32') || has('win64')
-	noremap <silent><F10> :FloatermSend findstr /n /s /C:"<C-R><C-W>" 
-				\ "\%CD\%\*.h" "\%CD\%\*.c*" "\%CD\%\*.py" "\%CD\%\*.js"
-				\ "\%CD\%\*.vim"
-				\ <cr>
-else
-	noremap <silent><F10> :FloatermSend grep -n -s -R <C-R><C-W> 
-				\ --include='*.h' --include='*.c*' --include='*.py' 
-				\ --include='*.js' --include='*.vim'
-				\ '<C-R>=asclib#path#current_root()<CR>' <cr>
-endif
-
-" calculate the md5
-ca Hash w !cpp -dD -P -fpreprocessed \| tr -d '[:space:]' \| md5sum \| cut -c-8
+inoremap <silent><F5> <ESC>:AsyncTask file-run<cr>
+inoremap <silent><F6> <ESC>:AsyncTask make<cr>
+inoremap <silent><F7> <ESC>:AsyncTask emake<cr>
+inoremap <silent><F8> <ESC>:AsyncTask emake-exe<cr>
+inoremap <silent><F9> <ESC>:AsyncTask file-build<cr>
+inoremap <silent><F10> <ESC>:call asyncrun#quickfix_toggle(6)<cr>
+inoremap <silent><s-f5> <ESC>:AsyncTask project-run<cr>
+inoremap <silent><s-f6> <ESC>:AsyncTask project-test<cr>
+inoremap <silent><s-f7> <ESC>:AsyncTask project-init<cr>
+inoremap <silent><s-f8> <ESC>:AsyncTask project-install<cr>
+inoremap <silent><s-f9> <ESC>:AsyncTask project-build<cr>

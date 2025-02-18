@@ -122,7 +122,7 @@
 	"list.previousKeymap": "<C-p>",
 
 	// coc-snippets
-	"snippets.priority": 100,
+	"snippets.priority": 99,
 	"snippets.userSnippetsDirectory": "~/.vim/site/ultisnips",
 	"snippets.loadVSCodeProjectSnippets": false,
 	"snippets.extends": {
@@ -132,13 +132,13 @@
 
 	// coc-yank
 	"yank.highlight.enable": false,
-	"yank.priority": 20,
+	"yank.priority": 30,
 	"yank.limit": 20,
 	"yank.list.maxsize": 100,
 
 	// source-file
 	"coc.source.file.enable": true,
-	"coc.source.file.priority": 110,
+	"coc.source.file.priority": 100,
 	"coc.source.file.ignoreHidden": false,
 	"coc.source.file.shortcut": "D & F",
 	"coc.source.file.triggerCharacters": [
@@ -166,12 +166,12 @@
 
 	// source-around
 	"coc.source.around.enable": true,
-	"coc.source.around.priority": 50,
+	"coc.source.around.priority": 60,
 	"coc.source.around.shortcut": "AR",
 
 	// source-buffer
 	"coc.source.buffer.enable": true,
-	"coc.source.buffer.priority": 30,
+	"coc.source.buffer.priority": 50,
 	"coc.source.buffer.shortcut": "BF",
 	"coc.source.buffer.ignoreGitignore": true,
 
@@ -187,14 +187,14 @@
 
 	// source-syntax
 	"coc.source.syntax.enable": true,
-	"coc.source.syntax.priority": 60,
+	"coc.source.syntax.priority": 70,
 	"coc.source.syntax.shortcut": "SYN",
 	"coc.source.syntax.filetypes": null,
 	"coc.source.syntax.firstMatch": false,
 
 	// source-omni
 	"coc.source.omni.enable": true,
-	"coc.source.omni.priority": 60,
+	"coc.source.omni.priority": 97,
 	"coc.source.omni.shortcut": "OMNI",
 	"coc.source.omni.filetypes": [
 		"beancount"
