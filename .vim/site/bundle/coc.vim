@@ -17,7 +17,6 @@ let g:coc_global_extensions = [
 	\ 'coc-emoji',
 	\ 'coc-highlight',
 	\ 'coc-json',
-	\ 'coc-omni',
 	\ 'coc-pyright',
 	\ 'coc-snippets',
 	\ 'coc-syntax',

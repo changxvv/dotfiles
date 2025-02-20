@@ -190,14 +190,5 @@
 	"coc.source.syntax.priority": 70,
 	"coc.source.syntax.shortcut": "SYN",
 	"coc.source.syntax.filetypes": null,
-	"coc.source.syntax.firstMatch": false,
-
-	// source-omni
-	"coc.source.omni.enable": true,
-	"coc.source.omni.priority": 97,
-	"coc.source.omni.shortcut": "OMNI",
-	"coc.source.omni.filetypes": [
-		"beancount"
-	]
+	"coc.source.syntax.firstMatch": false
 }
-
