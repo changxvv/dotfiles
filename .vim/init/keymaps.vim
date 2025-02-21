@@ -61,7 +61,7 @@ cno <c-k> <up>
 cno <c-l> <right>
 cno <c-a> <home>
 cno <c-e> <end>
-cno <c-f> <c-d>
+cno <c-o> <c-d>
 cno <c-d> <del>
 
 
@@ -110,15 +110,6 @@ nnoremap + :call bufferhint#Popup()<CR>
 "----------------------------------------------------------------------
 " window keymaps
 "----------------------------------------------------------------------
-no <silent><leader>w1 :1wincmd w<cr>
-no <silent><leader>w2 :2wincmd w<cr>
-no <silent><leader>w3 :3wincmd w<cr>
-no <silent><leader>w4 :4wincmd w<cr>
-no <silent><leader>w5 :5wincmd w<cr>
-no <silent><leader>w6 :6wincmd w<cr>
-no <silent><leader>w7 :7wincmd w<cr>
-no <silent><leader>w8 :8wincmd w<cr>
-no <silent><leader>w9 :9wincmd w<cr>
 nnoremap <silent><tab>6 :VinegarOpen leftabove vs<cr>
 nnoremap <silent><tab>7 :VinegarOpen vs<cr>
 nnoremap <silent><tab>8 :VinegarOpen belowright sp<cr>

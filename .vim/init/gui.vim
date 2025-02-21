@@ -1,4 +1,7 @@
 if has('gui_running')
+	set ls=2 mouse=a
+	" 总是显示标签栏
+	set showtabline=2
 	set gfn=Maple\ Mono\ NF\ CN:h11
 	set guicursor+=a:blinkon0
 	set guioptions=g
