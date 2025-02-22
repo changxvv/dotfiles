@@ -62,7 +62,7 @@ function! InitClangFormat()
 	if get(s:, 'has_clang', -1) < 0
 		let s:has_clang = executable('clang-format')
 	endif
-	let s:windows = has('win32') || has('win95') || has('win64')
+	let s:windows = asclib#platform#has('win')
 	let fallback = get(g:, 'asc_format_clang_style', 'Microsoft')
 	if s:has_clang > 0
 		let prg = (s:windows)? 'call clang-format' : 'clang-format'

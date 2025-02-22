@@ -1,14 +1,15 @@
 "----------------------------------------------------------------------
-" 防止tmux下vim的背景色显示异常
-" Refer: http://sunaku.github.io/vim-256color-bce.html
+" term compatible
 "----------------------------------------------------------------------
-if &term =~ '256color' && $TMUX != ''
-	" disable Background Color Erase (BCE) so that color schemes
-	" render properly when inside 256-color tmux and GNU screen.
-	" see also http://snk.tuxfamily.org/log/vim-256color-bce.html
-	set t_ut=
+if asclib#platform#has('win')
+	if has('nvim') == 0 && has('gui_running') == 0
+		" fix: https://github.com/vim/vim/issues/13956
+		exec 'set t_ut='
+	endif
+elseif asclib#platform#has_wsl()
+	" fixed: vim will enter replace mode in wsl with cmd window
+	exec 'set t_u7='
 endif
-
 
 "----------------------------------------------------------------------
 " 备份设置
@@ -63,12 +64,6 @@ autocmd BufReadPost *
 	\ if line("'\"") > 1 && line("'\"") <= line("$") |
 	\ exe "normal! g`\"" |
 	\ endif
-
-" 定义一个 DiffOrig 命令用于查看文件改动
-if !exists(":DiffOrig")
-  command DiffOrig vert new | set bt=nofile | r ++edit # | 0d_ | diffthis
-          \ | wincmd p | diffthis
-endif
 
 
 "----------------------------------------------------------------------
