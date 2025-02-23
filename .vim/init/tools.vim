@@ -115,23 +115,6 @@ function! Show_Explore()
 	endif
 endfunc
 
-
-function! Tools_SwitchSigns()
-	if (!has('signs')) || (!has('patch-7.4.2210'))
-		return 0
-	endif
-	if &signcolumn == 'auto'
-		set signcolumn=yes
-		echo ':signcolumn=yes'
-	elseif &signcolumn == 'yes'
-		set signcolumn=no
-		echo ':signcolumn=no'
-	else
-		set signcolumn=auto
-		echo ':signcolumn=auto'
-	endif
-endfunc
-
 function! Tools_ListMeta(mapmode, upper)
 	let text = []
 	for i in range(26)
@@ -155,6 +138,9 @@ function! Tools_ListMeta(mapmode, upper)
 		echo x
 	endfor
 endfunc
+
+command! -nargs=1 -bang AscListMeta 
+			\ call Tools_ListMeta(<q-args>, <bang>0)
 
 
 "----------------------------------------------------------------------
