@@ -18,24 +18,15 @@ nnoremap Y y$
 xnoremap p "_dP
 nnoremap <expr> k (v:count > 1 ? "m'" . v:count : '') . 'k'
 nnoremap <expr> j (v:count > 1 ? "m'" . v:count : '') . 'j'
-cnoremap <c-t> <C-R>=expand("%:p:h") . "/" <cr>
 
-" 关闭鼠标中键粘贴
-noremap <MiddleMouse> <LeftMouse>
 
-" open list
-nn <leader>xl :lopen<cr>
-nn <leader>xq :copen<cr>
-
-" quit all
-nnoremap <silent>Q :<c-u>confirm qall<cr>
-
-" replace
-nnoremap <leader>p viw"0p
-
-" fold
-nnoremap <m-z> za
-nnoremap <m-Z> zA
+"----------------------------------------------------------------------
+" text-objects
+"----------------------------------------------------------------------
+vnoremap ik 0o$h
+onoremap ik :normal vik<cr>
+vnoremap ak 0o$
+onoremap ak :normal vak<cr>
 
 
 "----------------------------------------------------------------------
@@ -48,8 +39,7 @@ ino <c-l> <right>
 ino <c-a> <home>
 ino <c-e> <end>
 ino <c-d> <del>
-ino <c-w> <c-[>diwa
-ino <c-u> <c-G>u<c-U>
+ino <c-u> <c-g>u<c-U>
 
 
 "----------------------------------------------------------------------
@@ -104,20 +94,24 @@ no <silent><leader>bd :bdelete<cr>
 no <silent><leader>bl :ls<cr>
 no <silent><leader>bb :ls<cr>:b
 nnoremap <silent><leader>bc :BufferClose<cr>
+nnoremap <silent><leader>cw :CdToFileDir<cr>
+nnoremap <silent><leader>cr :CdToProjectRoot<cr>
 nnoremap + :call bufferhint#Popup()<CR>
 
 
 "----------------------------------------------------------------------
 " window keymaps
 "----------------------------------------------------------------------
-nnoremap <silent><tab>6 :VinegarOpen leftabove vs<cr>
-nnoremap <silent><tab>7 :VinegarOpen vs<cr>
-nnoremap <silent><tab>8 :VinegarOpen belowright sp<cr>
-nnoremap <silent><tab>9 :VinegarOpen tabedit<cr>
+nnoremap <silent><space>= :resize +3<cr>
+nnoremap <silent><space>- :resize -3<cr>
+nnoremap <silent><space>, :vertical resize -3<cr>
+nnoremap <silent><space>. :vertical resize +3<cr>
+
+nnoremap <silent><leader>vl :VinegarOpen leftabove vs<cr>
+nnoremap <silent><leader>vs :VinegarOpen vs<cr>
+nnoremap <silent><leader>vr :VinegarOpen belowright sp<cr>
+nnoremap <silent><leader>vt :VinegarOpen tabedit<cr>
 nnoremap <silent><leader>g <c-w>p
-nnoremap <silent><leader>vs :VinegarOpen leftabove vs<cr>
-nnoremap <silent><leader>vp :VinegarOpen belowright sp<cr>
-nnoremap <silent><leader>ve :VinegarOpen tabedit<cr>
 
 
 "----------------------------------------------------------------------
@@ -198,10 +192,6 @@ if has('terminal') && exists(':terminal') == 2 && has('patch-8.1.1')
 	tnoremap <m-8> <c-_>8gt
 	tnoremap <m-9> <c-_>9gt
 	tnoremap <m-0> <c-_>10gt
-	if v:version >= 802
-		tnoremap <m-left> <c-\><c-n>:-tabmove<cr>
-		tnoremap <m-right> <c-\><c-n>:+tabmove<cr>
-	endif
 elseif has('nvim')
 	" neovim 没有 termwinkey 支持，必须把 terminal 切换回 normal 模式
 	tno <m-H> <c-\><c-n><c-w>h
@@ -254,7 +244,7 @@ vmap <leader>gr y:%s/<C-R>=escape(@", '\\/.*$^~[]')<CR>//gc<Left><Left><Left>
 "----------------------------------------------------------------------
 " neovim system clipboard
 "----------------------------------------------------------------------
-if (has('win32') || has('win64')) && (has('nvim') || (!has('gui_running')))
+if has('nvim') || (!has('gui_running'))
 	nnoremap <s-insert> "*P
 	vnoremap <s-insert> "-d"*P
 	inoremap <s-insert> <c-r><c-o>*
@@ -287,6 +277,7 @@ if has('gui_running') || (has('nvim') && (has('win32') || has('win64')))
 	noremap <c-cr> O<esc>
 endif
 nnoremap <silent><leader>he :call Show_Explore()<cr>
+nnoremap <silent><space>hf <c-w>gf
 
 
 "----------------------------------------------------------------------
@@ -324,3 +315,23 @@ inoremap <silent><s-f6> <ESC>:AsyncTask project-test<cr>
 inoremap <silent><s-f7> <ESC>:AsyncTask project-init<cr>
 inoremap <silent><s-f8> <ESC>:AsyncTask project-install<cr>
 inoremap <silent><s-f9> <ESC>:AsyncTask project-build<cr>
+
+
+"----------------------------------------------------------------------
+" misc
+"----------------------------------------------------------------------
+cnoremap <c-t> <C-R>=expand("%:p:h")<cr>
+
+" open list
+nn <leader>xl :lopen<cr>
+nn <leader>xq :copen<cr>
+
+" quit all
+nnoremap <silent>Q :<c-u>confirm qall<cr>
+
+" fold
+nnoremap <m-z> za
+nnoremap <m-Z> zA
+
+" last command
+nnoremap <space>ll :<c-p><cr>
