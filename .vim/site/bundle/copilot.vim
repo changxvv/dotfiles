@@ -8,13 +8,7 @@ let g:copilot_proxy_strict_ssl = v:false
 "----------------------------------------------------------------------
 " mappings
 "----------------------------------------------------------------------
-imap <silent><script><expr> <c-b> copilot#Accept("\<CR>")
-
-imap <silent><m-]> <Plug>(copilot-next)
-imap <silent><m-[> <Plug>(copilot-previous)
-
-imap <silent><m-right> <Plug>(copilot-accept-word)
-imap <silent><c-right> <Plug>(copilot-accept-line)
+imap <silent><script><expr> <c-b> coc#pum#visible() ? coc#pum#cancel().copilot#Accept("\<CR>") : copilot#Accept("\<CR>")
 
 
 "----------------------------------------------------------------------

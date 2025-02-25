@@ -1,7 +1,4 @@
 let s:home = fnamemodify(resolve(expand('<sfile>:p')), ':h:h')
-let s:windows = has('win32') || has('win64') || has('win95') || has('win16')
-let s:gui = has('gui_running')
-
 "----------------------------------------------------------------------
 " netrw
 "----------------------------------------------------------------------
@@ -36,7 +33,7 @@ for s:extname in s:ignore
 endfor
 
 let s:pattern = '#.\{-\}#\($\|\t\),'
-if s:windows != 0
+if asclib#platform#has('win') 
 	let s:pattern .= '\$.\{-\}\($\|\t\),'
 endif
 
@@ -65,6 +62,7 @@ let g:signify_sign_delete_first_line = '‾'
 let g:signify_sign_change            = '~'
 let g:signify_sign_changedelete      = g:signify_sign_change
 let g:signify_as_gitgutter           = 1
+let g:signify_sign_show_count        = 0
 
 let g:signify_vcs_cmds = {
 			\ 'git': 'git diff --no-color --diff-algorithm=histogram --no-ext-diff -U0 -- %f',
@@ -169,7 +167,7 @@ let g:gutentags_define_advanced_commands = 1
 
 " let g:gutentags_define_advanced_commands = 1
 
-if s:windows != 0
+if asclib#platform#has('win') 
 	let g:gutentags_ctags_extra_args += ['--output-format=e-ctags']
 endif
 
@@ -218,12 +216,13 @@ let g:python_highlight_builtin_objs = 1
 let g:python_highlight_builtin_types = 1
 let g:python_highlight_builtin_funcs = 1
 
+
 "----------------------------------------------------------------------
 " asyncrun
 "----------------------------------------------------------------------
 let g:asyncrun_timer = 200
 
-if s:windows != 0
+if asclib#platform#has('win') 
 	let g:asyncrun_encs = 'gbk'
 endif
 
@@ -233,10 +232,11 @@ if executable('rg')
 	let g:vimmake_grep_mode = 'rg'
 endif
 
+
 "----------------------------------------------------------------------
 " asynctasks
 "----------------------------------------------------------------------
-let g:asynctasks_term_pos = (s:windows && s:gui)? 'external' : 'TAB'
+let g:asynctasks_term_pos = (asclib#platform#has('win') && has('gui_running'))? 'external' : 'TAB'
 let g:asynctasks_confirm = 0
 let g:asynctasks_template = s:home . '/tools/conf/template.ini'
 let g:asynctasks_environ = get(g:, 'asynctasks_environ', {})

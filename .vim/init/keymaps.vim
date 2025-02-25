@@ -68,8 +68,8 @@ noremap <silent><m-up> :tabprev<cr>
 inoremap <silent><m-up> <ESC>:tabprev<cr>
 noremap <silent><m-down> :tabnext<cr>
 inoremap <silent><m-down> <ESC>:tabnext<cr>
-noremap <silent><m-left> :-tabmove<cr>
-noremap <silent><m-right> :+tabmove<cr>
+noremap <silent><tab>, :-tabmove<cr>
+noremap <silent><tab>. :+tabmove<cr>
 noremap <silent><m-t> :tabnew<cr>:Startify<cr>
 inoremap <silent><m-t> <ESC>:tabnew<cr>:Startify<cr>
 noremap <silent><m-w> :tabclose<cr>
