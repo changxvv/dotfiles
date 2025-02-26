@@ -104,6 +104,22 @@ function! <SID>snip_copyright(author)
 endfunc
 
 
+"----------------------------------------------------------------------
+" insert mode line
+"----------------------------------------------------------------------
+function! <SID>snip_modeline()
+	let text = '" vim: set '
+	let text .= (&l:et)? 'et ' : 'noet '
+	let text .= 'fenc='. (&l:fenc) . ' '
+	let text .= 'ff='. (&l:ff) . ' '
+	let text .= 'sts='. (&l:sts). ' '
+	let text .= 'sw='. (&l:sw). ' '
+	let text .= 'ts='. (&l:ts). ' '
+	let text .= ':'
+	call append(line('.') - 1, text)
+endfunc
+
+
 "-----------------------------------------------------------------------
 " hot keys
 "-----------------------------------------------------------------------
