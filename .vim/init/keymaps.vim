@@ -334,4 +334,4 @@ nnoremap <m-z> za
 nnoremap <m-Z> zA
 
 " last command
-nnoremap <space>ll :<c-p><cr>
+nnoremap <leader>cl :<c-p><cr>

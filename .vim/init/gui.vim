@@ -5,6 +5,8 @@ if has('gui_running')
 	set gfn=Maple\ Mono\ NF\ CN:h11
 	set guicursor+=a:blinkon0
 	set guioptions=g
+else
+	set t_md=
 endif
 
 
