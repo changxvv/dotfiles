@@ -21,7 +21,11 @@ if exists('+breakindent')
 	set breakindent
 endif
 
-set completeopt=menu,menuone,noselect
+if has('patch-8.0.1000')
+	set completeopt=menu,menuone,noselect
+else
+	set completeopt=menu,menuone
+endif
 
 " enable new-style cursorline (for numbers only)
 if exists('+cursorlineopt')
@@ -47,9 +51,7 @@ endif
 augroup AscUnixGroup
 	" 清除同组的历史 autocommand
 	au!
-
 	au FileType * call s:language_setup()
-
 	" 强制对某些扩展名的 filetype 进行纠正
 	au BufNewFile,BufRead *.as setlocal filetype=actionscript
 	au BufNewFile,BufRead *.pro setlocal filetype=prolog
