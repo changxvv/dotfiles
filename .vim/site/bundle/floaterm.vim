@@ -1,5 +1,6 @@
 if has('win32') || has('win64')
 	let g:floaterm_shell = 'powershell'
+	let g:floaterm_borderchars = '-|-|++++'
 endif
 
 let g:floaterm_width = 0.7
