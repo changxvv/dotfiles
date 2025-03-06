@@ -2,15 +2,15 @@ let g:lightline = {}
 
 let g:lightline.active = {
 			\ 'left': [['mode', 'paste'],
-			\          ['git_branch', 'readonly', 'absolutepath'],
-			\          ['buffers_count', 'gutentags']],
-			\ 'right': [['lineinfo'],
-			\           ['fileformat', 'fileencoding', 'filetype'], ['coc_status', 'ale_status']]
+			\          ['git_branch', 'absolutepath'],
+			\          ['buffers_count', 'status', 'gutentags']],
+			\ 'right': [['lineinfo'], ['coc_status', 'ale_status', 'percent'],
+			\           ['fileformat', 'fileencoding', 'filetype']]
 			\ }
 
 let g:lightline.inactive = {
-			\ 'left': [['filename']],
-			\ 'right': [['lineinfo']]
+			\ 'left': [['absolutepath'], ['status']],
+			\ 'right': [['lineinfo'], ['percent']]
 			\ }
 
 let g:lightline.tabline = {
@@ -23,11 +23,11 @@ let g:lightline.tab = {
 			\ }
 
 let g:lightline.component = {
+			\ 'status': '[%R%H%W]',
 			\ 'absolutepath': '%F',
 			\ 'paste': '%{&paste?"PASTE":""}',
-			\ 'readonly': '%{&readonly?"":""}',
 			\ 'modified': '%M',
-			\ 'lineinfo': '%3l/%L:%-2c',
+			\ 'lineinfo': '%3l/%L:%-2v',
 			\ 'fileformat': '%{&ff}',
 			\ 'filetype': '%{&ft!=#""?&ft:"no ft"}',
 			\ 'fileencoding': '%{(&fenc!=#""?&fenc:&enc).(&bomb?",BOM":"")}',

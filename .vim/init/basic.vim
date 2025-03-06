@@ -60,7 +60,7 @@ set display=lastline
 " 允许下方显示目录
 set wmnu
 set wildoptions+=pum,fuzzy
-set wildmode=lastused,full
+set wildmode=longest,full
 
 " 延迟绘制
 set lazyredraw

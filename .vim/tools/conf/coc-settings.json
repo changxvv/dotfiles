@@ -5,7 +5,6 @@
 	"coc.preferences.enableMessageDialog": false,
 	"coc.preferences.currentFunctionSymbolAutoUpdate": false,
 	"coc.preferences.excludeImageLinksInMarkdownDocument": true,
-	"coc.preferences.extensionUpdateCheck": "never",
 
 	// colors
 	"colors.enable": true,
@@ -120,6 +119,9 @@
 	"list.limitLines": 30000,
 	"list.nextKeymap": "<C-n>",
 	"list.previousKeymap": "<C-p>",
+
+	//coc-tsserver
+	"tsserver.useLocalTsdk": true,
 
 	// coc-snippets
 	"snippets.priority": 99,
