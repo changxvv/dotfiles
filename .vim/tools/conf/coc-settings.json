@@ -131,6 +131,7 @@
 		"markdown": ["texmath"],
 		"latex": ["tex", "texmath"]
 	},
+	"snippets.ultisnips.pythonPrompt": false,
 
 	// coc-yank
 	"yank.highlight.enable": false,
