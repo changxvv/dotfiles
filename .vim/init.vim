@@ -70,10 +70,6 @@ endif
 InScript site/opt/angry.vim
 InScript site/opt/after_object.vim
 
-if has('gui_running')
-	InScript site/opt/hexhigh.vim
-endif
-
 call after_object#enable(['r', 'R'], '=', ':', '-', '#', ' ', '/', ';', '(', ')')
 
 " 插件加载
@@ -85,6 +81,7 @@ let g:bundle_group += ['basic']
 let g:bundle_group += ['inter']
 let g:bundle_group += ['high', 'opt']
 let g:bundle_group += ['ale', 'floaterm', 'matchup', 'cursorword', 'tex', 'lightline', 'copilot', 'coc']
+let g:bundle_group += ['vista']
 
 if len(g:bundle_group) > 0
 	InScript bundle.vim
