@@ -38,10 +38,22 @@ syn match txtOperator "[~\-_+*<>\[\]{}=|#@$%&\\/:&\^\.,!?]"
 
 " Common strings
 syn match txtString "[[:alpha:]]" contains=txtOperator
+" Wide characters and non-ascii characters
+syn match nonalphabet   "[\u0021-\u002F]"
+syn match nonalphabet   "[\u003A-\u0040]"
+syn match nonalphabet   "[\u005B-\u0060]"
+syn match nonalphabet   "[\u007B-\u007E]"
+syn match nonalphabet   "[^\u0000-\u007F]"
 
 " Numbers
-"syn match txtNumber "\d\(\.\d\+\)\?"
-syn match txtNumber "\d"
+" integer number
+syn match txtNumber     "\<\d\+\>"
+" floating point number, with dot, optional exponent
+syn match txtNumber     "\<\d\+\.\d*\%([eE][-+]\=\d\+\)\=\>"
+" floating point number, starting with a dot, optional exponent
+syn match txtNumber     "\.\d\+\%([eE][-+]\=\d\+\)\=\>"
+" floating point number, without dot, with exponent
+syn match txtNumber     "\<\d\+[eE][-+]\=\d\+\>"
 
 " Cites
 syn region txtCite      matchgroup=txtOperator  start="\""      end="\""        contains=@txtContains,@txtAlwaysContains
@@ -66,7 +78,7 @@ syn region txtDelims    matchgroup=txtOperator start="<"        end=">"         
 syn region txtDelims    matchgroup=txtOperator start="{"        end="}"         contains=@txtContains,@txtAlwaysContains oneline
 syn region txtDelims    matchgroup=txtOperator start="\["       end="\]"                contains=@txtContains,@txtAlwaysContains oneline 
 
-syn match txtLink       "\(http\|https\|ftp\)\(\w\|[\-&=,?\:\.\/]\)*"   contains=txtOperator
+syn match txtLink       /\(https\?\|ftps\?\|git\|ssh\):\/\/\(\w\+\(:\w\+\)\?@\)\?\([A-Za-z][-_0-9A-Za-z]*\.\)\{1,}\(\w\{2,}\.\?\)\{1,}\(:[0-9]\{1,5}\)\?\S*/   contains=txtOperator
 
 " Basic smileys
 syn match txtSmile      "[:;=8][\-]\?\([(\/\\)\[\]]\+\|[OoPpDdFf]\+\)"
@@ -95,6 +107,7 @@ syn case match
     command -nargs=+ HiLink hi def link <args>
   endif
 
+  HiLink nonalphabet            Conditional
   HiLink txtNumber              Number
   HiLink txtString              Normal
   HiLink txtOperator            Operator
