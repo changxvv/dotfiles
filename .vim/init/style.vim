@@ -17,6 +17,10 @@ set showcmd
 set splitright
 set splitbelow
 
+if has('patch-9.0.648') || has('nvim-0.9.0')
+	set splitkeep=screen
+endif
+
 "命令栏历史
 set history=2000
 

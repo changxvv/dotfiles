@@ -239,3 +239,8 @@ let g:asynctasks_confirm = 0
 let g:asynctasks_template = s:home . '/tools/conf/template.ini'
 let g:asynctasks_environ = get(g:, 'asynctasks_environ', {})
 let g:asynctasks_config_name = '.vim/tasks.ini'
+
+let g:asyncrun_show_time = 1
+let g:asyncrun_rootmarks = ['.project', '.root', '.git', '.git', '.svn']
+let g:asyncrun_rootmarks += ['.hg', '.obsidian']
+let g:asclib_path_rootmarks = g:asyncrun_rootmarks

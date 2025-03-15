@@ -597,3 +597,14 @@ function! s:CondaDeactivate() abort
 endfunc
 
 
+"----------------------------------------------------------------------
+" AsyncRun
+"----------------------------------------------------------------------
+command! -bang -nargs=* -complete=file Make AsyncRun -program=make -once=1 -strip=1 @ <args>
+
+command! -bang -bar -nargs=* Gpush execute 'AsyncRun<bang> -cwd=' .
+	  \ fnameescape(FugitiveGitDir()) '-post=echo\ "done" git push' <q-args>
+command! -bang -bar -nargs=* Gfetch execute 'AsyncRun<bang> -cwd=' .
+	  \ fnameescape(FugitiveGitDir()) '-post=echo\ "done" git fetch' <q-args>
+
+command! Ghistory :0Gclog! -- %
