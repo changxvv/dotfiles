@@ -108,7 +108,7 @@ if has_key(s:enabled, 'basic')
 	Plug 'justinmk/vim-syntax-extra', { 'for': ['c', 'bison', 'flex', 'cpp'] }
 	Plug 'jamessan/vim-gnupg'
 	Plug 'preservim/vim-markdown'
-	Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
+	Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && npx --yes yarn install' }
 
 	Plug 'kana/vim-textobj-user'
 	Plug 'kana/vim-textobj-syntax'
