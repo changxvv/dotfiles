@@ -1,7 +1,7 @@
 "----------------------------------------------------------------------
 " 基础设置
 "----------------------------------------------------------------------
-set hls ic is scs ru nu rnu so=7 bs=2 ai cin ar nocp wak=no ttimeout ttm=30 nopaste
+set hls ic is scs ru nu rnu so=7 bs=2 ai cin ar aw nocp wak=no ttimeout ttm=30 nopaste
 
 " 设置缩进宽度
 set sw=2
@@ -28,7 +28,9 @@ if has('multi_byte')
 	set fileencoding=utf-8
 
 	" 打开文件时自动尝试下面顺序的编码
-	set fileencodings=ucs-bom,utf-8,gbk,gb18030,big5,euc-jp,latin1
+	set fileencodings=ucs-bom,utf-8,gbk,gb2312,gb18030,iso-8859-2,big5,euc-jp,cp936,latin1
+
+
 endif
 
 
@@ -47,7 +49,7 @@ if has('syntax')
 	syntax enable
 	syntax on
 endif
-set synmaxcol=300
+set synmaxcol=500
 
 
 "----------------------------------------------------------------------
@@ -72,7 +74,8 @@ set errorformat+=%.\ %#-->\ %f:%l:%c,[%f:%l]\ ->\ %m,[%f:%l]:%m
 set virtualedit=block
 
 " 分隔符可视
-set listchars=tab:\|\ ,eol:↲,extends:»,precedes:«,nbsp:~,trail:.
+set listchars=tab:\|\ ,eol:↲,extends:»,precedes:«,nbsp:~,trail:-
+set linebreak
 set showbreak=↪
 set ambiwidth=double
 
@@ -92,6 +95,14 @@ set switchbuf=useopen,newtab
 " 禁止响铃
 set novisualbell
 set belloff=all
+
+" External program to use for grep command
+if executable('rg')
+    set grepprg=rg\ --vimgrep\ --no-heading\ --smart-case
+    set grepformat=%f:%l:%c:%m
+else
+    set grepprg=grep\ -nH\ $*
+endif
 
 
 "----------------------------------------------------------------------
@@ -124,12 +135,23 @@ set formatlistpat+=^\\s*[-–+o*•]\\s\\+      " Bullet points
 " (2) An item with punctuation preceding and following it
 " •   An item consisting of leading punctuation
 
+if has('patch-8.2.0860')
+    set nrformats+=unsigned " ignore sign of number when increase or decrease
+endif
+
 
 "----------------------------------------------------------------------
 " Diff 设置
 "----------------------------------------------------------------------
+set diffopt=
+set diffopt+=vertical  " show diff in vertical position
+set diffopt+=filler  " show filler for deleted lines
+if has('patch-8.1.2289')
+    set diffopt+=closeoff  " turn off diff when one file window is closed
+endif
+set diffopt+=context:3  " context for diff
 if has('patch-8.2.0001')
-	set diffopt+=internal,algorithm:patience
+	set diffopt+=internal,algorithm:histogram
 	set diffopt+=indent-heuristic
 endif
 
