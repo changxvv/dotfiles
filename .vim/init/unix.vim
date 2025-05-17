@@ -66,9 +66,16 @@ augroup AscUnixGroup
 	" jsonc纠正
 	au BufNewFile,BufRead *.cjson setlocal filetype=jsonc
 	au BufNewFile,BufRead coc-settings.json setlocal filetype=jsonc
+	au BufNewFile,BufRead *.jsonc setfiletype jsonc
 	au BufNewFile,BufRead .eslintrc.json setlocal filetype=jsonc
+	au BufNewFile,BufRead .babelrc setlocal filetype=jsonc
+	au BufNewFile,BufRead .jshintrc setlocal filetype=jsonc
+	au BufNewFile,BufRead .jslintrc setlocal filetype=jsonc
+	au BufNewFile,BufRead .mocharc.json setlocal filetype=jsonc
+	au BufNewFile,BufRead coffeelint.json setlocal filetype=jsonc
 	au BufNewFile,BufRead tsconfig*.json setlocal filetype=jsonc
 	au BufNewFile,BufRead jsconfig.json setlocal filetype=jsonc
+	au BufNewFile,BufRead */.vscode/*.json setlocal filetype=jsonc
 augroup END
 
 

@@ -152,6 +152,7 @@ if has_key(s:enabled, 'inter')
 	endif
 	Plug 'inkarkat/vim-ingo-library'
 	Plug 'inkarkat/vim-mark'
+	Plug 'tpope/vim-characterize' " enhance ga
 endif
 
 
@@ -166,6 +167,7 @@ if has_key(s:enabled, 'high')
 	Plug 'dhruvasagar/vim-table-mode'
 	Plug 'skywind3000/asynctasks.vim'
 	Plug 'skywind3000/asyncrun.vim'
+	Plug 'jceb/vim-orgmode', { 'for': 'org' }
 endif
 
 
@@ -179,9 +181,6 @@ if has_key(s:enabled, 'opt')
 
 	Plug 'AndrewRadev/switch.vim'
 	IncScript site/bundle/switch.vim
-
-	Plug 'mattn/emmet-vim',  { 'on': 'EmmetInstall' }
-	IncScript site/bundle/emmet.vim
 
 	if executable('tmux')
 		Plug 'benmills/vimux'

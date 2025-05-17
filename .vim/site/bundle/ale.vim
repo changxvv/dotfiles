@@ -25,14 +25,20 @@ endif
 " linters
 "----------------------------------------------------------------------
 let g:ale_linters = {
-			\ 'c': ['gcc', 'cppcheck'], 
-			\ 'cpp': ['gcc', 'cppcheck'], 
+			\ 'c': ['gcc', 'cppcheck', 'clangd'], 
+			\ 'cpp': ['gcc', 'cppcheck', 'clangd'], 
 			\ 'python': ['flake8', 'pylint'], 
 			\ 'lua': ['luac'], 
 			\ 'go': ['go build', 'gofmt'],
 			\ 'java': ['javac'],
 			\ 'javascript': ['eslint'], 
 			\ }
+
+let b:ale_fixers = ['prettier', 'eslint']
+let g:ale_fixers = {
+            \   '*': ['remove_trailing_lines','trim_whitespace' ],
+            \   'python': ['autopep8']
+            \}
 
 function! s:lintcfg(name)
 	let conf = bundle#path('tools/conf/')

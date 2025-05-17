@@ -114,10 +114,16 @@ call s:tune_colors()
 
 
 "----------------------------------------------------------------------
-" Misc
+" Startify
 "----------------------------------------------------------------------
 let g:startify_disable_at_vimenter = 1
 let g:startify_session_dir = '~/.vim/session'
+let g:startify_session_autoload = 1
+
+
+"----------------------------------------------------------------------
+" Misc
+"----------------------------------------------------------------------
 let g:vim_json_conceal = 0
 
 
@@ -171,6 +177,12 @@ endif
 
 let g:gutenags_plus_switch = 0
 
+augroup MyGutentagsStatusLineRefresher
+	autocmd!
+	autocmd User GutentagsUpdating call lightline#update()
+	autocmd User GutentagsUpdated call lightline#update()
+augroup end
+
 
 "----------------------------------------------------------------------
 " eunuch
@@ -200,10 +212,13 @@ hi! default link AtHint Identifier
 " vim-markdown & markdown-preview
 "----------------------------------------------------------------------
 let g:tex_conceal = ""
+let g:vim_markdown_folding_disabled = 1 "太耗费性能
+let g:vim_markdown_folding_style_pythonic = 1
 let g:vim_markdown_math = 1
 let g:vim_markdown_conceal_code_blocks = 0
 let g:vim_markdown_new_list_item_indent = 2
 let g:vim_markdown_frontmatter = 1
+let g:vim_markdown_strikethrough = 1 " 加删除线
 
 let g:mkdp_refresh_slow = 1
 
