@@ -104,7 +104,6 @@ if has_key(s:enabled, 'basic')
 	if has('patch-9.0.1767') == 0
 		Plug 'peterhoeg/vim-qml'
 	endif
-	Plug 'neovimhaskell/haskell-vim'
 	Plug 'justinmk/vim-syntax-extra', { 'for': ['c', 'bison', 'flex', 'cpp'] }
 	Plug 'jamessan/vim-gnupg'
 	Plug 'preservim/vim-markdown'
