@@ -97,10 +97,8 @@ if has_key(s:enabled, 'basic')
 	Plug 'tbastos/vim-lua', { 'for': 'lua' }
 	Plug 'vim-python/python-syntax', { 'for': ['python'] }
 	Plug 'pboettch/vim-cmake-syntax', { 'for': ['cmake'] }
-	Plug 'skywind3000/vim-flex-bison-syntax', { 'for': ['yacc', 'lex'] }
-	Plug 'lark-parser/vim-lark-syntax'
+	Plug 'cespare/vim-toml'
 	Plug 'nathangrigg/vim-beancount', { 'for': 'bean' }
-	Plug 'dylon/vim-antlr'
 	if has('patch-9.0.1767') == 0
 		Plug 'peterhoeg/vim-qml'
 	endif
