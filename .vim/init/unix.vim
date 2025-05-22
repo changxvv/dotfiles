@@ -52,6 +52,7 @@ augroup AscUnixGroup
 	" 清除同组的历史 autocommand
 	au!
 	au FileType * call s:language_setup()
+	autocmd FileType org PersistFoldEnable true
 	" 强制对某些扩展名的 filetype 进行纠正
 	au BufNewFile,BufRead *.as setlocal filetype=actionscript
 	au BufNewFile,BufRead *.pro setlocal filetype=prolog
@@ -104,7 +105,7 @@ function! s:fold_restore(enable)
 		augroup VimUnixFoldGroup
 			au! 
 			au BufWrite,VimLeave * silent! mkview
-			au BufRead * silent! loadview
+			au BufWinEnter * silent! loadview
 		augroup END
 	else
 		augroup VimUnixFoldGroup

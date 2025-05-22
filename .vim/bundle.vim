@@ -164,7 +164,8 @@ if has_key(s:enabled, 'high')
 	Plug 'dhruvasagar/vim-table-mode'
 	Plug 'skywind3000/asynctasks.vim'
 	Plug 'skywind3000/asyncrun.vim'
-	Plug 'jceb/vim-orgmode', { 'for': 'org' }
+	Plug 'changxvv/vim-orgmode', { 'for': 'org' }
+	IncScript site/bundle/orgmode.vim
 endif
 
 
