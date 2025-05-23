@@ -30,13 +30,10 @@ let g:Lf_WildIgnore = {
 
 let g:Lf_MruFileExclude = ['*.so', '*.exe', '*.py[co]', '*.sw?', '~$*', '*.bak', '*.tmp', '*.dll']
 let g:Lf_MruMaxFiles = 2048
-let g:Lf_StlColorscheme = 'powerline'
-let g:Lf_PopupColorscheme = 'default'
-let g:Lf_PopupColorscheme = 'gruvbox_default'
+let g:Lf_StlColorscheme = 'onedark'
+let g:Lf_PopupColorscheme = 'onedark'
 let g:Lf_ShortcutF = '<c-p>'
-let g:Lf_ShortcutB = '<m-n>'
 let g:Lf_StlSeparator = { 'left': '', 'right': '', 'font': '' }
-let g:Lf_PreviewResult = {'Function':0, 'BufTag':0}
 let g:Lf_MruEnableFrecency = 1
 
 let g:Lf_NormalMap = {
@@ -48,7 +45,7 @@ let g:Lf_NormalMap = {
 		\ "Function": [["<ESC>", ':exec g:Lf_py "functionExplManager.quit()"<cr>']],
 		\ }
 
-if (exists('*popup_create') && has('patch-8.1.2000')) || has('nvim-0.4')
+if exists('*popup_create') && has('patch-8.1.2000')
 	let g:Lf_WindowPosition = 'popup'
 endif
 
@@ -96,25 +93,25 @@ let g:Lf_CtagsFuncOpts = {
 " keymap
 "----------------------------------------------------------------------
 if get(g:, 'lf_disable_normal_map', 0) == 0
-	nnoremap <space>ff :<c-u>Leaderf file<cr>
-	nnoremap <space>fe :<c-u>Leaderf filer<cr>
-	nnoremap <space>fb :<c-u>Leaderf buffer<cr>
-	nnoremap <space>fm :<c-u>Leaderf mru<cr>
-	nnoremap <space>fg :<c-u>Leaderf gtags<cr>
-	nnoremap <space>fr :<c-u>Leaderf rg<cr>
-	" nnoremap <space>fw :<c-u>Leaderf window<cr>
-	nnoremap <space>fn :<c-u>Leaderf function<cr>
-	nnoremap <space>ft :<c-u>Leaderf tag<cr>
-	nnoremap <space>fu :<c-u>Leaderf bufTag<cr>
-	nnoremap <space>fs :<c-u>Leaderf self<cr>
-	nnoremap <space>fc :<c-u>Leaderf colorscheme<cr>
-	nnoremap <space>fy :<c-u>Leaderf cmdHistory<cr>
+	nnoremap <leader>ff :<c-u>Leaderf file<cr>
+	nnoremap <leader>fe :<c-u>Leaderf filer<cr>
+	nnoremap <leader>fb :<c-u>Leaderf buffer<cr>
+	nnoremap <leader>fm :<c-u>Leaderf mru<cr>
+	nnoremap <leader>fg :<c-u>Leaderf gtags<cr>
+	nnoremap <leader>fr :<c-u>Leaderf rg<cr>
+	" nnoremap <leader>fw :<c-u>Leaderf window<cr>
+	nnoremap <leader>fn :<c-u>Leaderf function<cr>
+	nnoremap <leader>ft :<c-u>Leaderf tag<cr>
+	nnoremap <leader>fu :<c-u>Leaderf bufTag<cr>
+	nnoremap <leader>fs :<c-u>Leaderf self<cr>
+	nnoremap <leader>fc :<c-u>Leaderf colorscheme<cr>
+	nnoremap <leader>fy :<c-u>Leaderf cmdHistory<cr>
 	" nnoremap <space>fh :<c-u>Leaderf help<cr>
-	nnoremap <space>fj :<c-u>Leaderf jumps<cr>
-	nnoremap <space>fq :<c-u>Leaderf quickfix<cr>
-	nnoremap <space>fa :<c-u>Leaderf tasks<cr>
+	nnoremap <leader>fj :<c-u>Leaderf jumps<cr>
+	nnoremap <leader>fq :<c-u>Leaderf quickfix<cr>
+	nnoremap <leader>fa :<c-u>Leaderf tasks<cr>
 	" filer
-	nnoremap <space>fd :exec 'Leaderf filer ' . shellescape(expand('%:p:h'))<cr>
+	nnoremap <leader>fd :exec 'Leaderf filer ' . shellescape(expand('%:p:h'))<cr>
 
 	" basic keymaps
 	noremap <c-n> :cclose<cr>:Leaderf --nowrap mru --regexMode<cr>

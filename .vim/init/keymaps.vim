@@ -37,8 +37,6 @@ ino <c-j> <down>
 ino <c-k> <up>
 ino <c-l> <right>
 ino <c-a> <home>
-ino <c-e> <end>
-ino <c-x> <c-e>
 ino <c-d> <del>
 ino <c-u> <c-g>u<c-U>
 
@@ -79,18 +77,12 @@ noremap <silent><m-v> :close<cr>
 inoremap <silent><m-v> <ESC>:close<cr>
 noremap <silent><leader>to :tabonly<cr>
 noremap <silent><m-a> g<tab>
-noremap <m-s> :w<cr>
 inoremap <m-s> <esc>:w<cr>
 
 
 "----------------------------------------------------------------------
 " buffer keymap
 "----------------------------------------------------------------------
-no <silent><leader>bn :bn<cr>
-no <silent><leader>bp :bp<cr>
-no <silent><leader>bm :bm<cr>
-no <silent><leader>bv :vs<cr>
-no <silent><leader>bs :sp<cr>
 no <silent><leader>bd :bdelete<cr>
 no <silent><leader>bl :ls<cr>
 no <silent><leader>bb :ls<cr>:b
@@ -173,28 +165,7 @@ ino <m-,> <esc><c-w><
 ino <m-.> <esc><c-w>>
 ino <m-=> <esc><c-w>=
 
-if has('terminal') && exists(':terminal') == 2 && has('patch-8.1.1')
-	" vim 8.1 支持 termwinkey ，不需要把 terminal 切换成 normal 模式
-	" 设置 termwinkey 为 CTRL 加减号（GVIM），有些终端下是 CTRL+?
-	" 后面四个键位是搭配 termwinkey 的，如果 termwinkey 更改，也要改
-	set termwinkey=<c-_>
-	tno <m-H> <c-_>h
-	tno <m-L> <c-_>l
-	tno <m-J> <c-_>j
-	tno <m-K> <c-_>k
-	tno <m-q> <c-\><c-n>
-	tnoremap <m-1> <c-_>1gt
-	tnoremap <m-2> <c-_>2gt
-	tnoremap <m-3> <c-_>3gt
-	tnoremap <m-4> <c-_>4gt
-	tnoremap <m-5> <c-_>5gt
-	tnoremap <m-6> <c-_>6gt
-	tnoremap <m-7> <c-_>7gt
-	tnoremap <m-8> <c-_>8gt
-	tnoremap <m-9> <c-_>9gt
-	tnoremap <m-0> <c-_>10gt
-elseif has('nvim')
-	" neovim 没有 termwinkey 支持，必须把 terminal 切换回 normal 模式
+if has('terminal') || has('nvim')
 	tno <m-H> <c-\><c-n><c-w>h
 	tno <m-L> <c-\><c-n><c-w>l
 	tno <m-J> <c-\><c-n><c-w>j

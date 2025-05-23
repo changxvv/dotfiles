@@ -164,7 +164,7 @@ if has('folding')
 	set foldenable
 
 	" 代码折叠默认使用缩进
-	set fdm=marker
+	set fdm=indent
 
 	set foldopen-=hor
 

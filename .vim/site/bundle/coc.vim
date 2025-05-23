@@ -34,6 +34,7 @@ inoremap <silent><expr> <TAB>
       \ coc#pum#visible() ? coc#pum#confirm() :
       \ delimitMate#ShouldJump() ? "<Plug>delimitMateS-Tab" :
       \ "\<Tab>"
+inoremap <expr> <c-e> coc#pum#visible() ? coc#pum#cancel() : "\<end>"
 
 inoremap <silent><expr> <c-tab> coc#refresh()
 
@@ -67,7 +68,7 @@ endfunction
 autocmd CursorHold * silent call CocActionAsync('highlight')
 
 " Symbol renaming
-nmap <leader>rn <Plug>(coc-rename)
+nmap <f2> <Plug>(coc-rename)
 
 " Formatting selected code
 vmap <leader>f  <Plug>(coc-format-selected)
@@ -81,10 +82,9 @@ augroup MyCoCEventGroup
 augroup end
 
 " Applying code actions to the selected code block
-" Example: `<leader>aap` for current paragraph
 vmap <leader>ac  <Plug>(coc-codeaction-selected)
 " Apply the most preferred quickfix action to fix diagnostic on the current line
-nmap <leader>aq  <Plug>(coc-fix-current)
+nmap <leader>af  <Plug>(coc-fix-current)
 " Remap keys for applying refactor code actions
 vmap <silent> <leader>ar  <Plug>(coc-codeaction-refactor-selected)
 
@@ -101,11 +101,6 @@ omap ac <Plug>(coc-classobj-a)
 
 nmap <silent> <C-c> <Plug>(coc-cursors-position)
 xmap <silent> <C-r> <Plug>(coc-cursors-range)
-
-" Use CTRL-S for selections ranges
-" Requires 'textDocument/selectionRange' support of language server
-nmap <silent> <C-s> <Plug>(coc-range-select)
-xmap <silent> <C-s> <Plug>(coc-range-select)
 
 " Add `:Format` command to format current buffer
 command! -nargs=0 Format :call CocActionAsync('format')
