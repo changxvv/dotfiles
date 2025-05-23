@@ -106,6 +106,8 @@ if has_key(s:enabled, 'basic')
 	Plug 'jamessan/vim-gnupg'
 	Plug 'preservim/vim-markdown'
 	Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && npx --yes yarn install' }
+	Plug 'changxvv/vim-orgmode', { 'for': 'org' }
+	IncScript site/bundle/orgmode.vim
 
 	Plug 'kana/vim-textobj-user'
 	Plug 'kana/vim-textobj-syntax'
@@ -143,7 +145,6 @@ end
 if has_key(s:enabled, 'inter')
 	Plug 'mattn/webapi-vim'
 	Plug 'mattn/gist-vim'
-	Plug 'lambdalisue/vim-gista', { 'on': 'Gista' }
 	if v:version >= 800 || has('nvim')
 		Plug 'rbong/vim-flog', { 'branch': 'v1' }
 	endif
@@ -164,8 +165,6 @@ if has_key(s:enabled, 'high')
 	Plug 'dhruvasagar/vim-table-mode'
 	Plug 'skywind3000/asynctasks.vim'
 	Plug 'skywind3000/asyncrun.vim'
-	Plug 'changxvv/vim-orgmode', { 'for': 'org' }
-	IncScript site/bundle/orgmode.vim
 endif
 
 
@@ -174,7 +173,6 @@ endif
 "----------------------------------------------------------------------
 if has_key(s:enabled, 'opt')
 	Plug 'tpope/vim-speeddating'
-	Plug 'jreybert/vimagit'
 	Plug 'AndrewRadev/splitjoin.vim'
 
 	Plug 'AndrewRadev/switch.vim'

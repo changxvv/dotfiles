@@ -38,6 +38,7 @@ ino <c-k> <up>
 ino <c-l> <right>
 ino <c-a> <home>
 ino <c-e> <end>
+ino <c-x> <c-e>
 ino <c-d> <del>
 ino <c-u> <c-g>u<c-U>
 

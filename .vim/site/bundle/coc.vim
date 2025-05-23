@@ -70,8 +70,7 @@ autocmd CursorHold * silent call CocActionAsync('highlight')
 nmap <leader>rn <Plug>(coc-rename)
 
 " Formatting selected code
-xmap <leader>f  <Plug>(coc-format-selected)
-nmap <leader>f  <Plug>(coc-format-selected)
+vmap <leader>f  <Plug>(coc-format-selected)
 
 augroup MyCoCEventGroup
 	autocmd!
@@ -83,20 +82,11 @@ augroup end
 
 " Applying code actions to the selected code block
 " Example: `<leader>aap` for current paragraph
-xmap <leader>a  <Plug>(coc-codeaction-selected)
-nmap <leader>a  <Plug>(coc-codeaction-selected)
-
-" Remap keys for applying code actions at the cursor position
-nmap <leader>ac  <Plug>(coc-codeaction-cursor)
-" Remap keys for apply code actions affect whole buffer
-nmap <leader>as  <Plug>(coc-codeaction-source)
+vmap <leader>ac  <Plug>(coc-codeaction-selected)
 " Apply the most preferred quickfix action to fix diagnostic on the current line
-nmap <leader>qf  <Plug>(coc-fix-current)
-
+nmap <leader>aq  <Plug>(coc-fix-current)
 " Remap keys for applying refactor code actions
-nmap <silent> <leader>ar <Plug>(coc-codeaction-refactor)
-xmap <silent> <leader>rs  <Plug>(coc-codeaction-refactor-selected)
-nmap <silent> <leader>rs  <Plug>(coc-codeaction-refactor-selected)
+vmap <silent> <leader>ar  <Plug>(coc-codeaction-refactor-selected)
 
 " Map function and class text objects
 " NOTE: Requires 'textDocument.documentSymbol' support from the language server
