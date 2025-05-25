@@ -1,7 +1,7 @@
 "----------------------------------------------------------------------
 " 基础设置
 "----------------------------------------------------------------------
-set hls ic is scs ru nu rnu so=7 bs=2 ai cin ar aw nocp wak=no ttimeout ttm=30 nopaste
+set hls ic is scs ru nu rnu so=7 bs=2 ai cin ar aw nocp wak=no ttimeout ttm=30 nopaste ls=2 mouse=a
 
 " 设置缩进宽度
 set sw=2
