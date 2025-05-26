@@ -46,18 +46,18 @@ hi! clear SpellBad
 hi! clear SpellCap
 hi! clear SpellRare
 hi! clear SpellLocal
+
 if has('gui_running')
 	hi! SpellBad gui=undercurl guisp=red
 	hi! SpellCap gui=undercurl guisp=blue
 	hi! SpellRare gui=undercurl guisp=magenta
-	hi! SpellRare gui=undercurl guisp=cyan
+	hi! SpellLocal gui=undercurl guisp=cyan
 else
-	hi! SpellBad term=standout ctermfg=1 term=underline cterm=underline
+	hi! SpellBad term=standout cterm=underline
 	hi! SpellCap term=underline cterm=underline
 	hi! SpellRare term=underline cterm=underline
 	hi! SpellLocal term=underline cterm=underline
 endif
-
 
 "----------------------------------------------------------------------
 " GVim Dialogs

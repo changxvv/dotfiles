@@ -33,6 +33,7 @@ set noswapfile
 " 禁用 undo文件
 set noundofile
 
+" modern settings in term
 if !has('nvim')
 	set ttymouse=sgr
 	set balloonevalterm
@@ -44,12 +45,14 @@ let path = expand('~/.vim/tmp')
 		silent! call mkdir(path, 'p', 0755)
 endif
 
-set maxmempattern=5000
+set maxmempattern=100000
 
+" use stack jumplist
 if has('patch-9.0.1921')
     set jumpoptions=stack
 endif
 
+" do not need arabicshape
 if has('arabic')
     set noarabicshape
 endif
@@ -111,13 +114,17 @@ let &t_fd = "\e[?1004l"
 let &t_ST = "\e[22;2t"
 let &t_RT = "\e[23;2t"
 
+if has('termguicolors')
+    set termguicolors
+endif
+
 " 打开文件时恢复上一次光标所在位置
 autocmd BufReadPost *
 	\ if line("'\"") > 1 && line("'\"") <= line("$") |
 	\ exe "normal! g`\"" |
 	\ endif
 
-" vim -b : edit binary using xxd-format!
+" vim -b : edit binary using xxd-format
 augroup Binary
     autocmd!
     autocmd BufReadPre  *.bin set binary

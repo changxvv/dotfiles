@@ -49,7 +49,6 @@ if has('syntax')
 	syntax enable
 	syntax on
 endif
-set synmaxcol=500
 
 
 "----------------------------------------------------------------------

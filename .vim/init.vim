@@ -88,9 +88,6 @@ if len(g:bundle_group) > 0
 endif
 
 " 主题加载
-if has('termguicolors')
-	set termguicolors
-endif
 let g:edge_enable_italic = 1
 let g:edge_better_performance = 1
 let g:edge_menu_selection_background = 'purple'

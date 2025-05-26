@@ -75,9 +75,8 @@ noremap <silent><m-w> :tabclose<cr>
 inoremap <silent><m-w> <ESC>:tabclose<cr>
 noremap <silent><m-v> :close<cr>
 inoremap <silent><m-v> <ESC>:close<cr>
-noremap <silent><leader>to :tabonly<cr>
+noremap <silent><m-o> :tabonly<cr>
 noremap <silent><m-a> g<tab>
-inoremap <m-s> <esc>:w<cr>
 
 
 "----------------------------------------------------------------------
@@ -95,10 +94,10 @@ nnoremap + :call bufferhint#Popup()<CR>
 "----------------------------------------------------------------------
 " window keymaps
 "----------------------------------------------------------------------
-nnoremap <silent><space>= :resize +3<cr>
-nnoremap <silent><space>- :resize -3<cr>
-nnoremap <silent><space>, :vertical resize -3<cr>
-nnoremap <silent><space>. :vertical resize +3<cr>
+nnoremap <silent><leader>= :resize +3<cr>
+nnoremap <silent><leader>- :resize -3<cr>
+nnoremap <silent><leader>, :vertical resize -3<cr>
+nnoremap <silent><leader>. :vertical resize +3<cr>
 
 nnoremap <silent><leader>vl :VinegarOpen leftabove vs<cr>
 nnoremap <silent><leader>vs :VinegarOpen vs<cr>
@@ -243,13 +242,13 @@ vmap <Leader>xy   :y *<CR>
 " GUI hotkeys
 "----------------------------------------------------------------------
 if has('gui_running') || (has('nvim') && (has('win32') || has('win64')))
-	noremap <silent><m-o> :call Open_Browse(2)<cr>
-	inoremap <silent><m-o> <ESC>:call Open_Browse(2)<cr>
+	noremap <silent><m-b> :call Open_Browse(2)<cr>
+	inoremap <silent><m-b> <ESC>:call Open_Browse(2)<cr>
 	noremap <S-cr> o<ESC>
 	noremap <c-cr> O<esc>
 endif
 nnoremap <silent><leader>he :call Show_Explore()<cr>
-nnoremap <silent><space>hf <c-w>gf
+nnoremap <silent><leader>hf <c-w>gf
 
 
 "----------------------------------------------------------------------

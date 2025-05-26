@@ -71,7 +71,7 @@ autocmd CursorHold * silent call CocActionAsync('highlight')
 nmap <f2> <Plug>(coc-rename)
 
 " Formatting selected code
-vmap <leader>f  <Plug>(coc-format-selected)
+vmap <leader>gq  <Plug>(coc-format-selected)
 
 augroup MyCoCEventGroup
 	autocmd!
@@ -113,12 +113,12 @@ command! -nargs=0 OR   :call     CocActionAsync('runCommand', 'editor.action.org
 
 " Mappings for CoCList
 " Show all diagnostics
-nnoremap <silent><nowait> <leader>d  :<C-u>CocList diagnostics<cr>
+nnoremap <silent><nowait> <leader>cd  :<C-u>CocList diagnostics<cr>
 " Find symbol of current document
-nnoremap <silent><nowait> <leader>o  :<C-u>CocList outline<cr>
+nnoremap <silent><nowait> <leader>co  :<C-u>CocList outline<cr>
 " Search workspace symbols
-nnoremap <silent><nowait> <leader>s  :<C-u>CocList -I symbols<cr>
+nnoremap <silent><nowait> <leader>cs  :<C-u>CocList -I symbols<cr>
 " Resume latest coc list
-nnoremap <silent><nowait> <leader>p  :<C-u>CocListResume<CR>
+nnoremap <silent><nowait> <leader>cp  :<C-u>CocListResume<CR>
 " coc yank list
-nnoremap <silent><nowait> <leader>y  :<C-u>CocList -A --normal yank<cr>
+nnoremap <silent><nowait> <leader>cy  :<C-u>CocList -A --normal yank<cr>
