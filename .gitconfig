@@ -7,10 +7,13 @@
 [init]
 	defaultBranch = main
 [diff]
+	tool = vimdiff
 	algorithm = histogram
 	colorMoved = plain
 	mnemonicPrefix = true
 	renames = true
+[difftool]
+	trustExitCode = true
 [push]
 	default = simple
 	autoSetupRemote = true
