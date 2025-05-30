@@ -8,7 +8,6 @@
 
 	// colors
 	"colors.enable": true,
-	"colors.highlightPriority": 1000,
 
 	// documentHighlight
 	"documentHighlight.timeout": 300,
@@ -22,7 +21,6 @@
 	"suggest.noselect": false,
 	"suggest.enablePreselect": true,
 	"suggest.enableFloat": true,
-	"suggest.chineseSegments": true,
 	"suggest.reTriggerAfterIndent": true,
 	"suggest.minTriggerInputLength": 1,
 	"suggest.maxCompleteItemCount": 20,
