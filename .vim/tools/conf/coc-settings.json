@@ -14,7 +14,6 @@
 	"documentHighlight.priority": -1,
 
 	"suggest.languageSourcePriority": 98,
-	"suggest.acceptSuggestionOnCommitCharacter": true,
 	"suggest.autoTrigger": "always",
 	"suggest.detailField": "preview",
 	"suggest.triggerCompletionWait": 0,
