@@ -84,9 +84,6 @@ set tags=./.tags;,.tags
 " 文件换行符，默认使用 unix 换行符
 set ffs=unix,dos,mac
 
-" 丢失焦点就保存
-au FocusLost * silent! wa
-
 " reveal already opened files from the quickfix window 
 " instead of opening new buffers
 set switchbuf=useopen,newtab

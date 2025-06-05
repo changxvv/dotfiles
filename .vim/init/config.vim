@@ -1,17 +1,4 @@
 "----------------------------------------------------------------------
-" term compatible
-"----------------------------------------------------------------------
-if asclib#platform#has('win')
-	if has('nvim') == 0 && has('gui_running') == 0
-		" fix: https://github.com/vim/vim/issues/13956
-		exec 'set t_ut='
-	endif
-elseif asclib#platform#has_wsl()
-	" fixed: vim will enter replace mode in wsl with cmd window
-	exec 'set t_u7='
-endif
-
-"----------------------------------------------------------------------
 " 备份设置
 "----------------------------------------------------------------------
 
@@ -59,8 +46,46 @@ endif
 
 
 "----------------------------------------------------------------------
-" 配置微调
+" term compatible
 "----------------------------------------------------------------------
+
+if asclib#platform#has('win')
+	if has('nvim') == 0 && has('gui_running') == 0
+		" fix: https://github.com/vim/vim/issues/13956
+		exec 'set t_ut='
+	endif
+elseif asclib#platform#has_wsl()
+	" fixed: vim will enter replace mode in wsl with cmd window
+	exec 'set t_u7='
+endif
+
+if has('unix')
+	" disable modifyOtherKeys
+	if exists('+t_TI') && exists('+t_TE')
+		let &t_TI = ''
+		let &t_TE = ''
+	endif
+	let s:uname = system('uname')
+	let s:xterm = 0
+	if s:uname =~ "FreeBSD"
+		let s:xterm = 1
+	endif
+	" restore screen after quitting
+	if s:xterm != 0
+		if &term =~ "xterm"
+			let &t_ti="\0337\033[r\033[?47h"
+			let &t_te="\033[?47l\0338"
+			if has("terminfo")
+				let &t_Sf="\033[3%p1%dm"
+				let &t_Sb="\033[4%p1%dm"
+			else
+				let &t_Sf="\033[3%dm"
+				let &t_Sb="\033[4%dm"
+			endif
+		endif
+		set restorescreen
+	endif
+endif
 
 " 修正 ScureCRT/XShell 以及某些终端乱码问题，主要原因是不支持一些
 " 终端控制命令，比如 cursor shaping 这类更改光标形状的 xterm 终端命令
@@ -70,17 +95,15 @@ if has('nvim')
 	set guicursor=
 elseif (!has('gui_running')) && has('terminal') && has('patch-8.0.1200')
 	let g:termcap_guicursor = &guicursor
+	let g:termcap_t_RS = &t_RS
+	let g:termcap_t_SH = &t_SH
 	set guicursor=
-	if has('patch-8.2.2345')
-		execute "set <FocusGained>=\<Esc>[I"
-		execute "set <FocusLost>=\<Esc>[O"
-	endif
+	set t_RS=
+	set t_SH=
 endif
 
 " MARK: These settings must be placed before setting the colorscheme. It is also important that the value of the vim term variable is not changed after these settings.
 " Styled and colored underline support
-let &t_AU = "\e[58:5:%dm"
-let &t_8u = "\e[58:2:%lu:%lu:%lum"
 let &t_Us = "\e[4:2m"
 let &t_Cs = "\e[4:3m"
 let &t_ds = "\e[4:4m"
@@ -89,24 +112,6 @@ let &t_Ce = "\e[4:0m"
 " Strikethrough
 let &t_Ts = "\e[9m"
 let &t_Te = "\e[29m"
-" Truecolor support
-let &t_8f = "\e[38:2:%lu:%lu:%lum"
-let &t_8b = "\e[48:2:%lu:%lu:%lum"
-let &t_RF = "\e]10;?\e\\"
-let &t_RB = "\e]11;?\e\\"
-" Bracketed paste
-let &t_BE = "\e[?2004h"
-let &t_BD = "\e[?2004l"
-let &t_PS = "\e[200~"
-let &t_PE = "\e[201~"
-" Cursor control
-let &t_RC = "\e[?12$p"
-let &t_SH = "\e[%d q"
-let &t_RS = "\eP$q q\e\\"
-let &t_SI = "\e[5 q"
-let &t_SR = "\e[3 q"
-let &t_EI = "\e[1 q"
-let &t_VS = "\e[?12l"
 " Focus tracking
 let &t_fe = "\e[?1004h"
 let &t_fd = "\e[?1004l"
@@ -117,6 +122,14 @@ let &t_RT = "\e[23;2t"
 if has('termguicolors')
     set termguicolors
 endif
+
+
+"----------------------------------------------------------------------
+" 配置微调
+"----------------------------------------------------------------------
+
+" 丢失焦点就保存
+au FocusLost * silent! wa
 
 " 打开文件时恢复上一次光标所在位置
 autocmd BufReadPost *
@@ -147,35 +160,3 @@ augroup Binary
                 \ |   redraw
                 \ | endif
 augroup END
-
-
-"----------------------------------------------------------------------
-" terminal turn
-"----------------------------------------------------------------------
-if has('unix')
-	" disable modifyOtherKeys
-	if exists('+t_TI') && exists('+t_TE')
-		let &t_TI = ''
-		let &t_TE = ''
-	endif
-	let s:uname = system('uname')
-	let s:xterm = 0
-	if s:uname =~ "FreeBSD"
-		let s:xterm = 1
-	endif
-	" restore screen after quitting
-	if s:xterm != 0
-		if &term =~ "xterm"
-			let &t_ti="\0337\033[r\033[?47h"
-			let &t_te="\033[?47l\0338"
-			if has("terminfo")
-				let &t_Sf="\033[3%p1%dm"
-				let &t_Sb="\033[4%p1%dm"
-			else
-				let &t_Sf="\033[3%dm"
-				let &t_Sb="\033[4%dm"
-			endif
-		endif
-		set restorescreen
-	endif
-endif
