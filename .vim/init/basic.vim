@@ -73,10 +73,9 @@ set errorformat+=%.\ %#-->\ %f:%l:%c,[%f:%l]\ ->\ %m,[%f:%l]:%m
 set virtualedit=block
 
 " 分隔符可视
-set listchars=tab:\|\ ,eol:↲,extends:»,precedes:«,nbsp:~,trail:-
+set listchars=tab:\|\ ,eol:¬,extends:»,precedes:«,nbsp:␣,trail:·
 set linebreak
 set showbreak=↪
-set ambiwidth=double
 
 " 设置tags
 set tags=./.tags;,.tags

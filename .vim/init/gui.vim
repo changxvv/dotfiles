@@ -1,6 +1,7 @@
 if has('gui_running')
 	" 总是显示标签栏
-	set gfn=Maple\ Mono\ NF\ CN:h11
+	set gfn=JetBrainsMono\ NFM:h11
+	set gfw=霞鹜文楷等宽:h11
 	set guicursor+=a:blinkon0
 	set guioptions=g
 else
