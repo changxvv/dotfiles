@@ -1,6 +1,5 @@
 if has('gui_running')
-	set gfn=JetBrainsMono\ NFM:h11
-	set gfw=Maple\ Mono\ NF\ CN:h11
+	set gfn=JetBrains\ Maple\ Mono:h11
 	set guicursor+=a:blinkon0
 	set guioptions=g
 else

@@ -92,11 +92,11 @@ if has_key(s:enabled, 'basic')
 	Plug 'tommcdo/vim-exchange'
 	Plug 'tommcdo/vim-lion'
 	Plug 'tpope/vim-eunuch'
+	Plug 'tpope/vim-projectionist'
 	
 	Plug 'pprovost/vim-ps1', { 'for': 'ps1' }
 	Plug 'tbastos/vim-lua', { 'for': 'lua' }
 	Plug 'vim-python/python-syntax', { 'for': ['python'] }
-	Plug 'pboettch/vim-cmake-syntax', { 'for': ['cmake'] }
 	Plug 'cespare/vim-toml'
 	Plug 'nathangrigg/vim-beancount', { 'for': 'bean' }
 	if has('patch-9.0.1767') == 0
