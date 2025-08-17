@@ -5,7 +5,7 @@ firewall=true               # WSL2/WSLg 子系统的 Windows 防火墙集成，�
 guiApplications=true        # 启用 WSLg GUI 图形化程序支持
 nestedVirtualization=true   # 启用 WSL2/WSLg 子系统嵌套虚拟化功能支持
 networkingMode=mirrored     # 启用镜像网络特性支持
-processors=16               # 设置 WSL2/WSLg 子系统的逻辑 CPU 核心数为 8（最大肯定没法超过硬件的物理逻辑核心数）
+processors=16               # 设置 WSL2/WSLg 子系统的逻辑 CPU 核心数（最大肯定没法超过硬件的物理逻辑核心数）
 
 [experimental]                  # 实验性功能
 autoMemoryReclaim=gradual       # 启用空闲内存自动缓慢回收，其它选项：dropcache / disabled（立即/禁用）
