@@ -2,6 +2,7 @@ if has('gui_running')
 	set gfn=JetBrains\ Maple\ Mono:h11
 	set guicursor+=a:blinkon0
 	set guioptions=g
+	set renderoptions=type:directx
 else
 	set t_md=
 endif

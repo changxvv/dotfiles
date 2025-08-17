@@ -93,9 +93,10 @@ if has_key(s:enabled, 'basic')
 	Plug 'tommcdo/vim-lion'
 	Plug 'tpope/vim-eunuch'
 	Plug 'tpope/vim-projectionist'
+	Plug 'junegunn/vim-peekaboo'
+	Plug 'markonm/traces.vim'
 	
 	Plug 'pprovost/vim-ps1', { 'for': 'ps1' }
-	Plug 'tbastos/vim-lua', { 'for': 'lua' }
 	Plug 'vim-python/python-syntax', { 'for': ['python'] }
 	Plug 'cespare/vim-toml'
 	Plug 'nathangrigg/vim-beancount', { 'for': 'bean' }
@@ -151,6 +152,7 @@ if has_key(s:enabled, 'inter')
 	Plug 'inkarkat/vim-ingo-library'
 	Plug 'inkarkat/vim-mark'
 	Plug 'tpope/vim-characterize' " enhance ga
+	Plug 'rhysd/git-messenger.vim'
 endif
 
 

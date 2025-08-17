@@ -118,9 +118,15 @@ let &t_fd = "\e[?1004l"
 " Window title
 let &t_ST = "\e[22;2t"
 let &t_RT = "\e[23;2t"
+" Cursor shape
+let &t_SI = "\<Esc>[6 q"
+let &t_SR = "\<Esc>[4 q"
+let &t_EI = "\<Esc>[2 q"
 
 if has('termguicolors')
-    set termguicolors
+	set termguicolors
+	let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+	let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 endif
 
 

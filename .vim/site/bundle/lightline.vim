@@ -1,47 +1,47 @@
 let g:lightline = {}
 
 let g:lightline.active = {
-			\ 'left': [['mode', 'paste'],
-			\          ['git_branch', 'absolutepath'],
-			\          ['buffers_count', 'status', 'gutentags']],
-			\ 'right': [['lineinfo'], ['coc_status', 'ale_status', 'percent'],
-			\           ['fileformat', 'fileencoding', 'filetype']]
-			\ }
+	\ 'left': [['mode', 'paste'],
+	\          ['git_branch', 'absolutepath'],
+	\          ['buffers_count', 'status', 'gutentags']],
+	\ 'right': [['lineinfo'], ['coc_status', 'ale_status', 'percent'],
+	\           ['fileformat', 'fileencoding', 'filetype']]
+	\ }
 
 let g:lightline.inactive = {
-			\ 'left': [['absolutepath'], ['status']],
-			\ 'right': [['lineinfo'], ['percent']]
-			\ }
+	\ 'left': [['absolutepath'], ['status']],
+	\ 'right': [['lineinfo'], ['percent']]
+	\ }
 
 let g:lightline.tabline = {
-			\ 'left': [['tabs']],
-			\ 'right': []
-			\ }
+	\ 'left': [['tabs']],
+	\ 'right': []
+	\ }
 let g:lightline.tab = {
-			\ 'active': ['tabnum', 'filename', 'modified'],
-			\ 'inactive': ['tabnum', 'filename', 'modified']
-			\ }
+	\ 'active': ['tabnum', 'filename', 'modified'],
+	\ 'inactive': ['tabnum', 'filename', 'modified']
+	\ }
 
 let g:lightline.component = {
-			\ 'status': '[%R%H%W]',
-			\ 'absolutepath': '%F',
-			\ 'paste': '%{&paste?"PASTE":""}',
-			\ 'modified': '%M',
-			\ 'lineinfo': '%3l/%L:%-2v',
-			\ 'fileformat': '%{&ff}',
-			\ 'filetype': '%{&ft!=#""?&ft:"no ft"}',
-			\ 'fileencoding': '%{(&fenc!=#""?&fenc:&enc).(&bomb?",BOM":"")}',
-			\ 'filename': '%t',
-			\ }
+	\ 'status': '[%R%H%W]',
+	\ 'absolutepath': '%F',
+	\ 'paste': '%{&paste?"PASTE":""}',
+	\ 'modified': '%M',
+	\ 'lineinfo': '%3l/%L:%-2v',
+	\ 'fileformat': '%{&ff}',
+	\ 'filetype': '%{&ft!=#""?&ft:"no ft"}',
+	\ 'fileencoding': '%{(&fenc!=#""?&fenc:&enc).(&bomb?",BOM":"")}',
+	\ 'filename': '%t',
+	\ }
 
 let g:lightline.component_function = {
-			\ 'mode': 'LightlineMode',
-			\ 'git_branch': 'LightlineFugitive',
-			\ 'buffers_count': 'LightlineBuffersCount',
-			\ 'gutentags': 'gutentags#statusline',
-			\ 'coc_status': 'coc#status',
-			\ 'ale_status': 'LightlineAleStatus'
-			\ }
+	\ 'mode': 'LightlineMode',
+	\ 'git_branch': 'LightlineFugitive',
+	\ 'buffers_count': 'LightlineBuffersCount',
+	\ 'gutentags': 'gutentags#statusline',
+	\ 'coc_status': 'coc#status',
+	\ 'ale_status': 'LightlineAleStatus'
+	\ }
 
 function! LightlineMode()
 	if &bt != ''
