@@ -85,7 +85,7 @@ set ffs=unix,dos,mac
 
 " reveal already opened files from the quickfix window 
 " instead of opening new buffers
-set switchbuf=useopen,newtab
+set switchbuf=useopen,usetab,newtab
 
 " 禁止响铃
 set novisualbell

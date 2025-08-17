@@ -141,7 +141,7 @@ let delimitMate_expand_cr = 1
 " gutentags
 "----------------------------------------------------------------------
 let $GTAGSLABEL = 'native-pygments'
-let $GTAGSCONF = '~/.globalrc'
+let $GTAGSCONF = asclib#path#abspath(expand('~/gtags.conf'))
 let $GTAGSFORCECPP = '1'
 
 let g:gutentags_project_root = ['.root', '.git', '.svn']
