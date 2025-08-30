@@ -39,6 +39,7 @@ Plug 'bootleq/vim-cycle'
 Plug 'tpope/vim-surround'
 Plug 'Raimondi/delimitMate'
 Plug 'tpope/vim-commentary'
+Plug 'rhysd/clever-f.vim'
 
 " color scheme
 Plug 'sainnhe/edge'
