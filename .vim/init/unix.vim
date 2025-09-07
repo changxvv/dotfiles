@@ -115,3 +115,17 @@ function! s:fold_restore(enable)
 endfunc
 
 command! -nargs=1 PersistFoldEnable call s:fold_restore(<q-args>)
+
+
+"----------------------------------------------------------------------
+"  Disable a lot of unnecessary internal plugins
+"----------------------------------------------------------------------
+let g:loaded_2html_plugin = 1
+let g:loaded_getscriptPlugin = 1
+let g:loaded_gzip = 1
+let g:loaded_logipat = 1
+let g:loaded_rrhelper = 1
+let g:loaded_spellfile_plugin = 1
+let g:loaded_tarPlugin = 1
+let g:loaded_vimballPlugin = 1
+let g:loaded_zipPlugin = 1

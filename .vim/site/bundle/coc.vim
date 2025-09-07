@@ -16,15 +16,17 @@ let g:coc_global_extensions = [
 	\ 'coc-dictionary',
 	\ 'coc-emoji',
 	\ 'coc-highlight',
-	\ 'coc-json',
-	\ 'coc-pyright',
 	\ 'coc-snippets',
 	\ 'coc-syntax',
 	\ 'coc-tag',
-	\ 'coc-tsserver',
 	\ 'coc-word',
 	\ 'coc-yank',
-	\ 'coc-vimlsp'
+	\ 'coc-vimlsp',
+	\ 'coc-tsserver',
+	\ 'coc-json',
+	\ 'coc-pyright',
+	\ 'coc-prettier',
+  \ 'coc-sh'
 	\ ]
 
 " Use tab for trigger completion with characters ahead and navigate.

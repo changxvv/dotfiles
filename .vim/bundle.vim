@@ -163,11 +163,13 @@ endif
 if has_key(s:enabled, 'high')
 	Plug 'kshenoy/vim-signature'
 	Plug 'mhinz/vim-signify'
-	Plug 'junegunn/fzf'
-	Plug 'junegunn/fzf.vim'
 	Plug 'dhruvasagar/vim-table-mode'
 	Plug 'skywind3000/asynctasks.vim'
 	Plug 'skywind3000/asyncrun.vim'
+	if (executable('fzf'))
+		Plug 'junegunn/fzf'
+		Plug 'junegunn/fzf.vim'
+	endif
 endif
 
 
