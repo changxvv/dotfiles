@@ -79,6 +79,7 @@ xmap gZ <Plug>Sneak_S
 
 IncScript site/bundle/dirvish.vim
 IncScript site/bundle/cycle.vim
+IncScript site/bundle/clever-f.vim
 
 
 "----------------------------------------------------------------------
