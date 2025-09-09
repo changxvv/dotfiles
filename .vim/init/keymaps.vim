@@ -4,7 +4,6 @@
 let mapleader = " "
 let maplocalleader = " "
 no ; :
-no \ ;
 no ' `
 no H ^
 no M zz
