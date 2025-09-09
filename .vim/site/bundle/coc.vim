@@ -22,11 +22,7 @@ let g:coc_global_extensions = [
 	\ 'coc-word',
 	\ 'coc-yank',
 	\ 'coc-vimlsp',
-	\ 'coc-tsserver',
 	\ 'coc-json',
-	\ 'coc-pyright',
-	\ 'coc-prettier',
-  \ 'coc-sh'
 	\ ]
 
 " Use tab for trigger completion with characters ahead and navigate.
