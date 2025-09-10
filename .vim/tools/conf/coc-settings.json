@@ -100,11 +100,9 @@
 
 	// diagnostic
 	"diagnostic.enable": true,
-	"diagnostic.signPriority": 10,
 	"diagnostic.virtualText": false,
 	"diagnostic.signLevel": "hint",
 	"diagnostic.messageLevel": "hint",
-	"diagnostic.virtualTextLevel": "hint",
 	"diagnostic.locationlistLevel": "hint",
 	"diagnostic.format": "%message\n[%source:%code]",
 	"diagnostic.displayByAle": true,
