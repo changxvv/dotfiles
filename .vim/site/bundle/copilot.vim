@@ -110,4 +110,5 @@ let g:copilot_filetypes = {
 			\ 'scheme': v:true,
 			\ 'lisp': v:true,
 			\ 'zig': v:true,
+			\ 'beancount': v:true,
 			\  }
