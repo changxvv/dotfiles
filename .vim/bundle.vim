@@ -108,7 +108,6 @@ if has_key(s:enabled, 'basic')
 	Plug 'justinmk/vim-syntax-extra', { 'for': ['c', 'bison', 'flex', 'cpp'] }
 	Plug 'arzg/vim-rust-syntax-ext', { 'for': 'rust' }
 	Plug 'jamessan/vim-gnupg'
-	Plug 'preservim/vim-markdown', { 'for': 'markdown' }
 	Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && npx --yes yarn install', 'for': 'markdown' }
 	Plug 'changxvv/vim-orgmode', { 'for': 'org' }
 	IncScript site/bundle/orgmode.vim
