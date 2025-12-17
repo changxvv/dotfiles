@@ -100,7 +100,7 @@ function! asclib#path#abspath(path)
 	else
 		let f = substitute(f, '\v[\/\\]+', '/', 'g')
 	endif
-	if f =~ '\/$'
+	if f =~ '[\\/]$'
 		let f = fnamemodify(f, ':h')
 	endif
 	return f
@@ -803,3 +803,5 @@ function! asclib#path#shorten(path, ...) abort
 	endif
 	return path
 endfunc
+
+

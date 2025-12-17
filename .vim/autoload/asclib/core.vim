@@ -263,7 +263,11 @@ function! asclib#core#system(cmd, ...)
 	let cwd = ((a:0) > 0)? (a:1) : ''
 	if cwd != ''
 		let previous = getcwd()
-		noautocmd call asclib#core#chdir(cwd)
+		if isdirectory(cwd)
+			noautocmd call asclib#core#chdir(cwd)
+		else
+			let previous = ''
+		endif
 	endif
 	if a:0 >= 3
 		if type(a:3) == type('')
@@ -274,11 +278,18 @@ function! asclib#core#system(cmd, ...)
 	else
 		let sinput = {}
 	endif
+	let g:asclib#core#shell_cmd = a:cmd
+	let g:asclib#core#shell_cwd = cwd
+	if !exists('g:asclib#core#shell_count')
+		let g:asclib#core#shell_count = 0
+	endif
+	let g:asclib#core#shell_count += 1
 	let hr = s:python_system(a:cmd, get(g:, 'asclib#core#python', 0), sinput)
-	if cwd != ''
+	if cwd != '' && previous != ''
 		noautocmd call asclib#core#chdir(previous)
 	endif
 	let g:asclib#core#shell_error = s:shell_error
+	" unsilent echom printf('Shell[%d]: %s', g:asclib#core#shell_count, a:cmd)
 	if (a:0) > 1 && has('iconv')
 		let encoding = a:2
 		if encoding != '' && encoding != &encoding
@@ -837,3 +848,5 @@ function! asclib#core#print(content, highlight, ...)
 		set showmode
 	endif
 endfunc
+
+

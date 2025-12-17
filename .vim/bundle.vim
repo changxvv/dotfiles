@@ -88,6 +88,7 @@ IncScript site/bundle/clever-f.vim
 if has_key(s:enabled, 'basic')
 	Plug 't9md/vim-choosewin'
 	Plug 'tpope/vim-rhubarb'
+	Plug 'junegunn/gv.vim'
 	Plug 'mhinz/vim-startify'
 	Plug 'terryma/vim-expand-region'
 	Plug 'skywind3000/vim-dict'
@@ -105,7 +106,7 @@ if has_key(s:enabled, 'basic')
 	if has('patch-9.0.1767') == 0
 		Plug 'peterhoeg/vim-qml'
 	endif
-	Plug 'justinmk/vim-syntax-extra', { 'for': ['c', 'bison', 'flex', 'cpp'] }
+	Plug 'bfrg/vim-c-cpp-modern', { 'for': ['c', 'cpp'] }
 	Plug 'arzg/vim-rust-syntax-ext', { 'for': 'rust' }
 	Plug 'jamessan/vim-gnupg'
 	Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && npx --yes yarn install', 'for': 'markdown' }
