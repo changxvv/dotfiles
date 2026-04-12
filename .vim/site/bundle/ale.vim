@@ -3,7 +3,7 @@
 "----------------------------------------------------------------------
 let g:ale_linters_explicit = 1
 let g:ale_disable_lsp = 1
-let g:ale_echo_delay = 100
+let g:ale_echo_delay = 400
 let g:ale_lint_delay = 1000
 let g:ale_echo_msg_format = '[%linter%] %code: %%s [%severity% (%type%)]'
 let g:ale_lint_on_text_changed = 'never'
@@ -12,7 +12,38 @@ let g:ale_lint_on_save = 0
 let g:ale_sign_column_always = 1
 let g:ale_virtualtext_cursor = 0
 let g:ale_set_loclist = 0
-let g:airline#extensions#ale#enabled = 1
+let g:ale_sign_priority = 40
+
+
+"----------------------------------------------------------------------
+" style
+"----------------------------------------------------------------------
+if has('nvim-0.9') || has('patch-9.0.1')
+	let g:ale_echo_cursor = 0
+	let g:ale_virtualtext_cursor = 1
+	let g:ale_virtualtext_single = 1
+	let g:ale_floating_preview = 1
+	let g:ale_virtualtext_prefix    = "     \u25cf "
+	let g:ale_virtualtext_delay = 200
+	" let g:ale_hover_to_preview = 1
+	" let g:ale_hover_to_floating_preview = 1
+endif
+
+function! s:init_highlight()
+	hi! ALEVirtualTextError term=standout ctermfg=197 guifg=#f43753
+	hi! ALEVirtualTextWarning term=standout ctermfg=204 guifg=#af5f5f
+	" hi! link ALEVirtualTextError ErrorMsg
+	" hi! link ALEVirtualTextWarning WarningMsg
+	hi! link ALEVirtualTextInfo  ALEInfo
+	hi! link ALEVirtualTextStyleError ALEStyleError
+endfunc
+
+augroup ale_highlight
+	autocmd!
+	autocmd ColorScheme * call s:init_highlight()
+augroup END
+
+call s:init_highlight()
 
 
 "----------------------------------------------------------------------

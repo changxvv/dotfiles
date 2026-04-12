@@ -44,6 +44,10 @@ if &shell =~# 'fish'
 	set shell=sh
 endif
 
+if has('patch-9.0.1')
+	exec 'set listchars+=leadmultispace:\|\ \ \ '
+endif
+
 
 "----------------------------------------------------------------------
 " 文件类型微调
