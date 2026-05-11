@@ -3,6 +3,8 @@
 "----------------------------------------------------------------------
 set hls ic is scs ru nu rnu so=7 bs=2 ai cin ar aw nocp wak=no ttimeout ttm=30 nopaste ls=2 mouse=a
 
+set cpo+=n
+
 " 设置缩进宽度
 set sw=2
 
@@ -99,6 +101,9 @@ else
     set grepprg=grep\ -nH\ $*
 endif
 
+" Scroll horizontally one character at a time.
+set sidescroll=1
+
 
 "----------------------------------------------------------------------
 " Format 设置
@@ -141,6 +146,7 @@ endif
 set diffopt=
 set diffopt+=vertical  " show diff in vertical position
 set diffopt+=filler  " show filler for deleted lines
+set diffopt+=followwrap  " follow wrapped lines
 if has('patch-8.1.2289')
     set diffopt+=closeoff  " turn off diff when one file window is closed
 endif
@@ -149,7 +155,9 @@ if has('patch-8.2.0001')
 	set diffopt+=internal,algorithm:histogram
 	set diffopt+=indent-heuristic
 endif
-
+if has('patch-9.1.1243')
+	set diffopt+=inline:word
+endif
 
 "----------------------------------------------------------------------
 " 设置代码折叠

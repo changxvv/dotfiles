@@ -110,6 +110,7 @@ if has_key(s:enabled, 'basic')
 	Plug 'arzg/vim-rust-syntax-ext', { 'for': 'rust' }
 	Plug 'jamessan/vim-gnupg'
 	Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && npx --yes yarn install', 'for': 'markdown' }
+	Plug 'chrisbra/csv.vim', { 'for': 'csv' }
 	Plug 'changxvv/vim-orgmode', { 'for': 'org' }
 	IncScript site/bundle/orgmode.vim
 

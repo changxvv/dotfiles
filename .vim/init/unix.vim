@@ -6,7 +6,9 @@ set cpo-=<
 set viminfo+=!
 set viewdir=~/.vim/view
 set whichwrap=b,s,<,>,[,]
-set browsedir=buffer
+if exists('+browsedir')
+	set browsedir=buffer
+endif
 set keymodel=
 set selection=inclusive
 
