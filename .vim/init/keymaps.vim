@@ -305,3 +305,5 @@ nnoremap <m-Z> zA
 
 " last command
 nnoremap <leader>cl :<c-p><cr>
+
+cabbrev w!! SudoWrite!
